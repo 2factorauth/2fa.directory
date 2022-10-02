@@ -1,6 +1,8 @@
 @media screen and (min-width: 993px) {
   .entry {
-    &.success {
+    padding-left: 1em;
+
+    &.green {
       display: grid;
       grid-template-columns: 20em repeat(6, 1fr);
       grid-template-rows: 1fr;
@@ -10,7 +12,7 @@
       line-height: 53px;
     }
 
-    &.failure {
+    &.red {
       display: grid;
       grid-template-columns: 20em 1fr;
       grid-template-rows: 1fr;
@@ -19,8 +21,8 @@
       grid-row-gap: 0;
     }
 
-    & > * {
-      border-right: 1px solid black;
+    & > *:not(:last-child) {
+      border-right: 1px solid #6f6f6f;
     }
 
     .name {
@@ -32,6 +34,7 @@
       display: flex;
       flex-wrap: wrap;
 
+
       .website-doc {
         display: block;
         text-decoration: none;
@@ -40,8 +43,22 @@
         &:after {
           content: '\F3B8';
           font-family: 'bootstrap-icons';
-          font-size: 27px;
-          line-height: 53px;
+          font-size: 1.6em;
+          vertical-align: middle;
+        }
+      }
+
+      .recovery-doc {
+        display: block;
+        text-decoration: none;
+        margin: auto;
+
+        &:after {
+          content: '\F116';
+          font-family: 'bootstrap-icons';
+          font-size: 1.6em;
+          font-weight: 600;
+          vertical-align: middle;
         }
       }
     }
@@ -100,8 +117,6 @@
           content: 'Via Email';
         }
       }
-
-
     }
 
     .tfa-summary {
@@ -118,13 +133,18 @@
     line-height: 2em;
     border: none;
     color: white;
+    border-radius: 2px;
+
+    &:before {
+      font-family: 'bootstrap-icons';
+      vertical-align: middle;
+    }
 
     &.twitter {
       background: #1da1f2;
 
       &:before {
         content: '\F5EF';
-        font-family: 'bootstrap-icons';
       }
     }
 
@@ -133,7 +153,6 @@
 
       &:before {
         content: '\F344';
-        font-family: 'bootstrap-icons';
       }
     }
 
@@ -142,7 +161,6 @@
 
       &:before {
         content: '\F32C';
-        font-family: 'bootstrap-icons';
       }
     }
   }
@@ -164,11 +182,11 @@
 
 
 .entry {
-  &.success {
+  &.green {
     background: #b1dfbb;
   }
 
-  &.failure {
+  &.red {
     background: #f1b0b7;
   }
 }
@@ -181,6 +199,7 @@
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 0;
     grid-row-gap: .5em;
+    border-bottom: 1px solid #6f6f6f;
 
     .name {
       margin: 1em 0 0 0;
@@ -200,6 +219,61 @@
 
     .docs {
       grid-area: 3 / 1 / 4 / 2;
+      display: grid;
+      grid-template-columns:repeat(auto-fit, minmax(5em, 1fr));
+      grid-template-rows: 1fr;
+
+      & > * {
+        display: block;
+        text-decoration: none;
+        margin: auto;
+        width: calc(100% - .5em);
+        max-width: 60vw;
+        text-align: center;
+        font-size: 1.3em;
+        line-height: 2em;
+        border-radius: 2px;
+        padding: 0 .5em;
+        background: var(--bs-link-color);
+        color: #fff;
+        overflow: hidden;
+      }
+
+      .website-doc {
+
+        &:before {
+          content: '\F3B8';
+          font-family: 'bootstrap-icons';
+          margin-right: .3em;
+          font-size: .8em;
+          vertical-align: middle;
+        }
+
+        &:after {
+          content: 'Documentation';
+          font-family: 'SF Pro Display';
+          font-weight: 300;
+          vertical-align: middle;
+        }
+      }
+
+      .recovery-doc {
+        &:before {
+          content: '\F116';
+          font-family: 'bootstrap-icons';
+          margin-right: .3em;
+          font-size: .8em;
+          font-weight: 600;
+          vertical-align: middle;
+        }
+
+        &:after {
+          content: 'Recovery';
+          font-family: 'SF Pro Display';
+          font-weight: 300;
+          vertical-align: middle;
+        }
+      }
     }
 
     .contact {
@@ -207,8 +281,6 @@
       display: grid;
       grid-template-columns:repeat(auto-fit, minmax(5em, 1fr));
       grid-template-rows: 1fr;
-      grid-column-gap: 0;
-      grid-row-gap: 0;
 
       &:before {
         content: '2FA not supported';
@@ -222,6 +294,8 @@
       }
 
       button {
+        border-radius: 2px;
+        line-height: calc(2em + 5px);
         margin: auto;
         width: calc(100% - .5em);
       }

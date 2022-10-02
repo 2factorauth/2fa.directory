@@ -1,5 +1,8 @@
 @media screen and (min-width: 993px) {
-  .entry.success {
+  .entry {
+    padding-left: 1em;
+  }
+  .entry.green {
     display: grid;
     grid-template-columns: 20em repeat(6, 1fr);
     grid-template-rows: 1fr;
@@ -8,7 +11,7 @@
     border-bottom: 1px solid black;
     line-height: 53px;
   }
-  .entry.failure {
+  .entry.red {
     display: grid;
     grid-template-columns: 20em 1fr;
     grid-template-rows: 1fr;
@@ -16,8 +19,8 @@
     line-height: 53px;
     grid-row-gap: 0;
   }
-  .entry > * {
-    border-right: 1px solid black;
+  .entry > *:not(:last-child) {
+    border-right: 1px solid #6f6f6f;
   }
   .entry .name {
     grid-area: 1/1/2/2;
@@ -35,8 +38,20 @@
   .entry .docs .website-doc:after {
     content: "\f3b8";
     font-family: "bootstrap-icons";
-    font-size: 27px;
-    line-height: 53px;
+    font-size: 1.6em;
+    vertical-align: middle;
+  }
+  .entry .docs .recovery-doc {
+    display: block;
+    text-decoration: none;
+    margin: auto;
+  }
+  .entry .docs .recovery-doc:after {
+    content: "\f116";
+    font-family: "bootstrap-icons";
+    font-size: 1.6em;
+    font-weight: 600;
+    vertical-align: middle;
   }
   .entry .sms {
     grid-area: 1/3/2/4;
@@ -90,27 +105,29 @@
   line-height: 2em;
   border: none;
   color: white;
+  border-radius: 2px;
+}
+.contact button:before {
+  font-family: "bootstrap-icons";
+  vertical-align: middle;
 }
 .contact button.twitter {
   background: #1da1f2;
 }
 .contact button.twitter:before {
   content: "\f5ef";
-  font-family: "bootstrap-icons";
 }
 .contact button.facebook {
   background: #3b5998;
 }
 .contact button.facebook:before {
   content: "\f344";
-  font-family: "bootstrap-icons";
 }
 .contact button.email {
   background: #ea4235;
 }
 .contact button.email:before {
   content: "\f32c";
-  font-family: "bootstrap-icons";
 }
 
 .name {
@@ -126,10 +143,10 @@
   max-width: 32px;
 }
 
-.entry.success {
+.entry.green {
   background: #b1dfbb;
 }
-.entry.failure {
+.entry.red {
   background: #f1b0b7;
 }
 
@@ -141,6 +158,7 @@
     grid-template-rows: repeat(3, 1fr);
     grid-column-gap: 0;
     grid-row-gap: 0.5em;
+    border-bottom: 1px solid #6f6f6f;
   }
   .entry .name {
     margin: 1em 0 0 0;
@@ -157,14 +175,57 @@
   }
   .entry .docs {
     grid-area: 3/1/4/2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(5em, 1fr));
+    grid-template-rows: 1fr;
+  }
+  .entry .docs > * {
+    display: block;
+    text-decoration: none;
+    margin: auto;
+    width: calc(100% - 0.5em);
+    max-width: 60vw;
+    text-align: center;
+    font-size: 1.3em;
+    line-height: 2em;
+    border-radius: 2px;
+    padding: 0 0.5em;
+    background: var(--bs-link-color);
+    color: #fff;
+    overflow: hidden;
+  }
+  .entry .docs .website-doc:before {
+    content: "\f3b8";
+    font-family: "bootstrap-icons";
+    margin-right: 0.3em;
+    font-size: 0.8em;
+    vertical-align: middle;
+  }
+  .entry .docs .website-doc:after {
+    content: "Documentation";
+    font-family: "SF Pro Display";
+    font-weight: 300;
+    vertical-align: middle;
+  }
+  .entry .docs .recovery-doc:before {
+    content: "\f116";
+    font-family: "bootstrap-icons";
+    margin-right: 0.3em;
+    font-size: 0.8em;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .entry .docs .recovery-doc:after {
+    content: "Recovery";
+    font-family: "SF Pro Display";
+    font-weight: 300;
+    vertical-align: middle;
   }
   .entry .contact {
     margin-top: 2em;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(5em, 1fr));
     grid-template-rows: 1fr;
-    grid-column-gap: 0;
-    grid-row-gap: 0;
   }
   .entry .contact:before {
     content: "2FA not supported";
@@ -177,6 +238,8 @@
     width: 100%;
   }
   .entry .contact button {
+    border-radius: 2px;
+    line-height: calc(2em + 5px);
     margin: auto;
     width: calc(100% - 0.5em);
   }
