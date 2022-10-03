@@ -1,7 +1,9 @@
 {{ $name := index . 0 }}
 {{ $entry := index . 1 }}
 <div class="entry {{ if index $entry "tfa" }}green{{ else }}red{{ end }}">
+
   <a class="name" href="{{ with $entry.url }}{{.}}{{ else }}https://{{ $entry.domain }}{{ end }}"><img class="logo" loading="lazy" src="/img/{{ substr $entry.domain 0 1}}/{{ with $entry.img }}{{.}}{{else}}{{$entry.domain}}.svg{{end}}" alt="">{{ htmlUnescape $name }}</a>
+
   {{ if index $entry "tfa" }}
     <div class="docs">
       {{ if index $entry "documentation" }}
@@ -18,20 +20,28 @@
       {{ if in $entry.tfa "call" }}<li>Phone Calls</li>{{ end }}
       {{ if in $entry.tfa "totp" }}<li>TOTP</li>{{ end }}
       {{ if in $entry.tfa "u2f" }}<li>WebAuthn Token</li>{{ end }}
-      {{ if in $entry.tfa "custom-hardware" }}<li>Custom Hardware: {{ index $entry "custom-hardware" }}</li>{{ end }}
-      {{ if in $entry.tfa "custom-software" }}<li>Custom Software:</li>{{ end }}
+      {{ if in $entry.tfa "custom-hardware" }}<li>Custom Hardware{{ if (index $entry "custom-hardware") }}: {{ delimit (index $entry "custom-hardware") ", " }}{{end}}</li>{{ end }}
+      {{ if in $entry.tfa "custom-software" }}<li>Custom Software{{ if (index $entry "custom-software") }}: {{ delimit (index $entry "custom-software") ", " }}{{end}}</li>{{ end }}
     </ul>
+
     <div class="sms method">{{if in $entry.tfa "sms" }}<i class="bi bi-check-lg"></i>{{ end }}</div>
+
     <div class="voice method">{{if in $entry.tfa "call" }}<i class="bi bi-check-lg"></i>{{ end }}</div>
+
     <div class="email method">{{if in $entry.tfa "email" }}<i class="bi bi-check-lg"></i>{{ end }}</div>
+
     <div class="hardware method"></div>
+
     <div class="software method">{{if in $entry.tfa "totp" }}<i class="bi bi-check-lg"></i>{{ end }}{{if in $entry.tfa "custom-software" }}<i class="bi bi-info-circle"></i>{{ end }}</div>
+
   {{ else }}
     <div class="tfa-summary"></div>
+
     <div class="contact">
       {{ if index $entry.contact "twitter" }}<button class="twitter"></button>{{ end }}
       {{ if index $entry.contact "facebook" }}<button class="facebook"></button>{{ end }}
       {{ if index $entry.contact "email" }}<button class="email"></button>{{ end }}
     </div>
+
   {{ end }}
 </div>
