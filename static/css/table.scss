@@ -1,0 +1,331 @@
+:root {
+  --table-bg-red: #f1b0b7;
+  --table-bg-green: #b1dfbb;
+  --table-border: 1px solid #6f6f6f;
+}
+
+/** Desktop View **/
+@media screen and (min-width: 993px) {
+  .entry {
+    padding-left: 1em;
+    border-bottom: var(--table-border);
+    display: grid;
+    line-height: 53px;
+    grid-template-rows: 1fr;
+
+    /* replace with :has(.tfa) when supported */
+    &.green {
+      grid-template-columns: 20em repeat(6, 1fr);
+    }
+
+    /* replace with :has(.contact) when supported */
+    &.red {
+      grid-template-columns: 20em 1fr;
+    }
+
+    & > *:not(:last-child) {
+      border-right: var(--table-border);
+    }
+
+    .name {
+      grid-area: 1 / 1 / 2 / 2;
+    }
+
+    .docs {
+      grid-area: 1 / 2 / 2 / 3;
+      display: flex;
+      flex-wrap: wrap;
+
+      .website-doc {
+        display: block;
+        text-decoration: none;
+        margin: auto;
+
+        &:after {
+          content: '\F3B8';
+          font-family: 'bootstrap-icons';
+          font-size: 1.6em;
+          vertical-align: middle;
+        }
+      }
+
+      .recovery-doc {
+        display: block;
+        text-decoration: none;
+        margin: auto;
+
+        &:after {
+          content: '\F116';
+          font-family: 'bootstrap-icons';
+          font-size: 1.6em;
+          font-weight: 600;
+          vertical-align: middle;
+        }
+      }
+    }
+
+    .method {
+      display: flex;
+      flex-wrap: wrap;
+      font-size: 27px;
+      line-height: 53px;
+
+      * {
+        margin: auto;
+        display: block;
+      }
+
+
+      &.sms {
+        grid-area: 1 / 3 / 2 / 4;
+      }
+
+      &.voice {
+        grid-area: 1 / 4 / 2 / 5;
+      }
+
+      &.email {
+        grid-area: 1 / 5 / 2 / 6;
+      }
+
+      &.hardware {
+        grid-area: 1 / 6 / 2 / 7;
+      }
+
+      &.software {
+        grid-area: 1 / 7 / 2 / 8;
+      }
+    }
+
+    .contact {
+      margin-left: 1em;
+
+      &:before {
+        content: 'Tell them to support 2FA';
+      }
+
+      button {
+        &:before {
+          margin-right: .5em;
+        }
+
+        &.twitter:after {
+          content: 'On Twitter';
+        }
+
+        &.facebook:after {
+          content: 'On Facebook';
+        }
+
+        &.email:after {
+          content: 'Via Email';
+        }
+      }
+    }
+
+    .tfa-summary {
+      display: none;
+    }
+  }
+}
+
+.contact {
+
+  button {
+    width: 140px;
+    margin: .2em;
+    line-height: 2em;
+    border: none;
+    color: white;
+    border-radius: 2px;
+
+    &:before {
+      font-family: 'bootstrap-icons';
+      vertical-align: middle;
+    }
+
+    &.twitter {
+      background: #1da1f2;
+
+      &:before {
+        content: '\F5EF';
+      }
+    }
+
+    &.facebook {
+      background: #3b5998;
+
+      &:before {
+        content: '\F344';
+      }
+    }
+
+    &.email {
+      background: #ea4235;
+
+      &:before {
+        content: '\F32C';
+      }
+    }
+  }
+}
+
+.name {
+  font-size: 18px;
+  line-height: 53px;
+  font-weight: 500;
+  color: #212529 !important;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  height: 53px;
+
+  .logo {
+    margin-right: .8em;
+    height: 32px;
+    max-width: 32px;
+  }
+}
+
+/** Universal styles **/
+.entry {
+  &.green {
+    background: var(--table-bg-green);
+  }
+
+  &.red {
+    background: var(--table-bg-red);
+  }
+}
+
+.bi-check-lg::before {
+  font-weight: 600 !important;
+}
+
+/** Mobile View **/
+@media screen and (max-width: 992px) {
+  .entry {
+    padding: 0 1em;
+    display: grid;
+    grid-template-columns: 2fr;
+    grid-template-rows: auto;
+    grid-column-gap: 0;
+    grid-row-gap: .5em;
+    border-bottom: var(--table-border);
+
+    .name {
+      margin: 1em 0 0 0;
+      font-family: 'SF Pro Display';
+      font-size: 1.5em;
+      font-weight: 300;
+      grid-area: 1 / 1 / 2 / 2;
+    }
+
+    & > .sms, & > .voice, & > .email, & > .hardware, & > .software {
+      display: none;
+    }
+
+    &.green {
+      .tfa-summary {
+        grid-area: 2 / 1 / 3 / 2;
+        list-style: none;
+
+        li:before {
+          content: '\F633';
+          font-family: 'bootstrap-icons';
+          margin-right: 5px;
+          font-size: 20px;
+          font-weight: 600;
+          vertical-align: middle;
+        }
+      }
+
+      .docs {
+        grid-area: 3 / 1 / 4 / 2;
+        display: grid;
+        grid-template-columns:repeat(auto-fit, minmax(5em, 1fr));
+        grid-template-rows: 1fr;
+        margin-bottom: 2em;
+
+        & > * {
+          display: block;
+          text-decoration: none;
+          margin: auto;
+          width: calc(100% - .5em);
+          max-width: 60vw;
+          text-align: center;
+          font-size: 1.3em;
+          line-height: 2em;
+          border-radius: 2px;
+          padding: 0 .5em;
+          background: var(--bs-link-color);
+          color: #fff;
+          overflow: hidden;
+        }
+
+        .website-doc {
+
+          &:before {
+            content: '\F3B8';
+            font-family: 'bootstrap-icons';
+            margin-right: .3em;
+            font-size: .8em;
+            vertical-align: middle;
+          }
+
+          &:after {
+            content: 'Documentation';
+            font-family: 'SF Pro Display';
+            font-weight: 300;
+            vertical-align: middle;
+          }
+        }
+
+        .recovery-doc {
+          &:before {
+            content: '\F116';
+            font-family: 'bootstrap-icons';
+            margin-right: .3em;
+            font-size: .8em;
+            font-weight: 600;
+            vertical-align: middle;
+          }
+
+          &:after {
+            content: 'Recovery';
+            font-family: 'SF Pro Display';
+            font-weight: 300;
+            vertical-align: middle;
+          }
+        }
+      }
+    }
+
+    &.red {
+      .tfa-summary:before {
+        display: block;
+        content: '2FA Not Supported';
+        font-family: 'SF Pro Display';
+        font-weight: 300;
+        text-align: center;
+        width: 100%;
+        font-size: 1.8em;
+      }
+
+      .contact {
+        margin: 2em;
+        display: grid;
+        grid-template-columns:repeat(auto-fit, minmax(5em, 1fr));
+        grid-template-rows: 1fr;
+
+        button {
+          border-radius: 2px;
+          line-height: calc(2em + 5px);
+          margin: auto;
+          width: calc(100% - .5em);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,11 @@
+title: "2fa-dev"
+languageCode: "en"
+DefaultContentLanguage: "en"
+disableHugoGeneratorInject: true
+enableRobotsTXT: false
+
+disableAliases: true
+disableKinds: ["taxonomy", "taxonomyTerm"]
+
+enableEmoji: true
+enableGitInfo: true
