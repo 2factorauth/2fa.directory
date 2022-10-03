@@ -75,6 +75,15 @@
         display: block;
       }
 
+      &.used {
+        &:before {
+          content: '\F633';
+          font-family: 'bootstrap-icons';
+          margin: auto;
+          display: block;
+          font-weight: 600;
+        }
+      }
 
       &.sms {
         grid-area: 1 / 3 / 2 / 4;
@@ -199,10 +208,6 @@
   }
 }
 
-.bi-check-lg::before {
-  font-weight: 600 !important;
-}
-
 /** Mobile View **/
 @media screen and (max-width: 992px) {
   .entry {
@@ -324,6 +329,7 @@
           line-height: calc(2em + 5px);
           margin: auto;
           width: calc(100% - .5em);
+          max-width: 60vw;
         }
       }
     }
