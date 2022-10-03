@@ -1,0 +1,8 @@
+.*
+vendor
+node_modules
+*-lock.*
+*.lock
+data
+resources
+static/img
