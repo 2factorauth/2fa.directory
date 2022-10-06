@@ -6,6 +6,25 @@
 
 /** Desktop View **/
 @media screen and (min-width: 993px) {
+  .table-head {
+    display: grid;
+    grid-template-columns: 20em repeat(6, 1fr);
+    grid-template-rows: 1fr;
+    padding-left: 1em;
+    background: #212121;
+    font-family: "SF Pro Display", "sans-serif";
+    font-weight: 500;
+    color: #eee;
+    line-height: 53px;
+  }
+  .table-head div {
+    text-align: center;
+    height: 53px;
+    font-size: 1.1em;
+  }
+  .table-head > *:not(:last-child) {
+    border-right: var(--table-border);
+  }
   .entry {
     padding-left: 1em;
     border-bottom: var(--table-border);
@@ -167,6 +186,9 @@
 
 /** Mobile View **/
 @media screen and (max-width: 992px) {
+  .table-head {
+    display: none;
+  }
   .entry {
     padding: 0 1em;
     display: grid;
