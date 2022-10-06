@@ -2,6 +2,7 @@
   --table-bg-red: #f1b0b7;
   --table-bg-green: #b1dfbb;
   --table-border: 1px solid #6f6f6f;
+  --default-font: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
 }
 
 /** Desktop View **/
@@ -12,7 +13,7 @@
     grid-template-rows: 1fr;
     padding-left: 1em;
     background: #212121;
-    font-family: "SF Pro Display", 'sans-serif';
+    font-family: var(--default-font);
     font-weight: 500;
     color: #eee;
     line-height: 53px;
@@ -244,7 +245,7 @@
 
     .name {
       margin: 1em 0 0 0;
-      font-family: 'SF Pro Display';
+      font-family: var(--default-font);
       font-size: 1.5em;
       font-weight: 300;
       grid-area: 1 / 1 / 2 / 2;
@@ -304,7 +305,7 @@
 
           &:after {
             content: 'Documentation';
-            font-family: 'SF Pro Display';
+            font-family: var(--default-font);
             font-weight: 300;
             vertical-align: middle;
           }
@@ -322,7 +323,7 @@
 
           &:after {
             content: 'Recovery';
-            font-family: 'SF Pro Display';
+            font-family: var(--default-font);
             font-weight: 300;
             vertical-align: middle;
           }
@@ -334,7 +335,7 @@
       .tfa-summary:before {
         display: block;
         content: '2FA Not Supported';
-        font-family: 'SF Pro Display';
+        font-family: var(--default-font);
         font-weight: 300;
         text-align: center;
         width: 100%;
