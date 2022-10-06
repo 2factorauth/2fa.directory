@@ -6,11 +6,7 @@
   "description": "2fa-dev",
   "scripts": {
     "dev": "hugo serve -D",
-    "lint": "tsm bin/format.ts --check",
-    "crawl": "tsm bin/crawl.ts",
-    "prebuild": "tsm bin/highlight.ts replace",
-    "build": "hugo --minify",
-    "postbuild": "tsm bin/highlight.ts restore"
+    "build": "hugo --minify"
   },
   "dependencies": {
     "fromnow": "3.0.1",

@@ -3,18 +3,27 @@
 <head>
   <meta charset="UTF-8">
   <title>{{ .Site.Title }}</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.min.css" integrity="sha512-siwe/oXMhSjGCwLn+scraPOWrJxHlUgMBMZXdPe2Tnk3I0x3ESCoLz7WZ5NTH6SZrywMY+PB1cjyqJ5jAluCOg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css"/>
   <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="css/table.css">
 </head>
 <body>
+
 {{ $dataJ := getJSON "https://2fa.directory/api/v3/all.json" }}
 
-{{ range $elem_index, $elem_val := $dataJ }}
-  {{ $name := index $elem_val 0 }}
-  {{ $ar := index $elem_val 1 }}
-  {{ partial "table.html" . }}
-{{ end }}
-
+  <div class="table-head">
+    <div>Name</div>
+    <div>Docs</div>
+    <div>SMS</div>
+    <div>Phone Calls</div>
+    <div>Email</div>
+    <div>Hardware Token</div>
+    <div>Software</div>
+  </div>
+    {{ range $elem_index, $elem_val := $dataJ }}
+    {{ $name := index $elem_val 0 }}
+    {{ $ar := index $elem_val 1 }}
+    {{ partial "table.html" . }}
+    {{ end }}
 </body>
 </html>
