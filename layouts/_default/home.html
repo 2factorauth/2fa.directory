@@ -4,15 +4,17 @@
   <meta charset="UTF-8">
   <title>{{ .Site.Title }}</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.min.css"/>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css"/>
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css"/>
   <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="css/table.css">
 </head>
 <body>
 
-{{ $dataJ := getJSON "https://2fa.directory/api/v3/all.json" }}
+{{ $entries := site.Data.entries }}
 
+{{ range $category_name, $category := site.Data.categories }}
   <div class="table-head">
-    <div>Name</div>
+    <div>{{ index $category "title" }}</div>
     <div>Docs</div>
     <div>SMS</div>
     <div>Phone Calls</div>
@@ -20,10 +22,10 @@
     <div>Hardware Token</div>
     <div>Software</div>
   </div>
-    {{ range $elem_index, $elem_val := $dataJ }}
-    {{ $name := index $elem_val 0 }}
-    {{ $ar := index $elem_val 1 }}
-    {{ partial "table.html" . }}
-    {{ end }}
+
+  {{ partial "table.html" (index $entries $category_name) }}
+
+{{ end }}
+
 </body>
 </html>

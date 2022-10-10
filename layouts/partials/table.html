@@ -1,5 +1,4 @@
-{{ $name := index . 0 }}
-{{ $entry := index . 1 }}
+{{ range $name, $entry := index . }}
 <div class="entry {{ if index $entry "tfa" }}green{{ else }}red{{ end }}">
 
   <a class="name" href="{{ with $entry.url }}{{ . }}{{ else }}https://{{ $entry.domain }}{{ end }}"><img class="logo" loading="lazy" src="/img/{{ substr $entry.domain 0 1 }}/{{ with $entry.img }}{{ . }}{{ else }}{{ $entry.domain }}.svg{{ end }}" alt="">{{ htmlUnescape $name }}</a>
@@ -45,3 +44,4 @@
 
   {{ end }}
 </div>
+{{ end }}
