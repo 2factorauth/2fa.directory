@@ -1,0 +1,16 @@
+{{ range $category_name, $category := site.Data.categories }}
+<div data-table="{{ $category_name }}" class="collapse">
+  <a id="{{ $category_name }}"></a>
+  <div class="table-head">
+    <div>{{ index $category "title" }}</div>
+    <div>Docs</div>
+    <div>SMS</div>
+    <div>Phone Calls</div>
+    <div>Email</div>
+    <div>Hardware Token</div>
+    <div>Software</div>
+  </div>
+
+  {{ partial "table.html" (index site.Data.entries $category_name) }}
+</div>
+{{ end }}

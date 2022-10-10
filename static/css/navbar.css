@@ -1,0 +1,17 @@
+nav {
+  background: var(--secondary-background);
+}
+nav .nav-item {
+  margin: 0 0.1em;
+}
+nav .nav-item * {
+  color: var(--text-color);
+}
+nav .nav-item * :hover {
+  filter: invert(1);
+}
+nav .nav-item :hover {
+  background: var(--text-color);
+}
+
+/*# sourceMappingURL=navbar.css.map */

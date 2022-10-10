@@ -1,0 +1,9 @@
+<div class="row justify-content-start category-list row-cols-1 row-cols-lg-6 g-2 m-2 m-md-0">
+  {{ range $category_name, $category := site.Data.categories }}
+  <div class="col">
+  <button class="category-btn"><i class="category-icon bi bi-image-alt"></i>
+    <div>{{ index $category "title" }}</div>
+  </button>
+  </div>
+  {{ end }}
+</div>

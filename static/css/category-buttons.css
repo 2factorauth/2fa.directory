@@ -1,0 +1,27 @@
+.category-btn {
+  color: var(--text-color);
+  background: rgba(66, 66, 66, 0.5607843137);
+  border: 1px solid #8c8c8c;
+  border-radius: 2px;
+  height: 100%;
+  width: 100%;
+  aspect-ratio: 1;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: 2em 1fr 2em;
+  grid-column-gap: 0;
+  grid-row-gap: 0;
+}
+.category-btn .category-icon {
+  grid-area: 2/1/3/2;
+  display: grid;
+  justify-content: center;
+  align-content: center;
+  font-size: 2em;
+}
+.category-btn div {
+  grid-area: 3/1/4/2;
+  align-self: end;
+}
+
+/*# sourceMappingURL=category-buttons.css.map */

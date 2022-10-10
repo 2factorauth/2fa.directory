@@ -1,0 +1,19 @@
+nav {
+  background: var(--secondary-background);
+
+  .nav-item {
+    margin: 0 .1em;
+
+    * {
+      color: var(--text-color);
+
+      :hover {
+        filter: invert(1);
+      }
+    }
+
+    :hover {
+      background: var(--text-color);
+    }
+  }
+}

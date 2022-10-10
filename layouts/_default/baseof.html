@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>{{ block "title" . }}{{ end }}</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.min.css"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css"/>
+  <link rel="stylesheet" href="css/root.css">
+  <link rel="stylesheet" href="css/navbar.css">
+  <link rel="stylesheet" href="css/category-buttons.css">
+  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="css/table.css">
+</head>
+<body>
+{{ partial "navbar" }}
+<div class="container">
+  {{ block "main" . }}{{ end }}
+</div>
+</body>
+</html>

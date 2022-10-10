@@ -1,0 +1,14 @@
+:root {
+  --background: #212121;
+  --secondary-background: #6f6f6f;
+  --text-color: #eee;
+  --table-bg-red: #f1b0b7;
+  --table-bg-green: #b1dfbb;
+  --table-border: 1px solid #6f6f6f;
+  --default-font: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
+  --bs-nav-link-color: var(--text-color) !important;
+  --bs-navbar-color: var(--text-color);
+}
+body {
+  background: var(--background);
+}
