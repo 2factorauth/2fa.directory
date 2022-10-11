@@ -11,4 +11,5 @@
 }
 body {
   background: var(--background);
+  color: var(--text-color); //BS overrides unless !important
 }

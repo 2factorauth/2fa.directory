@@ -12,6 +12,7 @@
 
 body {
   background: var(--background);
+  color: var(--text-color);
 }
 
 /*# sourceMappingURL=root.css.map */
