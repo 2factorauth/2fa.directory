@@ -1,6 +1,28 @@
 nav {
   background: var(--secondary-background);
 
+  .icon {
+    margin: 0;
+
+    li {
+      list-style: none;
+      font-family: "SF Pro Display", var(--default-font);
+      font-weight: 300;
+      font-size: 1.5em;
+
+      &:before {
+        content: '';
+        display: inline-block;
+        height: 1.5em;
+        margin-right: .4em;
+        aspect-ratio: 1;
+        background-image: url('/img/icons/icon.svg');
+        vertical-align: middle;
+      }
+    }
+
+  }
+
   .nav-item {
     margin: 0 .1em;
 
