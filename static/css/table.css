@@ -28,6 +28,7 @@
     display: grid;
     line-height: 53px;
     grid-template-rows: 1fr;
+    height: 4.4rem;
     /* replace with :has(.tfa) when supported */
     /* replace with :has(.contact) when supported */
   }
@@ -42,6 +43,7 @@
   }
   .entry .name {
     grid-area: 1/1/2/2;
+    line-height: 4.4rem;
   }
   .entry .docs {
     grid-area: 1/2/2/3;
@@ -158,19 +160,19 @@
 
 .name {
   font-size: 18px;
-  line-height: 53px;
   font-weight: 500;
   color: #212529 !important;
   text-decoration: none;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  height: 100%;
+  align-self: center;
 }
 .name .logo {
-  margin-right: 0.8em;
-  height: 32px;
-  max-width: 32px;
+  margin-right: 0.3em;
+  height: 2.5em;
+  max-width: 2.5em;
+  vertical-align: middle;
 }
 
 /** Universal styles **/

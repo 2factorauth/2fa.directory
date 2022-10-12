@@ -1,7 +1,7 @@
 /** Desktop View **/
 @media screen and (min-width: 993px) {
   .table {
-    box-shadow: 0 3px 8px 0 rgba(0,0,0,.2),0 0 0 1px rgba(0,0,0,.08);
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .2), 0 0 0 1px rgba(0, 0, 0, .08);
   }
   .table-head {
     display: grid;
@@ -13,6 +13,7 @@
     font-weight: 500;
     color: #eee;
     line-height: 53px;
+
     div {
       text-align: center;
       height: 53px;
@@ -29,6 +30,7 @@
     display: grid;
     line-height: 53px;
     grid-template-rows: 1fr;
+    height: 4.4rem;
 
     /* replace with :has(.tfa) when supported */
     &.green {
@@ -46,6 +48,7 @@
 
     .name {
       grid-area: 1 / 1 / 2 / 2;
+      line-height: 4.4rem;;
     }
 
     .docs {
@@ -198,19 +201,20 @@
 
 .name {
   font-size: 18px;
-  line-height: 53px;
   font-weight: 500;
   color: #212529 !important;
   text-decoration: none;
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  height: 100%;
+  align-self: center;
+
 
   .logo {
-    margin-right: .8em;
-    height: 32px;
-    max-width: 32px;
+    margin-right: .3em;
+    height: 2.5em;
+    max-width: 2.5em;
+    vertical-align: middle;
   }
 }
 
