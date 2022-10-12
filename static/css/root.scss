@@ -2,18 +2,26 @@
   --background: #212121;
   --secondary-background: #6f6f6f96;
   --text-color: #eee;
+  --default-font: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
+
+  --table-head-bg: #262626;
   --table-bg-red: #f1b0b7;
   --table-bg-green: #b1dfbb;
-  --table-border: 1px solid #6f6f6f;
-  --default-font: -apple-system, system-ui, BlinkMacSystemFont, "Segoe UI", Roboto, Ubuntu;
+  --table-border: 1px solid var(--secondary-background);
+  --table-text-color: #212529;
+
+  --category-btn-bg: #4242428f;
+  --category-btn-border: 1px solid var(--secondary-background);
+
   --bs-nav-link-color: var(--text-color) !important;
   --bs-navbar-color: var(--text-color);
 }
 
 body {
   background: var(--background);
-  color: var(--text-color); //BS overrides unless !important
+  color: var(--text-color);
 }
+
 .container {
   max-width: calc(1327px + 2rem) !important;
 }

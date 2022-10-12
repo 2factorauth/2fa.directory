@@ -13,8 +13,8 @@
 }
 .category-btn {
   color: var(--text-color);
-  background: #4242428f;
-  border: 1px solid #8c8c8c;
+  background: var(--category-btn-bg);
+  border: var(--category-btn-border);
   border-radius: 2px;
   height: 100%;
   width: 100%;
