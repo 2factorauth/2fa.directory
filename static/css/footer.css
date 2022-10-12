@@ -1,0 +1,13 @@
+footer {
+  margin: 3rem 0 1rem 0;
+  text-align: center;
+}
+footer p {
+  font-size: 0.7rem;
+  margin: 0;
+}
+footer p a {
+  text-decoration: none !important;
+}
+
+/*# sourceMappingURL=footer.css.map */

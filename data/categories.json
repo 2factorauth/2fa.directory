@@ -70,7 +70,7 @@
   },
   "health": {
     "title": "Health",
-    "icon": "&#xF76F;"
+    "icon": "&#xF76E;"
   },
   "hosting": {
     "title": "Hosting/VPS",
@@ -90,7 +90,7 @@
   },
   "iot": {
     "title": "IoT",
-    "icon": "&#xF6EC;"
+    "icon": "&#xF6EB;"
   },
   "legal": {
     "title": "Legal",

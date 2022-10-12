@@ -2,20 +2,21 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>{{ block "title" . }}{{ end }}</title>
+  <title>{{ $.Site.Title }}{{ block "title" . }}{{ end }}</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.1/css/bootstrap.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.9.1/font/bootstrap-icons.min.css"/>
   <link rel="stylesheet" href="/css/root.css">
   <link rel="stylesheet" href="/css/navbar.css">
   <link rel="stylesheet" href="/css/search.css">
   <link rel="stylesheet" href="/css/category-buttons.css">
+  <link rel="stylesheet" href="/css/footer.css">
   <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="css/table.css">
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.48.0/instantsearch.production.min.js" integrity="sha512-LAZkNHvnwBNvGLFxGgClGPlJTlYRduOxmEQNJAD4VzdOxUgqfnmJPGHMXZ7kfX/mvoINC161WYNlNsNQYq6XbQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 </head>
 <body>
 {{ partial "navbar" }}
 <div class="container">
   {{ block "main" . }}{{ end }}
+  {{ partial "footer" . }}
 </div>
 </body>
 </html>
