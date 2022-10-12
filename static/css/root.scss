@@ -14,3 +14,6 @@ body {
   background: var(--background);
   color: var(--text-color); //BS overrides unless !important
 }
+.container {
+  max-width: calc(1327px + 2rem) !important;
+}

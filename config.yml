@@ -1,9 +1,9 @@
-title: "2fa-dev"
+title: "2FA Directory"
 languageCode: "en"
 DefaultContentLanguage: "en"
 disableHugoGeneratorInject: true
 enableRobotsTXT: true
-
+icon: "/img/icon.svg"
 disableAliases: true
 disableKinds: ["taxonomy", "taxonomyTerm"]
 

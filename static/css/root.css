@@ -15,4 +15,8 @@ body {
   color: var(--text-color);
 }
 
+.container {
+  max-width: calc(1327px + 2rem) !important;
+}
+
 /*# sourceMappingURL=root.css.map */
