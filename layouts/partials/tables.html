@@ -1,6 +1,5 @@
 {{ range $category_name, $category := site.Data.categories }}
-<div data-table="{{ $category_name }}" class="table collapse">
-  <a id="{{ $category_name }}"></a>
+<div  data-table="{{ $category_name }}" class="table collapse">
   <div class="table-head">
     <div>{{ index $category "title" }}</div>
     <div>Docs</div>

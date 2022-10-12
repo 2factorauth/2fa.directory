@@ -1,6 +1,6 @@
   {{ range $category_name, $category := site.Data.categories }}
   <div class="">
-  <button class="category-btn" href="#{{ $category_name }}" aria-controls="{{ $category_name }}"><span aria-hidden="true" class="category-icon">{{ htmlUnescape (index $category "icon") }}</span>
+  <button id="{{ $category_name }}" class="category-btn" href="#{{ $category_name }}" aria-controls="{{ $category_name }}"><span aria-hidden="true" class="category-icon">{{ htmlUnescape (index $category "icon") }}</span>
     <div>{{ index $category "title" }}</div>
   </button>
   </div>

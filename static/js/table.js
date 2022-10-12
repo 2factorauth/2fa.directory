@@ -23,12 +23,10 @@ function showCategory(category) {
     $(`.table:not([data-table='${category}'])`).collapse('hide');
     const table = $(`.table[data-table='${category}']`);
     const button = $(`.category-btn[href^="#${category}"]`)
-    const {row, column} = getGridElementsPosition(button.index('.category-btn'));
-    console.log(row,column)
-    $(`.table[data-table='${category}']`).attr('style', `grid-area: ${row + 2} / 1 / ${ row + 3} / 7`);
+    const index = button.index('.category-btn');
+    const length = $('.categories').css('grid-template-columns').split(' ').length;
+    const row = Math.floor(index / length);
+    const column = index % length;
+    $(`.table[data-table='${category}']`).attr('style', `grid-area: ${row + 2} / 1 / ${row + 3} / ${length + 1}`);
     table.collapse('show');
-}
-function getGridElementsPosition(index){
-    const colCount = $('.categories').css('grid-template-columns').split(' ').length;
-    return { row: Math.floor(index / colCount), column: index % colCount } ;
 }
