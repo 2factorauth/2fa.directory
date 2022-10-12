@@ -1,3 +1,10 @@
+.categories{
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-column-gap: calc(var(--bs-gutter-x));
+  grid-row-gap: calc(var(--bs-gutter-x));
+  margin: calc(var(--bs-gutter-x) * .5)
+}
 .category-btn {
   color: var(--text-color);
   background: #4242428f;

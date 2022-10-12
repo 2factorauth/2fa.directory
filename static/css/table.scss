@@ -1,11 +1,14 @@
 /** Desktop View **/
 @media screen and (min-width: 993px) {
+  .table {
+    box-shadow: 0 3px 8px 0 rgba(0,0,0,.2),0 0 0 1px rgba(0,0,0,.08);
+  }
   .table-head {
     display: grid;
     grid-template-columns: 20em repeat(6, 1fr);
     grid-template-rows: 1fr;
     padding-left: 1em;
-    background: #212121;
+    background: #262626 !important;
     font-family: var(--default-font);
     font-weight: 500;
     color: #eee;
@@ -202,7 +205,7 @@
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  height: 53px;
+  height: 100%;
 
   .logo {
     margin-right: .8em;

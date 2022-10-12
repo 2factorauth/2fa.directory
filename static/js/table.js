@@ -21,5 +21,14 @@ $('.category-btn').click(function () {
 
 function showCategory(category) {
     $(`.table:not([data-table='${category}'])`).collapse('hide');
-    $(`.table[data-table='${category}']`).collapse('show');
+    const table = $(`.table[data-table='${category}']`);
+    const button = $(`.category-btn[href^="#${category}"]`)
+    const {row, column} = getGridElementsPosition(button.index('.category-btn'));
+    console.log(row,column)
+    $(`.table[data-table='${category}']`).attr('style', `grid-area: ${row + 2} / 1 / ${ row + 3} / 7`);
+    table.collapse('show');
+}
+function getGridElementsPosition(index){
+    const colCount = $('.categories').css('grid-template-columns').split(' ').length;
+    return { row: Math.floor(index / colCount), column: index % colCount } ;
 }
