@@ -1,18 +1,17 @@
 .search-bg {
   height: 15rem;
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-areas: ". a a ." ". a a .";
+  align-content: center;
 }
 .search-bg .search {
   align-self: center;
   justify-content: center;
-  width: max(250px, 45vw);
+  width: max(300px, 45vw);
   max-width: 650px;
   padding: 0.6rem;
-  border-radius: 12px;
+  border-radius: 1em;
+  margin: auto;
   border: none;
-  grid-area: a;
 }
 
 /*# sourceMappingURL=search.css.map */
