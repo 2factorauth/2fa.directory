@@ -1,7 +1,6 @@
 const api_uri = 'https://2fa.directory/api/v3/all.json'
 const cache = caches.default;
 
-
 async function fetchAPI() {
     const request = new Request(api_uri, {headers: {'content-type': 'application/json;charset=UTF-8',}})
     let response = await cache.match(request);
@@ -14,7 +13,7 @@ async function fetchAPI() {
     return JSON.parse(await response.text())
 }
 
-export async function onRequestPost({ request }) {
+export async function onRequestGet({ request }) {
     let output = [];
     const {searchParams} = new URL(request.url)
     const keys = Array.from(searchParams.keys());
