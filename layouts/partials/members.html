@@ -1,0 +1,14 @@
+<div class="members">
+{{ range $name, $member := . }}
+  <a class="member" href="https://github.com/{{ $name }}">
+    <div class="member-icon"><img src="{{ $member.img }}" loading="lazy">
+      <span>{{ emojify $member.country }}</span>
+    </div>
+    <div>
+    <h3>{{ $name }}</h3>
+
+    <ul>{{ range $title := $member.title }}<li>{{ $title }}</li>{{ end }}</ul>
+    </div>
+  </a>
+{{ end }}
+</div>
