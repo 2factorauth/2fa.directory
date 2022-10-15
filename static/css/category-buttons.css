@@ -43,6 +43,9 @@
     grid-area: 3/1/4/2;
     align-self: end;
   }
+  .category-btn.active {
+    border-bottom: 0.2em solid var(--brand-color);
+  }
 }
 @media screen and (max-width: 992px) {
   .category-btn {

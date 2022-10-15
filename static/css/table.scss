@@ -41,6 +41,7 @@
     /* replace with :has(.contact) when supported */
     &.red {
       grid-template-columns: 20em 1fr;
+      line-height: 4.4rem;
     }
 
     & > *:not(:last-child) {

@@ -37,6 +37,7 @@
   }
   .entry.red {
     grid-template-columns: 20em 1fr;
+    line-height: 4.4rem;
   }
   .entry > *:not(:last-child) {
     border-right: var(--table-border);
