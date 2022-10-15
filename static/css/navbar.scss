@@ -2,11 +2,20 @@ nav {
   background: var(--secondary-background);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .14), 0 3px 1px -2px rgba(0, 0, 0, .2), 0 1px 5px 0 rgba(0, 0, 0, .12);
   color: var(--text-color);
+  border-bottom: 2px solid var(--brand-color);
+
+  ul {
+    padding-left: 0;
+  }
 
   .icon {
     margin: 0;
 
     li {
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+
       list-style: none;
       font-family: "SF Pro Display", var(--default-font);
       font-weight: 300;
@@ -14,15 +23,31 @@ nav {
 
       &:before {
         content: '';
-        display: inline-block;
         height: 1.5em;
         margin-right: .4em;
         aspect-ratio: 1;
         background-image: url('/img/icons/icon.svg');
-        vertical-align: middle;
       }
     }
 
+  }
+
+  .navbar-toggler {
+    border: none;
+
+    &:focus {
+      box-shadow: none;
+    }
+
+    span {
+      color: var(--text-color);
+      font-size: 1.2em;
+    }
+  }
+
+  .navbar-nav {
+    margin-left: auto;
+    margin-right: 0 !important;
   }
 
   .nav-item {
