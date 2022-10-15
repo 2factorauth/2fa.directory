@@ -189,7 +189,7 @@
     display: none;
   }
   .entry {
-    padding: 0 1em;
+    padding: 1em;
     display: grid;
     grid-template-columns: 2fr;
     grid-template-rows: auto;
@@ -198,7 +198,6 @@
     border-bottom: var(--table-border);
   }
   .entry .name {
-    margin: 1em 0 0 0;
     font-family: var(--default-font);
     font-size: 1.5em;
     font-weight: 300;
@@ -210,6 +209,8 @@
   .entry.green .tfa-summary {
     grid-area: 2/1/3/2;
     list-style: none;
+    padding: 0;
+    margin: 0;
   }
   .entry.green .tfa-summary li:before {
     content: "\f633";
@@ -224,7 +225,6 @@
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(5em, 1fr));
     grid-template-rows: 1fr;
-    margin-bottom: 2em;
   }
   .entry.green .docs > * {
     display: block;
@@ -275,13 +275,13 @@
     font-weight: 300;
     text-align: center;
     width: 100%;
-    font-size: 1.8em;
+    font-size: 1.4rem;
   }
   .entry.red .contact {
-    margin: 2em;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(5em, 1fr));
     grid-template-rows: 1fr;
+    grid-gap: 1em;
   }
   .entry.red .contact button {
     border-radius: 2px;

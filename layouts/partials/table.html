@@ -18,7 +18,7 @@
       {{ if in $entry.tfa "email" }}<li>Email</li>{{ end }}
       {{ if in $entry.tfa "call" }}<li>Phone Calls</li>{{ end }}
       {{ if in $entry.tfa "totp" }}<li>TOTP</li>{{ end }}
-      {{ if in $entry.tfa "u2f" }}<li>WebAuthn Token</li>{{ end }}
+      {{ if in $entry.tfa "u2f" }}<li>WebAuthn / U2F Token</li>{{ end }}
       {{ if in $entry.tfa "custom-hardware" }}<li>Custom Hardware{{ if (index $entry "custom-hardware") }}: {{ delimit (index $entry "custom-hardware") ", " }}{{ end }}</li>{{ end }}
       {{ if in $entry.tfa "custom-software" }}<li>Custom Software{{ if (index $entry "custom-software") }}: {{ delimit (index $entry "custom-software") ", " }}{{ end }}</li>{{ end }}
     </ul>
