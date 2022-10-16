@@ -46,9 +46,6 @@ nav .nav-item {
 nav .nav-item * {
   color: var(--text-color);
 }
-nav .nav-item * :hover {
-  filter: invert(1);
-}
 nav .nav-item :hover {
   background: var(--text-color);
 }
