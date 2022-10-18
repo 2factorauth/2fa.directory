@@ -14,6 +14,9 @@
     grid-template-columns: 1fr;
   }
 }
+.categories.search-results {
+  grid-template-columns: 1fr;
+}
 
 .category-btn {
   color: var(--text-color);

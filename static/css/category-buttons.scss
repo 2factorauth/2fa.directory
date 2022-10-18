@@ -10,6 +10,9 @@
   @media screen and (max-width: 992px) {
     grid-template-columns: 1fr;
   }
+  &.search-results {
+    grid-template-columns: 1fr;
+  }
 }
 
 .category-btn {
@@ -76,6 +79,4 @@
       text-align: left;
     }
   }
-
-
 }

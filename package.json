@@ -12,5 +12,8 @@
     "@types/node": "16.11.12",
     "node-html-parser": "5.2.0",
     "sass": "^1.55.0"
+  },
+  "dependencies": {
+    "algoliasearch": "^4.14.2"
   }
 }
