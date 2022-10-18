@@ -17,8 +17,21 @@ $('.search').on('input', function () {
 
 function sendSearch(query) {
     $('.entry.hit').removeClass('hit');
-    if (query !== undefined || query !== "") {
+    if (query === undefined || query === "") {
+        $('.category-btn').parent().show();
+        $('.table').removeClass('show');
+        $('.categories').removeClass('search-results');
+    } else {
+        // Hide category buttons
+        $('.category-btn').parent().hide();
+
+        // Change CSS Grid layout
+        $('.categories').addClass('search-results');
+
+
+
         index.search(query, {
+            hitsPerPage: 500,
             attributesToRetrieve: ['objectID']
         })
             .then(({hits}) => {
@@ -27,18 +40,15 @@ function sendSearch(query) {
                     const entry = $(`.entry[data-domain^='${entry_name}']`);
                     entry.addClass('hit');
                     const entry_parent = $(`.table > .entry[data-domain^='${entry_name}']`).parent();
-                    entry_parent.collapse('show');
+                    entry_parent.addClass('show');
                 })
-                $('.category-btn').parent().hide();
+
                 $('.table').filter(function() { return !($(this).children().is('.hit')); }).collapse('hide');
-                $('.categories').addClass('search-results');
-                $('.entry.hit').show();
+                // Hide all non-matching entries
                 $('.entry:not(.hit)').hide();
+                $('.entry.hit').show();
+
             })
-    }else{
-        //TODO: Reset page?
-        $('.table').removeClass('search-results');
-        $('.entry').show();
     }
 }
 
