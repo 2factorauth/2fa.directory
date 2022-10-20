@@ -28,11 +28,8 @@ function sendSearch(query) {
         // Change CSS Grid layout
         $('.categories').addClass('search-results');
 
-
-
         index.search(query, {
-            hitsPerPage: 500,
-            attributesToRetrieve: ['objectID']
+            hitsPerPage: 500, attributesToRetrieve: ['objectID']
         })
             .then(({hits}) => {
                 hits.forEach((hit) => {
@@ -43,7 +40,9 @@ function sendSearch(query) {
                     entry_parent.addClass('show');
                 })
 
-                $('.table').filter(function() { return !($(this).children().is('.hit')); }).collapse('hide');
+                $('.table').filter(function () {
+                    return !($(this).children().is('.hit'));
+                }).collapse('hide');
                 // Hide all non-matching entries
                 $('.entry:not(.hit)').hide();
                 $('.entry.hit').show();

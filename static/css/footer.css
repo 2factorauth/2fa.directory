@@ -14,5 +14,10 @@ footer p {
 footer p a {
   text-decoration: none !important;
 }
+@media screen and (prefers-color-scheme: dark) {
+  footer p a {
+    color: #3596ff;
+  }
+}
 
 /*# sourceMappingURL=footer.css.map */

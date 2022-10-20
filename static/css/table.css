@@ -111,6 +111,7 @@
   }
   .entry .contact:before {
     content: "Tell them to support 2FA";
+    margin-right: 0.25em;
   }
   .entry .contact button:before {
     margin-right: 0.5em;
