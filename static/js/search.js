@@ -46,7 +46,6 @@ function sendSearch(query) {
                 // Hide all non-matching entries
                 $('.entry:not(.hit)').hide();
                 $('.entry.hit').show();
-
             })
     }
 }

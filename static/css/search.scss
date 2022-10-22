@@ -3,15 +3,36 @@
   display: grid;
   align-content: center;
 
-  .search {
+  #outerSearchBox {
     align-self: center;
     justify-content: center;
-    width: max(300px, 45vw);
     max-width: 650px;
-    padding: .6rem;
-    border-radius: 1em;
-    margin: auto;
+    width: max(300px, 45vw);
+    box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
+    background: white;
     border: 1px #e3e3e3 solid;
-    box-shadow: 0 2px 2px 0 rgba(0,0,0,.16),0 0 0 1px rgba(0,0,0,.08);
+    display: flex;
+    margin: auto;
+
+    &:before {
+      content: '\F52A';
+      display: block;
+      font-family: 'bootstrap-icons';
+      color: #000000E6;
+      font-size: 1.3em;
+      font-weight: 900;
+      margin: .3em;
+      align-self: center;
+    }
+  }
+
+  .search {
+    width: 100%;
+    padding: .6rem;
+    border: none;
+
+    &:focus {
+      outline: none;
+    }
   }
 }
