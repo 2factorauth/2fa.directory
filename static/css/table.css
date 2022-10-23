@@ -160,6 +160,13 @@
   content: "\f32c";
 }
 
+.popover {
+  color: #000;
+}
+.popover li {
+  margin-left: 0.5em;
+}
+
 .name {
   font-size: 18px;
   font-weight: 500;

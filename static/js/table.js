@@ -32,3 +32,23 @@ function showCategory(category) {
     $(`.category-btn:not([href^="#${category}"])`).removeClass('active');
     $(button).addClass('active');
 }
+
+// Initialise popovers
+const exceptionPopoverList = [...document.querySelectorAll('.exception')].map(el => new bootstrap.Popover(el, {
+    trigger: 'hover focus',
+    title: 'Exceptions & Restrictions'
+}));
+
+const customTfaPopoverConfig = {
+    html: true,
+    sanitize: false,
+    trigger: 'hover focus'
+}
+const customHardwarePopoverList = [...document.querySelectorAll('.custom-hardware-popover')].map(el => new bootstrap.Popover(el, {
+    ...customTfaPopoverConfig,
+    title: 'Custom Hardware 2FA'
+}));
+const customSoftwarePopoverList = [...document.querySelectorAll('.custom-software-popover')].map(el => new bootstrap.Popover(el, {
+    ...customTfaPopoverConfig,
+    title: 'Custom Software 2FA'
+}));
