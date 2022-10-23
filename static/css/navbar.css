@@ -43,11 +43,12 @@ nav .navbar-nav {
 nav .nav-item {
   margin: 0 0.1em;
 }
-nav .nav-item * {
+nav #regionDropdown {
   color: var(--text-color);
 }
-nav .nav-item :hover {
-  background: var(--text-color);
+nav .dropdown-menu {
+  column-count: 2;
+  z-index: 1100;
 }
 
 /*# sourceMappingURL=navbar.css.map */

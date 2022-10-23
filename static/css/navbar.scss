@@ -53,12 +53,13 @@ nav {
   .nav-item {
     margin: 0 .1em;
 
-    * {
-      color: var(--text-color);
-    }
 
-    :hover {
-      background: var(--text-color);
-    }
+  }
+  #regionDropdown{
+    color: var(--text-color);
+  }
+  .dropdown-menu {
+    column-count: 2;
+    z-index: 1100;
   }
 }

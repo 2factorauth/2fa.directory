@@ -6,8 +6,8 @@ enableRobotsTXT: true
 icon: "/img/icon.svg"
 disableAliases: true
 disableKinds: ["taxonomy", "taxonomyTerm"]
-
 enableEmoji: true
 enableGitInfo: true
 params:
+  region: ""
   github: "2factorauth/twofactorauth"

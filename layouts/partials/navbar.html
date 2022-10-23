@@ -13,7 +13,15 @@
     <div class="collapse navbar-collapse" id="navbar-toggler">
       <ul class="navbar-nav me-auto mt-2 mt-lg-0">
         <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" tabindex="0">Regions</a>
+          <a class="nav-link dropdown-toggle" id="regionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" tabindex="0">
+            Region
+            {{ if index .Site.Params "region" }}
+              <span class="fi fi-{{ $.Site.Params.region}}"></span>
+            {{ else }}
+              <span class="bi bi-globe"></span>
+            {{ end }}
+          </a>
+          {{ partial "regions" .Site.Data.regions }}
         </li>
       </ul>
     </div>
