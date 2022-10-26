@@ -12,7 +12,7 @@
 {{ with (eq $_page "/") }}
   {{ $styles = $styles | append "table" "category-buttons" "search" }}
 {{ end }}
-{{ with (eq $_page "about") }}
+{{ with (eq $_page "/about/") }}
   {{ $styles = $styles | append "about" }}
 {{ end }}
 
