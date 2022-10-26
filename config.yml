@@ -9,7 +9,7 @@ disableAliases: true
 disableKinds: ["taxonomy", "taxonomyTerm"]
 enableEmoji: true
 enableGitInfo: true
-
+baseURL: "2fa.directory"
 imaging:
   anchor: Smart
   bgColor: '#ffffff'

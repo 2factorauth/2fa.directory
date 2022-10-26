@@ -15,8 +15,8 @@
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="regionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" tabindex="0">
             Region
-            {{ if index .Site.Params "region" }}
-              <span class="fi fi-{{ $.Site.Params.region}}"></span>
+            {{ if .Site.Params.Region.id }}
+              <span class="fi fi-{{ .Site.Params.region.id }}"></span>
             {{ else }}
               <span class="bi bi-globe"></span>
             {{ end }}
