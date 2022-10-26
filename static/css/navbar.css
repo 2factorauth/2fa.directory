@@ -24,7 +24,7 @@ nav .icon li:before {
   height: 1.5em;
   margin-right: 0.4em;
   aspect-ratio: 1;
-  background-image: url("/img/icons/icon.svg");
+  background-image: url("/icons/icon.svg");
 }
 nav .navbar-toggler {
   border: none;

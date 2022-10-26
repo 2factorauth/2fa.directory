@@ -1,6 +1,7 @@
 title: "2FA Directory"
 languageCode: "en"
 DefaultContentLanguage: "en"
+copyright: 2factorauth
 disableHugoGeneratorInject: true
 enableRobotsTXT: true
 icon: "/img/icon.svg"
@@ -8,6 +9,22 @@ disableAliases: true
 disableKinds: ["taxonomy", "taxonomyTerm"]
 enableEmoji: true
 enableGitInfo: true
+
+imaging:
+  anchor: Smart
+  bgColor: '#ffffff'
+  hint: icon
+  quality: 75
+  resampleFilter: Box
+
 params:
-  region: ""
-  github: "2factorauth/twofactorauth"
+  default:
+    description: "List of sites with two factor auth support which includes SMS, email, phone calls, hardware, and software."
+    github: "2factorauth/twofactorauth"
+  region:
+    id: ""
+    name: ""
+  twitter:
+    handle: "2faorg"
+    image: "/img/icons/icon.svg"
+

@@ -1,0 +1,27 @@
+<!-- SEO -->
+<meta name="description" content="{{ .Site.Params.Default.description }}">
+<meta name="copyright" content="{{ .Site.Copyright }}">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+<!-- PWA -->
+
+<!-- Social Media -->
+<meta name="og:description" content="{{ .Site.Params.Default.description }}">
+<meta name="og:image" content="{{ .Site.Params.Twitter.image }}">
+<meta name="og:title" content="{{ .Site.Title }}">
+<meta name="og:type" content="website">
+<meta name="og:url" content="{{ .Permalink }}">
+<meta name="twitter:site" content="@{{ .Site.Params.Twitter.handle }}">
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- Icons -->
+<link rel="icon" href="{{ (resources.Get "icons/icon.svg").RelPermalink }}" type="image/svg+xml" sizes="any">
+{{ $png := resources.Get "icons/icon.png" }}
+{{ $sizes := slice "32" "128" "180" "192" "512" }}
+{{ range $d := $sizes }}
+{{ $d_png := $png.Resize ($d | printf "%sx%s" $d) }}
+<link rel="icon" href="{{ $d_png.RelPermalink }}" sizes="{{ $d }}x{{ $d }}" type="image/png">
+{{ end }}
+
+<!-- iOS Specific -->
