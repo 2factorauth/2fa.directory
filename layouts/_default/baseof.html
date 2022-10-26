@@ -3,17 +3,16 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no min-width=320" name="viewport">
-  {{ partial "meta" . }}
-  <title>{{ $.Site.Title }}{{ block "title" . }}{{ end }}</title>
-  {{ partial "stylesheet" . }}
-  <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'" href="css/table.css">
+  {{- partial "meta" . -}}
+  <title>{{- $.Site.Title -}}{{- block "title" . -}}{{- end -}}</title>
+  {{- partial "stylesheet" . -}}
 </head>
 <body>
-{{ partial "navbar" . }}
+{{- partial "navbar" . -}}
 <div class="container">
-  {{ block "main" . }}{{ end }}
+  {{- block "main" . -}}{{- end -}}
 </div>
-{{ partial "footer" . }}
+{{- partial "footer" . -}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.1/jquery.min.js" integrity="sha512-aVKKRRi/Q/YV+4mjoKBsE4x3H+BkegoM/em46NNlCqNTmUYADjBbeNefNxYV7giUp0VxICtqdrbqU7iVaeZNXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/js/bootstrap.bundle.min.js" integrity="sha512-BOsvKbLb0dB1IVplOL9ptU1EYA+LuCKEluZWRUYG73hxqNBU85JBIBhPGwhQl7O633KtkjMv8lvxZcWP+N3V3w==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script defer src="/js/table.js"></script>

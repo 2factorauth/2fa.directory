@@ -1,4 +1,4 @@
-{{ range $category_name, $category := site.Data.categories }}
+{{- range $category_name, $category := site.Data.categories -}}
 <div data-table="{{ $category_name }}" class="table collapse">
   <div class="table-head">
     <div>{{ index $category "title" }}</div>
@@ -9,7 +9,6 @@
     <div>Hardware</div>
     <div>Software</div>
   </div>
-
-  {{ partial "table.html" (index site.Data.entries $category_name) }}
+  {{- partial "table.html" (index site.Data.entries $category_name) -}}
 </div>
-{{ end }}
+{{- end -}}

@@ -9,12 +9,10 @@ disableAliases: true
 disableKinds: ["taxonomy", "taxonomyTerm"]
 enableEmoji: true
 enableGitInfo: true
-imaging:
-  anchor: Smart
-  bgColor: '#ffffff'
-  hint: icon
-  quality: 75
-  resampleFilter: Box
+minify:
+  tdewolff:
+    html:
+      keepWhitespace: false
 
 params:
   default:

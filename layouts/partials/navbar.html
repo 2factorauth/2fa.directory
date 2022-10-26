@@ -2,7 +2,7 @@
   <div class="container">
     <a class="nav-link" href="/about/">
       <ul class="icon">
-        <li>{{ .Site.Title }}</li>
+        <li>{{- .Site.Title -}}</li>
       </ul>
     </a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler"
@@ -16,12 +16,12 @@
           <a class="nav-link dropdown-toggle" id="regionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" tabindex="0">
             Region
             {{ if .Site.Params.Region.id }}
-              <span class="fi fi-{{ .Site.Params.region.id }}"></span>
-            {{ else }}
+              <span class="fi fi-{{- .Site.Params.region.id -}}"></span>
+            {{- else -}}
               <span class="bi bi-globe"></span>
             {{ end }}
           </a>
-          {{ partial "regions" .Site.Data.regions }}
+          {{- partial "regions" .Site.Data.regions -}}
         </li>
       </ul>
     </div>
