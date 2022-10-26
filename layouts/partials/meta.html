@@ -20,8 +20,17 @@
 {{ $png := resources.Get "icons/icon.png" }}
 {{ $sizes := slice "32" "128" "180" "192" "512" }}
 {{ range $d := $sizes }}
-{{ $d_png := $png.Resize ($d | printf "%sx%s" $d) }}
-<link rel="icon" href="{{ $d_png.RelPermalink }}" sizes="{{ $d }}x{{ $d }}" type="image/png">
+  {{ $d_png := $png.Resize ($d | printf "%sx%s" $d) }}
+  <link rel="icon" href="{{ $d_png.RelPermalink }}" sizes="{{ $d }}x{{ $d }}" type="image/png">
 {{ end }}
 
+<!-- Maskable Icon -->
+<link rel="mask-icon" href="{{ (resources.Get "icons/icon-maskable.png").RelPermalink }}" type="image/png">
+
 <!-- iOS Specific -->
+{{ $png = resources.Get "icons/icon-square.png" }}
+{{ $sizes := slice "128" "180" "192" }}
+{{ range $d := $sizes }}
+  {{ $d_png := $png.Resize ($d | printf "%sx%s" $d) }}
+  <link rel="apple-touch-icon" href="{{ $d_png.RelPermalink }}" sizes="{{ $d }}x{{ $d }}" type="image/png">
+{{ end }}
