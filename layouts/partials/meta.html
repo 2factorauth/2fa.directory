@@ -28,9 +28,8 @@
 <link rel="mask-icon" href="{{ (resources.Get "icons/icon-maskable.png").RelPermalink }}" type="image/png">
 
 <!-- iOS Specific -->
-{{ $png = resources.Get "icons/icon-square.png" }}
 {{ $sizes := slice "128" "180" "192" }}
 {{ range $d := $sizes }}
-  {{ $d_png := $png.Resize ($d | printf "%sx%s" $d) }}
+  {{ $d_png := $png.Resize ($d | printf "%sx%s png #fff" $d) }}
   <link rel="apple-touch-icon" href="{{ $d_png.RelPermalink }}" sizes="{{ $d }}x{{ $d }}" type="image/png">
 {{ end }}
