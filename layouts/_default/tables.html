@@ -1,9 +1,10 @@
 {{ define "main" }}
 {{ partial "search" }}
+
 <h3 style="margin: .5em 0 0 0">Categories</h3>
 
 <div class="categories">
   {{ partial "buttons" }}
-  {{ partial "tables.html" }}
+  {{ partial "tables.html" $.Params.Region.id }}
 </div>
 {{ end }}
