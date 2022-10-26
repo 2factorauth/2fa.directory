@@ -1,5 +1,5 @@
 {{- range $name, $entry := index . -}}
-<div class="entry {{- if index $entry "tfa" -}}green{{- else -}}red{{- end -}}" data-domain="{{- $entry.domain -}}">
+<div class="entry {{ if index $entry "tfa" }}green{{ else }}red{{ end }}" data-domain="{{- $entry.domain -}}">
 
   <a class="name" href="{{- with $entry.url -}}{{- . -}}{{- else -}}https://{{- $entry.domain -}}{{- end -}}"><img class="logo" loading="lazy" src="/img/{{- substr $entry.domain 0 1 -}}/{{- with $entry.img -}}{{- . -}}{{- else -}}{{- $entry.domain -}}.svg{{- end -}}" alt="">{{- htmlUnescape $name -}}</a>
 
@@ -23,13 +23,13 @@
       {{- if in $entry.tfa "custom-software" -}}<li>Custom Software{{- if (index $entry "custom-software") -}}: {{- delimit (index $entry "custom-software") ", " -}}{{- end -}}</li>{{- end -}}
     </ul>
 
-    <div class="sms method {{- if in $entry.tfa "sms" -}}used{{- end -}}"></div>
+    <div class="sms method {{ if in $entry.tfa "sms" }}used{{ end }}"></div>
 
-    <div class="voice method {{- if in $entry.tfa "call" -}}used{{- end -}}"></div>
+    <div class="voice method {{ if in $entry.tfa "call" }}used{{ end }}"></div>
 
-    <div class="email method {{- if in $entry.tfa "email" -}}used{{- end -}}"></div>
+    <div class="email method {{ if in $entry.tfa "email" }}used{{ end }}"></div>
 
-    <div class="hardware method {{- if in $entry.tfa "u2f" -}}used{{- end -}}">
+    <div class="hardware method {{ if in $entry.tfa "u2f" }}used{{ end }}">
        {{- if index $entry "custom-hardware" -}}
          <i class="bi bi-info-circle custom-hardware-popover" data-bs-content="{{- range $method := index $entry "custom-hardware" -}}<li>{{ $method }}</li>{{- end -}}" data-bs-toggle="popover"></i>
        {{- else if in $entry.tfa "custom-hardware" -}}
@@ -37,7 +37,7 @@
        {{- end -}}
     </div>
 
-    <div class="software method {{- if in $entry.tfa "totp" -}}used{{- end -}}">
+    <div class="software method {{ if in $entry.tfa "totp" }}used{{ end }}">
        {{- if index $entry "custom-software" -}}
          <i class="bi bi-info-circle custom-software-popover" data-bs-content="{{- range $method := index $entry "custom-software" -}}<li>{{ $method }}</li>{{- end -}}" data-bs-toggle="popover"></i>
        {{- else if in $entry.tfa "custom-software" -}}
