@@ -1,6 +1,6 @@
 ---
 layout: tables
 region:
-  id: "br"
-  name: "Brazil"
+  id: "sk"
+  name: "Slovakia"
 ---
