@@ -1,8 +1,7 @@
 <div aria-labelledby="regionDropdown"  class="dropdown-menu dropdown-menu-end ">
   <a class="dropdown-item" href="/int/"><span class="fi fi-un"></span> <b>Global</b></a>
   {{- range $region := index . -}}
-    <a class="dropdown-item" href="/{{- $region.id -}}/"><span class="fi {{ if index $region "square" }}fis{{ end }} fi-{{ $region.id }}"></span>
-      {{- $region.name -}}
+    <a class="dropdown-item" href="/{{- $region.id -}}/"><span class="fi {{ if index $region "square" }}fis{{ end }} fi-{{ $region.id }}"></span> {{ $region.name -}}
     </a>
   {{- end -}}
 </div>

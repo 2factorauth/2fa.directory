@@ -1,7 +1,7 @@
 title: "2FA Directory"
 languageCode: "en"
 DefaultContentLanguage: "en"
-copyright: 2factorauth
+copyright: "2factorauth"
 disableHugoGeneratorInject: true
 enableRobotsTXT: true
 icon: "/img/icon.svg"
@@ -24,4 +24,3 @@ params:
   twitter:
     handle: "2faorg"
     image: "/img/icons/icon.svg"
-
