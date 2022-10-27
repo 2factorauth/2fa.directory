@@ -4,15 +4,14 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css" integrity="sha512-uvXdJud8WaOlQFjlz9B15Yy2Au/bMAvz79F7Xa6OakCl2jvQPdHD0hb3dEqZRdSwG4/sknePXlE7GiarwA/9Wg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
 <!-- Internal -->
-{{ $_page := .Page.RelPermalink }}
 <!-- Default internal styles -->
 {{ $styles := slice "root" "navbar" "footer" }}
 
 <!-- Page dependant styles -->
-{{ with (eq $_page "/") }}
+{{ with or (eq .Page.RelPermalink "/") (eq .Layout "tables" ) }}
   {{ $styles = $styles | append "table" "category-buttons" "search" }}
 {{ end }}
-{{ with (eq $_page "/about/") }}
+{{ with (eq .Layout "about") }}
   {{ $styles = $styles | append "about" }}
 {{ end }}
 
