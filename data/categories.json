@@ -26,7 +26,7 @@
   },
   "crowdfunding": {
     "title": "Crowdfunding",
-    "icon": ""
+    "icon": "&#xF246;"
   },
   "cryptocurrencies": {
     "title": "Cryptocurrencies",
@@ -38,7 +38,7 @@
   },
   "domains": {
     "title": "Domains",
-    "icon": "&#xF3EE;"
+    "icon": "&#xF470;"
   },
   "education": {
     "title": "Education",
@@ -78,7 +78,7 @@
   },
   "hotels": {
     "title": "Hotels and Accommodations",
-    "icon": "\uD83D\uDECF"
+    "icon": "&#xF1DD;"
   },
   "identity": {
     "title": "Identity Management",
@@ -94,7 +94,7 @@
   },
   "legal": {
     "title": "Legal",
-    "icon": ""
+    "icon": "§"
   },
   "marketing": {
     "title": "Marketing & Analytics",
@@ -130,7 +130,7 @@
   },
   "task": {
     "title": "Task Management",
-    "icon": "&#xF477;"
+    "icon": "&#xF5F9;"
   },
   "tickets": {
     "title": "Tickets and Events",
