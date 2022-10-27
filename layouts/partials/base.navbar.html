@@ -14,11 +14,10 @@
       <ul class="navbar-nav me-auto mt-2 mt-lg-0">
         <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" id="regionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" tabindex="0">
-            Region
             {{ if .Params.Region.id }}
-              <span class="fi fi-{{- .Params.Region.id -}}"></span>
+              <span class="fi fi-{{- .Params.Region.id -}}" aria-label="Choose region"></span>
             {{- else -}}
-              <span class="bi bi-globe"></span>
+              <span class="bi bi-globe" aria-label="Choose region"></span>
             {{ end }}
           </a>
           {{- partial "regions" .Site.Data.regions -}}
