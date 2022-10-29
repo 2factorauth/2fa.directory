@@ -18,9 +18,23 @@ params:
   default:
     description: "List of sites with two factor auth support which includes SMS, email, phone calls, hardware, and software."
     github: "2factorauth/twofactorauth"
+    theme_color: "#38CCCC"
   region:
     id: ""
     name: ""
   twitter:
     handle: "2faorg"
     image: "/img/icons/icon.svg"
+
+outputFormats:
+  manifest:
+    name: "manifest"
+    baseName: "manifest"
+    mediaType: "application/json"
+    notAlternative: true
+
+outputs:
+  home:
+    - "HTML"
+    - "RSS"
+    - "MANIFEST"

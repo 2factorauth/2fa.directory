@@ -1,0 +1,28 @@
+{
+  "name": "{{ .Site.Title }}",
+  "lang": "en",
+  "description": "{{ .Site.Params.Default.Description }}",
+  "orientation": "portrait-primary",
+  "icons": [
+    {{ with resources.Get "icons/icon.svg" }},
+    {
+      "src": "{{ .RelPermalink }}",
+      "sizes": "any",
+      "type": "image/png"
+    },
+    {{ end }}
+    {{ with resources.Get "icons/icon-maskable.png" }}
+    {
+      "src": "{{ .RelPermalink }}",
+      "sizes": "{{ .Width }}x{{ .Height }}",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+    {{ end }}
+  ],
+  "start_url": "/",
+  "scope": "/",
+  "theme_color": "{{ .Site.Params.Default.Theme_Color }}",
+  "background_color": "#EEE",
+  "display": "standalone"
+}

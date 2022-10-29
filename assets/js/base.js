@@ -6,3 +6,6 @@ let resizeObserver = new ResizeObserver(() => {
     }
 });
 resizeObserver.observe($('body')[0]);
+$(document).ready(() => {
+    if ('serviceWorker' in navigator) navigator.serviceWorker.register('/service-worker.js');
+})
