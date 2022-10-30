@@ -4,11 +4,20 @@
   "description": "{{ .Site.Params.Default.Description }}",
   "orientation": "portrait-primary",
   "icons": [
-    {{ with resources.Get "icons/icon.svg" }},
+    {{ with resources.Get "icons/icon-only.svg" }},
     {
       "src": "{{ .RelPermalink }}",
       "sizes": "any",
-      "type": "image/png"
+      "type": "image/svg+xml",
+      "purpose": "any"
+    },
+    {{ end }}
+    {{ with (resources.Get "icons/icon.png").Resize "515x #fff" }}
+    {
+      "src": "{{ .RelPermalink }}",
+      "sizes": "{{ .Width }}x{{ .Height }}",
+      "type": "image/png",
+      "purpose": "any"
     },
     {{ end }}
     {{ with resources.Get "icons/icon-maskable.png" }}
