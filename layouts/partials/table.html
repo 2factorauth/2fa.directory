@@ -1,4 +1,27 @@
-{{- range $name, $entry := index . -}}
+{{ $a := (index . "region") }}
+{{- range $name, $entry := index . "entries" -}}
+
+<!-- Do region checks -->
+{{ $region_excluded := slice }}
+{{ $region_included := slice }}
+
+{{range $region := index $entry "regions" }}
+ {{ if hasPrefix $region "-" }}
+<!--TODO: Push $region to $region_excluded -->
+ {{ else }}
+<!-- TODO: Push $region to $region_included -->
+ {{ end }}
+{{ end }}
+
+<!--
+TODO: if $region_excluded contains ( "-" + $a )
+      OR
+      $region_included.length === 0
+      OR
+      $region_included contains $a
+-->
+
+<!-- Display entry -->
 <div class="entry {{ if index $entry "tfa" }}green{{ else }}red{{ end }}" data-domain="{{- $entry.domain -}}">
 
   <a class="name" href="{{- with $entry.url -}}{{- . -}}{{- else -}}https://{{- $entry.domain -}}{{- end -}}"><img class="logo" loading="lazy" src="/img/{{- substr $entry.domain 0 1 -}}/{{- with $entry.img -}}{{- . -}}{{- else -}}{{- $entry.domain -}}.svg{{- end -}}" alt="">{{- htmlUnescape $name -}}</a>
