@@ -20,6 +20,22 @@
       "purpose": "any"
     },
     {{ end }}
+    {{ with (resources.Get "icons/icon.png").Resize "180x #fff" }}
+    {
+      "src": "{{ .RelPermalink }}",
+      "sizes": "{{ .Width }}x{{ .Height }}",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {{ end }}
+    {{ with (resources.Get "icons/icon.png").Resize "192x #fff" }}
+    {
+      "src": "{{ .RelPermalink }}",
+      "sizes": "{{ .Width }}x{{ .Height }}",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {{ end }}
     {{ with resources.Get "icons/icon-maskable.png" }}
     {
       "src": "{{ .RelPermalink }}",
