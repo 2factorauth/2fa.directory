@@ -7,20 +7,28 @@
 
 {{range $region := index $entry "regions" }}
  {{ if hasPrefix $region "-" }}
-<!--TODO: Push $region to $region_excluded -->
+  {{ $region_excluded = $region_excluded | append $region }}
  {{ else }}
-<!-- TODO: Push $region to $region_included -->
+   {{ $region_included = $region_included | append $region }}
  {{ end }}
 {{ end }}
 
 <!--
-TODO: if $region_excluded contains ( "-" + $a )
+Explanation:
+   if $a is null
+      OR
+      $region_excluded contains ( "-" + $a )
       OR
       $region_included.length === 0
       OR
       $region_included contains $a
 -->
-
+{{ if or
+          (eq $a nil)
+          (in $region_excluded (printf "-%s" $a) )
+          (eq (len $region_included) 0)
+          (in $region_included $a)
+}}
 <!-- Display entry -->
 <div class="entry {{ if index $entry "tfa" }}green{{ else }}red{{ end }}" data-domain="{{- $entry.domain -}}">
 
@@ -80,3 +88,4 @@ TODO: if $region_excluded contains ( "-" + $a )
   {{- end -}}
 </div>
 {{- end -}}
+{{ end }}
