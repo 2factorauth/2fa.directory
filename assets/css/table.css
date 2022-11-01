@@ -116,6 +116,9 @@
   .entry .contact button:before {
     margin-right: 0.5em;
   }
+  .entry .contact button:after {
+    font-size: 15px;
+  }
   .entry .contact button.twitter:after {
     content: "On Twitter";
   }

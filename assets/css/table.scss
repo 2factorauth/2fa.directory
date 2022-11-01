@@ -141,6 +141,9 @@
         &:before {
           margin-right: .5em;
         }
+        &:after {
+          font-size: 15px;
+        }
 
         &.twitter:after {
           content: 'On Twitter';
