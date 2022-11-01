@@ -9,7 +9,7 @@
 
 <!-- Social Media -->
 <meta name="og:description" content="{{ .Site.Params.Default.description }}">
-<meta name="og:image" content="{{ .Site.Params.Twitter.image }}">
+<meta name="og:image" content="{{ (resources.Get .Site.Params.Twitter.card).RelPermalink }}">
 <meta name="og:title" content="{{ .Site.Title }}">
 <meta name="og:type" content="website">
 <meta name="og:url" content="{{ .Permalink }}">
@@ -18,19 +18,10 @@
 
 <!-- Icons -->
 <link rel="icon" href="{{ (resources.Get "icons/icon.svg").RelPermalink }}" type="image/svg+xml" sizes="any">
+
 {{ $png := resources.Get "icons/icon.png" }}
 {{ $sizes := slice "32" "128" "180" "192" "512" }}
 {{ range $d := $sizes }}
   {{ $d_png := $png.Resize ($d | printf "%sx%s" $d) }}
   <link rel="icon" href="{{ $d_png.RelPermalink }}" sizes="{{ $d }}x{{ $d }}" type="image/png">
-{{ end }}
-
-<!-- Maskable Icon -->
-<link rel="mask-icon" href="{{ (resources.Get "icons/icon-maskable.png").RelPermalink }}" type="image/png">
-
-<!-- iOS Specific -->
-{{ $sizes := slice "128" "180" "192" }}
-{{ range $d := $sizes }}
-  {{ $d_png := $png.Resize ($d | printf "%sx%s png #fff" $d) }}
-  <link rel="apple-touch-icon" href="{{ $d_png.RelPermalink }}" sizes="{{ $d }}x{{ $d }}" type="image/png">
 {{ end }}

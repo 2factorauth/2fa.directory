@@ -20,7 +20,7 @@ params:
     theme_color: "#38CCCC"
   twitter:
     handle: "2faorg"
-    image: "/img/icons/icon.svg"
+    card: "/icons/social-card.png"
 
 outputFormats:
   manifest:
