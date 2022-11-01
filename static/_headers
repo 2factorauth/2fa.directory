@@ -1,3 +1,4 @@
 /*
   X-Frame-Options: DENY
-  Permissions-Policy: geolocation 'none'; microphone 'none; camera 'none; autoplay 'none'; display-capture=()
+  Permissions-Policy: geolocation=(),microphone=(),camera=(),autoplay=(),payment=(),speaker=()fullscreen=(self)
+  Access-Control-Allow-Origin: none
