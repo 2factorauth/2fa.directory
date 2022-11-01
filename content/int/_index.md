@@ -1,7 +1,5 @@
 ---
 layout: tables
-region:
-  id: ""
-  name: ""
-alias: "/"
+aliases:
+  - /index.html
 ---

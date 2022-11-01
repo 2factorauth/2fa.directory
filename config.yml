@@ -5,7 +5,6 @@ copyright: "2factorauth"
 disableHugoGeneratorInject: true
 enableRobotsTXT: true
 icon: "/img/icon.svg"
-disableAliases: true
 disableKinds: ["taxonomy", "taxonomyTerm"]
 enableEmoji: true
 enableGitInfo: true
@@ -32,6 +31,4 @@ outputFormats:
 
 outputs:
   home:
-    - "HTML"
-    - "RSS"
     - "MANIFEST"
