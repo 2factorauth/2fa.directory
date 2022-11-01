@@ -8,15 +8,20 @@
 {{ $styles := slice "root" "navbar" "footer" }}
 
 <!-- Page dependant styles -->
-{{ with or (eq .Page.RelPermalink "/") (eq .Layout "tables" ) }}
+{{ with eq .Layout "tables" }}
   {{ $styles = $styles | append "table" "category-buttons" "search" }}
 {{ end }}
-{{ with (eq .Layout "about") }}
+
+{{ with eq .Layout "about" }}
   {{ $styles = $styles | append "about" }}
 {{ end }}
 
+{{ $scss := slice }}
 {{ range $style := $styles }}
-  {{ $css := resources.Get ($style | printf "css/%s.css") }}
-  {{ $css = $css | minify | resources.Fingerprint "sha512" }}
-  <link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+  {{ $scss = $scss | append (resources.Get ($style | printf "css/%s.scss")) }}
 {{ end }}
+
+{{ $options := (dict "outputStyle" "compressed" "enableSourceMap" (not hugo.IsProduction)) }}
+{{ $css := $scss | resources.Concat (.Layout | printf "assets/css/%s.scss") | resources.ToCSS $options | resources.Fingerprint "sha512" }}
+
+<link rel="stylesheet" href="{{ $css.RelPermalink }}" integrity="{{ $css.Data.Integrity }}" crossorigin="anonymous" referrerpolicy="no-referrer"/>
