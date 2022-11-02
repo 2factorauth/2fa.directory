@@ -4,7 +4,6 @@
 require 'fileutils'
 require 'json'
 require 'net/http'
-require 'parallel'
 require 'uri'
 require 'yaml'
 
