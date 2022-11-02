@@ -5,7 +5,6 @@ require 'fileutils'
 require 'net/http'
 require 'json'
 require 'yaml'
-require 'parallel'
 require 'uri'
 
 url = URI('https://2fa.directory/api/v3/all.json')
