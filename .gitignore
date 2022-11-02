@@ -8,3 +8,9 @@ data
 resources
 public
 static/img
+
+!.editorconfig
+!.gitignore
+!data/categories.json
+!data/members.json
+!data/regions.yml
