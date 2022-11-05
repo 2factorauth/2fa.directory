@@ -16,6 +16,15 @@
   {{ $styles = $styles | append "about" }}
 {{ end }}
 
+{{ with eq .Layout "page" }}
+  {{ $styles = $styles | append "page" }}
+{{ end }}
+
+{{ with eq .Layout "note" }}
+  {{ $styles = $styles | append "page" "note" }}
+{{ end }}
+
+
 {{ $scss := slice }}
 {{ range $style := $styles }}
   {{ $scss = $scss | append (resources.Get ($style | printf "css/%s.scss")) }}

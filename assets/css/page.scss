@@ -1,0 +1,14 @@
+h1 {
+  text-align: center;
+  margin: 8vh 0 4vh 0;
+  font-weight: 300;
+}
+table {
+  td,th {
+    padding: .5rem;
+    border: var(--secondary-background) 1px solid;
+  }
+}
+h2,h3,h4 {
+  margin-top: 2rem;
+}

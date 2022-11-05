@@ -1,11 +1,12 @@
 {{ define "main" }}
-<h1 class="display-4" style="text-align: center;margin-bottom: 3vh;">{{ .Params.title }}</h1>
-<h1 class="lead" style="text-align: center; font-size: 2em; font-family: 'Segoe UI Light',Arial,Helvetica">Information regarding
-  {{ .Params.title }}'s 2FA.</h1>
+<article>
+  <h1 class="display-4">{{ .Params.title }}</h1>
+  <h2 class="lead">Information regarding {{ .Params.title }}'s 2FA.</h2>
 
-<hr>
+  <hr>
 
-<div class="mx-2">
-  {{ .Content }}
-</div>
+  <div class="mx-2">
+    {{ .Content }}
+  </div>
+</article>
 {{ end }}
