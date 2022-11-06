@@ -274,6 +274,14 @@
       grid-area: 1 / 1 / 2 / 2;
     }
 
+    .note {
+      float: right;
+      margin-right: 1rem;
+      font-size: 2em;
+      line-height: 1.2em;
+      color: #d03333;
+    }
+
     & > .sms, & > .voice, & > .email, & > .hardware, & > .software {
       display: none;
     }
