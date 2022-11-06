@@ -2,26 +2,27 @@
 @media screen and (min-width: 993px) {
   .table {
     box-shadow: 0 3px 8px 0 rgba(0, 0, 0, .2), 0 0 0 1px rgba(0, 0, 0, .08);
-  }
-  .table-head {
-    display: grid;
-    grid-template-columns: 20em repeat(6, 1fr);
-    grid-template-rows: 1fr;
-    padding-left: 1em;
-    background: var(--table-head-bg) !important;
-    font-family: var(--default-font);
-    font-weight: 500;
-    color: var(--text-color);
-    line-height: 53px;
 
-    div {
-      text-align: center;
-      height: 53px;
-      font-size: 1.1em;
-    }
+    .table-head {
+      display: grid;
+      grid-template-columns: 20em repeat(6, 1fr);
+      grid-template-rows: 1fr;
+      padding-left: 1em;
+      background: var(--table-head-bg) !important;
+      font-family: var(--default-font);
+      font-weight: 500;
+      color: var(--text-color);
+      line-height: 53px;
 
-    & > *:not(:last-child) {
-      border-right: var(--table-border);
+      div {
+        text-align: center;
+        height: 53px;
+        font-size: 1.1em;
+      }
+
+      & > *:not(:last-child) {
+        border-right: var(--table-border);
+      }
     }
   }
 
@@ -51,6 +52,13 @@
     .name {
       grid-area: 1 / 1 / 2 / 2;
       line-height: 4.4rem;;
+    }
+
+    .note {
+      float: right;
+      margin-right: 1em;
+      font-size: 1.4em;
+      color: #db2828;
     }
 
     .docs {
@@ -141,6 +149,7 @@
         &:before {
           margin-right: .5em;
         }
+
         &:after {
           font-size: 15px;
         }
@@ -208,6 +217,7 @@
 
 .popover {
   color: #000;
+
   li {
     margin-left: .5em;
   }
