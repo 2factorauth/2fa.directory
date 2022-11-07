@@ -233,9 +233,8 @@
   white-space: nowrap;
   align-self: center;
 
-
   .logo {
-    margin-right: .3em;
+    margin-right: 0.7em;
     height: 2.5em;
     max-width: 2.5em;
     vertical-align: middle;
@@ -255,6 +254,9 @@
 
 /** Mobile View **/
 @media screen and (max-width: 992px) {
+  .table {
+    overflow: hidden;
+  }
   .table-head {
     display: none;
   }
@@ -269,7 +271,6 @@
 
     .name {
       font-family: var(--default-font);
-      font-size: 1.5em;
       font-weight: 300;
       grid-area: 1 / 1 / 2 / 2;
     }
