@@ -34,7 +34,7 @@
     .category-icon {
       grid-area: 2 / 1 / 3 / 2;
       display: grid;
-      align-content: center;
+      align-self: center;
       font-size: 2.4em;
       font-family: 'Bootstrap-icons';
     }
