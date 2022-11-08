@@ -5,24 +5,13 @@
         <li>{{- .Site.Title -}}</li>
       </ul>
     </a>
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar-toggler"
-            aria-controls="navbar-toggler" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="bi bi-list"></span>
-    </button>
-
-    <div class="collapse navbar-collapse" id="navbar-toggler">
-      <ul class="navbar-nav me-auto mt-2 mt-lg-0">
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" id="regionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Choose region" tabindex="0">
-            {{ if .Params.Region.id }}
-              <span class="fi fi-{{- .Params.Region.id -}}" aria-hidden="true"></span>
-            {{- else -}}
-              <span class="bi bi-globe" aria-hidden="true"></span>
-            {{ end }}
-          </a>
-          {{- partial "regions" .Site.Data.regions -}}
-        </li>
-      </ul>
-    </div>
+    <a class="nav-link dropdown-toggle" id="regionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Choose region" tabindex="0">
+      {{ if .Params.Region.id }}
+        <span class="fi fi-{{- .Params.Region.id -}}" aria-hidden="true"></span>
+      {{- else -}}
+        <span class="bi bi-globe" aria-hidden="true"></span>
+      {{ end }}
+    </a>
+    {{- partial "regions" .Site.Data.regions -}}
   </div>
 </nav>
