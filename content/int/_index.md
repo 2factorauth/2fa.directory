@@ -1,5 +1,5 @@
 ---
 layout: tables
 aliases:
-  - /index.html
+- /index.html
 ---

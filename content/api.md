@@ -247,4 +247,3 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
 ```
 
 If a website only supports some 2FA methods, the unsupported 2FA methods won't be listed (i.e. NULL).
- 

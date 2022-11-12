@@ -5,7 +5,7 @@
   "repository": "carlgo11/2fa-dev",
   "description": "2fa-dev",
   "scripts": {
-    "dev": "hugo serve -D",
+    "dev": "hugo serve",
     "build": "hugo --minify"
   },
   "devDependencies": {

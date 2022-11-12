@@ -9,12 +9,12 @@ As a result you will most likely only receive a couple of requests each year. We
 
 ## User agents:
 
-|User-Agent|Script source|
-|----------|-------------|
-|2FactorAuth/URLValidator|/tests/validate-urls.rb|
-|2FactorAuth/LanguageValidator|/tests/language-codes.rb|
-|2FactorAuth/RegionValidator|/tests/region-codes.rb|
-|2FactorAuth/FacebookValidator|/tests/facebook.rb|
+| User-Agent                    | Script source            |
+|-------------------------------|--------------------------|
+| 2FactorAuth/URLValidator      | /tests/validate-urls.rb  |
+| 2FactorAuth/LanguageValidator | /tests/language-codes.rb |
+| 2FactorAuth/RegionValidator   | /tests/region-codes.rb   |
+| 2FactorAuth/FacebookValidator | /tests/facebook.rb       |
 
 ## robots.txt
 

@@ -10,6 +10,7 @@
   @media screen and (max-width: 992px) {
     grid-template-columns: 1fr;
   }
+
   &.search-results {
     grid-template-columns: 1fr;
   }
@@ -67,7 +68,7 @@
       align-self: center;
       font-family: 'Bootstrap-icons';
       grid-area: 1 / 1 / 3 / 2;
-      border-radius:50%;
+      border-radius: 50%;
       color: var(--text-color);
       background: var(--background);
     }
