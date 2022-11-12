@@ -2,7 +2,6 @@
 layout: page
 title: Privacy Policy
 ---
-
 We believe security and privacy goes hand-in-hand and so to protect our users we don't keep any records of who visits our website.  
 We do however rely on some third-parties to host and deliver the website content and these third-parties may keep records they deem necessary for the continuous operation of their services.
 

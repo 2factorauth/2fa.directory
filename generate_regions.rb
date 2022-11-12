@@ -11,7 +11,9 @@ require 'yaml'
 data_dir = './data'
 regions = YAML.load_file("#{data_dir}/regions.yml")
 regions.each do |region|
-  File.open("content/#{region['id']}/_index.md", "w") do |file|
+  dir = "content/#{region['id']}"
+  FileUtils.mkdir_p dir unless File.exist? dir
+  File.open("#{dir}/_index.md", "w") do |file|
     file.write("---\nlayout: tables\nregion:\n  id: \"#{region['id']}\"\n  name: \"#{region['name']}\"\n---");
   end
 end
