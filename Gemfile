@@ -1,3 +1,5 @@
 # frozen_string_literal: true
-source "https://rubygems.org"
-gem "parallel", "~> 1.22"
+
+source 'https://rubygems.org'
+gem 'parallel', '~> 1.22'
+gem 'rubocop', '~> 1.38'
