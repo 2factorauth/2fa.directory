@@ -5,13 +5,22 @@ All data used to populate the categories is located in [2factorauth/twofactoraut
 
 ![](screenshot.png)
 
-## Forking
-
 ## Local installation
 
 The website is based on the static site generator [Hugo](https://gohugo.io/).
-To build locally you will need to follow the [installation instructions](https://gohugo.io/installation/) for Hugo.
+To build locally you will need to follow the [installation instructions](https://gohugo.io/installation/) for Hugo.  
+[Ruby](https://www.ruby-lang.org/en/documentation/installation/) is also required for some scripts. 
+
+After you've installed Hugo and Ruby, follow these steps to build the site locally:
+* Fetching entries:
+  `ruby generate_entries.rb`
+* Generating regional pages:
+  `ruby generate_regions.rb`
+* Run Hugo locally:
+  `hugo serve`
 
 ## Contributing
+
+When contributing changes to this repository, please make sure your IDE follows our [editorconfig](https://editorconfig.org/).
 
 ## License
