@@ -1,7 +1,7 @@
 ---
 layout: page
 title: 2factorauth Web Bots
-aliases: /bots
+aliases: /bot
 ---
 In order to validate user contributions we use scripts or "bots".  
 These scripts only make requests to your website when someone tries to edit data about your site on 2fa.directory.   
