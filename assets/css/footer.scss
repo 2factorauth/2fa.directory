@@ -1,12 +1,8 @@
 footer {
-  position: absolute;
-  bottom: 0;
-  right: 0;
-  left: 0;
   display: grid;
   grid-template-columns: 11rem 1fr 11rem;
   grid-template-rows: 1fr;
-  margin-top: 3rem;
+  margin-top: 1rem;
   color: var(--text-color);
 
   ul {

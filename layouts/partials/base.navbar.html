@@ -1,17 +1,19 @@
-<nav class="navbar navbar-expand-lg ">
+<nav class="navbar navbar-expand-lg">
   <div class="container">
     <a class="nav-link" href="{{ if eq .Layout "tables" }}/about/{{ else }} / {{ end }}">
       <ul class="icon">
         <li>{{- .Site.Title -}}</li>
       </ul>
     </a>
-    <a class="nav-link dropdown-toggle" id="regionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Choose region" tabindex="0">
-      {{ if .Params.Region.id }}
-        <span class="fi fi-{{- .Params.Region.id -}}" aria-hidden="true"></span>
-      {{- else -}}
-        <span class="bi bi-globe" aria-hidden="true"></span>
-      {{ end }}
-    </a>
-    {{- partial "regions" .Site.Data.regions -}}
+    {{ if eq .Layout "tables" }}
+      <a class="nav-link dropdown-toggle" id="regionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Choose region" tabindex="0">
+        {{ if .Params.Region.id }}
+          <span class="fi fi-{{- .Params.Region.id -}}" aria-hidden="true"></span>
+        {{- else -}}
+          <span class="bi bi-globe" aria-hidden="true"></span>
+        {{ end }}
+      </a>
+      {{- partial "regions" .Site.Data.regions -}}
+    {{ end }}
   </div>
 </nav>
