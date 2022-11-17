@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+  {{- partial "base.meta" . -}}
+  <title>{{- $.Site.Title -}}{{- block "title" . -}}{{- end -}}</title>
+  {{- partial "base.stylesheet" . -}}
+  <style>
+    body, main {
+      display: grid;
+      justify-content: center;
+      align-content: center;
+      height: 100vh;
+      width: 100vw;
+    }
+
+    .bi-wifi-off {
+      font-size: 10rem;
+      text-align: center;
+    }
+
+    .note {
+      text-align: center;
+      font-size: 2em;
+    }
+  </style>
+</head>
+<body>
+<main>
+  <i class="bi bi-wifi-off" aria-hidden="true"></i>
+  <p class="note">Internet connection lost</p>
+</main>
+<script>
+
+  // Listen to changes in the network state, reload when online.
+  // This handles the case when the device is completely offline.
+  window.addEventListener('online', () => {
+    window.location.reload();
+  });
+
+  // Check if the server is responding and reload the page if it is.
+  // This handles the case when the device is online, but the server
+  // is offline or misbehaving.
+  async function checkNetworkAndReload() {
+    try {
+      const response = await fetch('.');
+      // Verify we get a valid response from the server
+      if (response.status >= 400 && response.status < 500) {
+        window.location.reload();
+        return;
+      }
+    } catch {
+      // Unable to connect to the server, ignore.
+    }
+    window.setTimeout(checkNetworkAndReload, 2500);
+  }
+
+  checkNetworkAndReload();
+</script>
+</body>
+</html>
