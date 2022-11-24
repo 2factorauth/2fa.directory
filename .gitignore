@@ -13,5 +13,4 @@ static/img
 !.gitignore
 !data/categories.json
 !data/members.json
-!data/regions.yml
 content/[a-z][a-z]/
