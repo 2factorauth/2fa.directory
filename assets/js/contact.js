@@ -11,7 +11,7 @@ $('.twitter').click(function (){
 })
 
 function social_media_notice(type, lang, handle){
-  const uri = `/contact.js?type=${type}&lang=${lang}&handle=${handle}`
+  const uri = `/contact/?type=${type}&lang=${lang}&handle=${handle}`
   if (window.localStorage.getItem('social-media-notice') !== 'hidden') {
     let modal = new bootstrap.Modal($('#social-media-warn'));
     modal.toggle();
