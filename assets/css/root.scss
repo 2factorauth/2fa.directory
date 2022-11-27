@@ -17,7 +17,7 @@
 
   @media (prefers-color-scheme: dark) {
     --background: #212121;
-    --secondary-background: #6f6f6f96;
+    --secondary-background: #4f4f4f;
     --text-color: #eee;
 
     --table-head-bg: #262626;
@@ -29,6 +29,24 @@
 
     --bs-nav-link-color: var(--text-color) !important;
     --bs-navbar-color: var(--text-color);
+
+    .modal {
+      --bs-modal-bg: var(--secondary-background);
+      --bs-border-color: var(--secondary-background);
+      --modal-color: var(--text-color);
+    }
+  }
+
+  .popover {
+    --bs-popover-header-bg: var(--secondary-background);
+
+    .popover-header {
+      --bs-popover-header-color: var(--text-color);
+      text-align: center;
+    }
+
+    --bs-popover-bg: var(--background);
+    --bs-popover-body-color: var(--text-color);
   }
 }
 

@@ -82,9 +82,9 @@ Explanation:
       <div class="tfa-summary"></div>
 
       <div class="contact">
-        {{- if index $entry.contact "twitter" -}}<button class="twitter" data-twitter="{{ $entry.contact.twitter }}"></button>{{- end -}}
-        {{- if index $entry.contact "facebook" -}}<button class="facebook" data-facebook="{{ $entry.contact.facebook }}"></button>{{- end -}}
-        {{- if index $entry.contact "email" -}}<button class="email" data-email="{{ $entry.contact.email }}"></button>{{- end -}}
+        {{- if index $entry.contact "twitter" -}}<button class="contact-btn twitter" data-twitter="{{ $entry.contact.twitter }}"></button>{{- end -}}
+        {{- if index $entry.contact "facebook" -}}<button class="contact-btn facebook" data-facebook="{{ $entry.contact.facebook }}"></button>{{- end -}}
+        {{- if index $entry.contact "email" -}}<button class="contact-btn email" data-email="{{ $entry.contact.email }}"></button>{{- end -}}
       </div>
 
     {{- end -}}

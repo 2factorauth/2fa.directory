@@ -1,12 +1,12 @@
-$('.email').click(function () {
+$('.contact-btn.email').click(function () {
   social_media_notice('email', $(this).data('lang'), $(this).data('email'))
 })
 
-$('.facebook').click(function () {
+$('.contact-btn.facebook').click(function () {
   social_media_notice('facebook', $(this).data('lang'), $(this).data('facebook'));
 })
 
-$('.twitter').click(function (){
+$('.contact-btn.twitter').click(function (){
   social_media_notice('tweet', $(this).data('lang'), $(this).data('twitter'))
 })
 
