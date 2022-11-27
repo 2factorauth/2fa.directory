@@ -10,7 +10,7 @@ hugo --minify
 for file in public/*/*.html; do
 html-minifier \
 --collapse-whitespace --remove-comments \
---remove-script-type-attributes --remove-tag-whitespace \
---use-short-doctype -o "$file" "$file" &
+--remove-script-type-attributes \
+-o "$file" "$file" &
 done
 wait
