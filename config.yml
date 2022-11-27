@@ -1,17 +1,13 @@
 title: "2FA Directory"
+icon: "/img/icon.svg"
+copyright: "2factorauth"
 languageCode: "en"
 DefaultContentLanguage: "en"
-copyright: "2factorauth"
-disableHugoGeneratorInject: true
-enableRobotsTXT: true
-icon: "/img/icon.svg"
 disableKinds: ["taxonomy", "taxonomyTerm"]
+disableHugoGeneratorInject: true
 enableEmoji: true
 enableGitInfo: true
-minify:
-  tdewolff:
-    html:
-      keepWhitespace: false
+enableRobotsTXT: true
 
 params:
   default:
