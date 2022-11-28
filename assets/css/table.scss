@@ -49,9 +49,13 @@
       border-right: var(--table-border);
     }
 
+    div {
+      overflow: clip;
+    }
+
     .name {
       grid-area: 1 / 1 / 2 / 2;
-      line-height: 4.4rem;;
+      line-height: 4.4rem;
     }
 
     .note {
