@@ -27,7 +27,9 @@ export async function onRequestGet(context) {
 async function email(handle, lang) {
   const text = await i18n('email_subject', lang)
   const uri = `mailto:${handle}?subject=${text}`
-  return Response.redirect(uri, 302)
+  // Response.redirect can't be used due to CF being dumb.
+  // https://community.cloudflare.com/t/348100
+  return new Response(null, {status: 302, headers: {'Location': uri}})
 }
 
 async function twitter(handle, lang) {
