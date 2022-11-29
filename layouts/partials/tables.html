@@ -10,6 +10,6 @@
     <div>Hardware</div>
     <div>Software</div>
   </div>
-  {{- partial "table.html" (dict "entries" (index site.Data.entries $category_name) "region" $a ) -}}
+  {{- partial "table.html" (dict "entries" (index site.Data.entries $category_name) "region" $a "icon_path" site.Params.default.icon_path ) -}}
 </div>
 {{- end -}}
