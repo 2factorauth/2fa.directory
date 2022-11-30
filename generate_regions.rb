@@ -2,18 +2,15 @@
 # frozen_string_literal: true
 
 require 'fileutils'
-require 'json'
 require 'net/http'
-require 'uri'
+require 'json'
 require 'yaml'
+require 'uri'
+
 # Fetch API files
 module API
   def self.fetch(uri)
-    url = URI(uri)
-    https = Net::HTTP.new(url.host, url.port)
-    https.use_ssl = true
-    request = Net::HTTP::Get.new(url)
-    response = https.request(request)
+    response = Net::HTTP.get_response URI(uri)
     return JSON.parse(response.body) unless response.code.eql? 200
   end
 end
@@ -21,8 +18,8 @@ end
 categories = JSON.parse(File.read('./data/categories.json'))
 regions = API.fetch('https://2fa.directory/api/v3/regions.json')
 entries = API.fetch('https://2fa.directory/api/v3/all.json')
-used_regions = []
 
+used_regions = []
 regions.each do |id, region|
   next unless region['count'] >= 10 && !id.eql?('int')
 
@@ -48,12 +45,16 @@ regions.each do |id, region|
 end
 
 all_regions = {}
-regions_uri = 'https://raw.githubusercontent.com/stefangabos/world_countries/master/data/countries/en/world.json'
-API.fetch(regions_uri).select do |region|
+API.fetch('https://raw.githubusercontent.com/stefangabos/world_countries/master/data/countries/en/world.json')
+   .select do |region|
   all_regions[region['alpha2']] = region['name'] if used_regions.include? region['alpha2']
 end
+
 # Change long official names
-all_regions.merge!({ 'us' => 'United States', 'gb' => 'United Kingdom', 'tw' => 'Taiwan', 'ru' => 'Russia',
+all_regions.merge!({ 'us' => 'United States',
+                     'gb' => 'United Kingdom',
+                     'tw' => 'Taiwan',
+                     'ru' => 'Russia',
                      'kr' => 'South Korea' })
 
 # Change output format to array of hashmaps
