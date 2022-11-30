@@ -16,8 +16,8 @@ module API
 end
 
 categories = JSON.parse(File.read('./data/categories.json'))
-regions = API.fetch('https://2fa.directory/api/v3/regions.json')
-entries = API.fetch('https://2fa.directory/api/v3/all.json')
+regions = API.fetch('https://api.2fa.directory/v3/regions.json')
+entries = API.fetch('https://api.2fa.directory/v3/all.json')
 
 used_regions = []
 regions.each do |id, region|

@@ -6,7 +6,7 @@ require 'net/http'
 require 'json'
 require 'uri'
 
-response = Net::HTTP.get URI('https://2fa.directory/api/v3/all.json')
+response = Net::HTTP.get URI('https://api.2fa.directory/v3/all.json')
 entries = {}
 
 JSON.parse(response).each do |name, website|

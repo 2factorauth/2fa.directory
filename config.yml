@@ -14,7 +14,7 @@ params:
     description: "List of sites with two factor auth support which includes SMS, email, phone calls, hardware, and software."
     github: "2factorauth/twofactorauth"
     theme_color: "#38CCCC"
-    icon_path: "https://2fa.carlgo11.com/icons/"
+    icon_path: "https://api.2fa.directory/icons/"
   twitter:
     handle: "2faorg"
     card: "/icons/social-card.png"
