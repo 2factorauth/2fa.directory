@@ -33,6 +33,11 @@
     width: 100%;
     padding: .6rem;
     border: none;
+    @media (prefers-color-scheme: dark) {
+      background-color: #fff;
+      color: #000;
+      caret-color: #000;
+    }
 
     &:focus {
       outline: none;

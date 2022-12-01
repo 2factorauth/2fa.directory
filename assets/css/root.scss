@@ -16,6 +16,8 @@
   --category-btn-border: 1px solid #8c8c8c;
 
   @media (prefers-color-scheme: dark) {
+    color-scheme: dark;
+
     --background: #212121;
     --secondary-background: #4f4f4f;
     --text-color: #eee;
