@@ -40,7 +40,8 @@ self.addEventListener('fetch', (e) => {
         return response;
       } else return await fetch(e.request);
     } catch (error) {
-      console.log(`ERROR: ${error}`);
+      console.error(`ERROR: ${error}`);
+      console.error(`req: ${e.request}`);
       if (e.request.mode === 'navigate') {
         const cache = await caches.open('pwa-assets');
         return await cache.match('/offline/');
