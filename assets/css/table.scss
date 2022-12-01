@@ -143,13 +143,13 @@
     .contact {
       margin-left: 1em;
 
-
       &:before {
         content: 'Tell them to support 2FA';
         margin-right: .25em;
       }
 
       button {
+        margin: .2em .2em .2em .5em;
         &:before {
           margin-right: .5em;
         }

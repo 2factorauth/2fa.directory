@@ -4,33 +4,38 @@ nav {
   color: var(--text-color);
   border-bottom: 2px solid var(--brand-color);
 
-  ul {
-    padding-left: 0;
-  }
 
-  .icon {
-    margin: 0;
+  #branding {
+    @media screen and (max-width: 992px) {
+      // Compensate for region btn
+      padding-left: 33.5833px;
+      margin: auto;
+    }
+    .icon {
+      padding-left: 0;
+      margin: 0;
 
-    li {
-      display: flex;
-      flex-direction: row;
-      align-items: center;
+      li {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
 
-      list-style: none;
-      font-family: "SF Pro Display", var(--default-font);
-      font-weight: 300;
-      font-size: 1.5em;
+        list-style: none;
+        font-family: "SF Pro Display", var(--default-font);
+        font-weight: 300;
+        font-size: 1.5em;
 
-      &:before {
-        content: '';
-        height: 1.5em;
-        margin-right: .4em;
-        aspect-ratio: 1;
-        background-image: url('/icons/icon.svg');
+        &:before {
+          content: '';
+          height: 1.5em;
+          margin-right: .4em;
+          aspect-ratio: 1;
+          background-image: url('/icons/icon.svg');
+        }
       }
     }
-
   }
+
 
   .navbar-toggler {
     border: none;
@@ -63,5 +68,8 @@ nav {
   .dropdown-menu {
     column-count: 2;
     z-index: 1100;
+    @media screen and (max-width: 445px) {
+      left: 0 !important;
+    }
   }
 }
