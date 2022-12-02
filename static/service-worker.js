@@ -3,7 +3,7 @@ const cachedPaths = ['script', 'css'];
 
 self.addEventListener('install', (event) => {
   event.waitUntil((async () => {
-    console.log('[Service Worker] Install');
+    console.debug('[Service Worker] Install');
     const cache = await caches.open('pwa-assets');
     await cache.add(new Request(offline_page, {cache: 'reload'}));
   })());
@@ -27,21 +27,21 @@ self.addEventListener('fetch', (e) => {
     try {
       if (cachedPaths.includes(e.request.destination) || e.request.mode === 'navigate') {
         const r = await caches.match(e.request);
-        console.log(`[Service Worker] Fetching resource: ${e.request.url}`);
+        console.debug(`[Service Worker] Fetching resource: ${e.request.url}`);
         if (r) {
-          console.log(`Cache hit`);
+          console.debug(`Cache hit`);
           return r
         }
 
         const response = await fetch(e.request);
         const cache = await caches.open('pwa-assets');
-        console.log(`[Service Worker] Caching new resource: ${e.request.url}`);
+        console.debug(`[Service Worker] Caching new resource: ${e.request.url}`);
         cache.put(e.request, response.clone());
         return response;
       } else return await fetch(e.request);
     } catch (error) {
       console.error(`ERROR: ${error}`);
-      console.error(`req: ${e.request}`);
+      console.error(`req: ${e.request.url}`);
       if (e.request.mode === 'navigate') {
         const cache = await caches.open('pwa-assets');
         return await cache.match('/offline/');
