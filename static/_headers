@@ -2,6 +2,6 @@
   X-Frame-Options: DENY
   Permissions-Policy: geolocation=(),microphone=(),camera=(),autoplay=(),payment=(),speaker=()fullscreen=(self)
   Access-Control-Allow-Origin: none
-  Content-Security-Policy-Report-Only: script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' https://api.2fa.directory https://cdnjs.cloudflare.com/ajax/libs/flag-icons/; block-all-mixed-content; report-uri https://2factorauth.report-uri.com/r/d/csp/wizard
+  Content-Security-Policy: script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' https://api.2fa.directory https://cdnjs.cloudflare.com/ajax/libs/flag-icons/; block-all-mixed-content; report-uri https://2factorauth.report-uri.com/r/d/csp/enforce
 /assets/*
- !Content-Security-Policy-Report-Only
+ ! Content-Security-Policy
