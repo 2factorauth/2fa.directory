@@ -25,7 +25,7 @@ self.addEventListener('activate', (event) => {
 self.addEventListener('fetch', (e) => {
   e.respondWith((async () => {
     try {
-      if (cachedPaths.includes(e.request.destination) || e.request.mode === 'navigate') {
+      if (cachedPaths.includes(e.request.destination)) {
         const r = await caches.match(e.request);
         console.debug(`[Service Worker] Fetching resource: ${e.request.url}`);
         if (r) {
