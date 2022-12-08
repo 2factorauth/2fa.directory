@@ -7,6 +7,8 @@
       display: grid;
       grid-template-columns: 20em repeat(6, 1fr);
       grid-template-rows: 1fr;
+      position: sticky;
+      top: 0;
       padding-left: 1em;
       background: var(--table-head-bg) !important;
       font-family: var(--default-font);
