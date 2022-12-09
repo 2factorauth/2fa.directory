@@ -38,7 +38,7 @@
     @media (prefers-color-scheme: dark) {
       color-scheme: light;
     }
-    
+
     /* replace with :has(.tfa) when supported */
     &.green {
       grid-template-columns: 20em repeat(6, 1fr);
@@ -174,6 +174,10 @@
         &.email:after {
           content: 'Via Email';
         }
+
+        &.form:after {
+          content: 'Via Form';
+        }
       }
     }
 
@@ -214,7 +218,7 @@
       }
     }
 
-    &.email {
+    &.email,&.form {
       background: #ea4235;
 
       &:before {

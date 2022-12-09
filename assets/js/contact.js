@@ -2,6 +2,10 @@ $('.contact-btn.email').click(function () {
   social_media_notice('email', $(this).data('lang'), $(this).data('email'))
 })
 
+$('.contact-btn.form').click(function () {
+  window.open($(this).data('form'), '_blank')
+})
+
 $('.contact-btn.facebook').click(function () {
   social_media_notice('facebook', $(this).data('lang'), $(this).data('facebook'));
 })

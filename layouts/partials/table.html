@@ -84,7 +84,8 @@ Explanation:
       <div class="contact">
         {{- if index $entry.contact "twitter" -}}<button class="contact-btn twitter" data-twitter="{{ $entry.contact.twitter }}"></button>{{- end -}}
         {{- if index $entry.contact "facebook" -}}<button class="contact-btn facebook" data-facebook="{{ $entry.contact.facebook }}"></button>{{- end -}}
-        {{- if index $entry.contact "email" -}}<button class="contact-btn email" data-email="{{ $entry.contact.email }}"></button>{{- end -}}
+        {{- if index $entry.contact "email" -}}<button class="contact-btn email" data-email="{{ $entry.contact.email }}"></button>{{- else -}}
+        {{- if index $entry.contact "form" -}}<button class="contact-btn form" data-form="{{ $entry.contact.form }}"></button>{{- end -}}{{- end -}}
       </div>
 
     {{- end -}}
