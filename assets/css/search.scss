@@ -34,9 +34,7 @@
     padding: .6rem;
     border: none;
     @media (prefers-color-scheme: dark) {
-      background-color: #fff;
-      color: #000;
-      caret-color: #000;
+      color-scheme: light;
     }
 
     &:focus {
