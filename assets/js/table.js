@@ -28,7 +28,9 @@ function showCategory(category) {
   const row = Math.floor(index / length);
   $(`.table:not([data-table='${category}'])`).collapse('hide');
   table.attr('style', `grid-area: ${row + 2} / 1 / ${row + 3} / ${length + 1}`);
-  table.collapse('show');
+  table.one("shown.bs.collapse", () => {
+    document.getElementById(category)?.scrollIntoView(true);
+  }).collapse("show");
   $(`.category-btn:not([href^="#${category}"])`).removeClass('active');
   $(button).addClass('active');
 }
