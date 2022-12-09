@@ -35,7 +35,10 @@
     line-height: 53px;
     grid-template-rows: 1fr;
     height: 4.4rem;
-
+    @media (prefers-color-scheme: dark) {
+      color-scheme: light;
+    }
+    
     /* replace with :has(.tfa) when supported */
     &.green {
       grid-template-columns: 20em repeat(6, 1fr);
