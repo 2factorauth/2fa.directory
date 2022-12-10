@@ -2,11 +2,11 @@
   "private": true,
   "version": "1.0.0",
   "name": "2fa-dev",
-  "repository": "carlgo11/2fa-dev",
+  "repository": "2factorauth/frontend",
   "description": "2fa-dev",
   "scripts": {
     "dev": "hugo serve",
-    "build": "hugo --minify"
+    "build": "sh scripts/build.sh"
   },
   "devDependencies": {
     "@types/node": "16.11.12",
