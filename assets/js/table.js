@@ -37,7 +37,7 @@ function showCategory(category) {
 
 // Initialise popovers
 const exceptionPopoverList = [...document.querySelectorAll('.note')].map(el => new bootstrap.Popover(el, {
-  trigger: 'hover focus click',
+  trigger: 'hover focus',
   title: 'Exceptions & Restrictions'
 }));
 
