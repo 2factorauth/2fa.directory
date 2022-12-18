@@ -21,6 +21,8 @@ function sendSearch(query) {
     $('.category-btn').parent().show();
     $('.table').removeClass('show');
     $('.categories').removeClass('search-results');
+    $('.entry:not(.hit)').show();
+    $('.entries.hit').removeClass('hit');
   } else {
     // Hide category buttons
     $('.category-btn').parent().hide();
@@ -37,7 +39,6 @@ function sendSearch(query) {
     let filter = []
     let _query = []
     query.split(' ').map(item => {
-      console.log(item);
       // Add word to filter<str> & remove word from _query<str[]>
       if (item.match(/\w:\w/g)) {
         filter.push(item);
