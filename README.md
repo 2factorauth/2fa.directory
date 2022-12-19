@@ -1,10 +1,5 @@
 # 2FA.Directory Frontend
 
-> **Note**
-> This repository contains a proposed redesign of [2fa.directory][website].  
-> Until it is approved as the official design, the project is accessible
-> via [beta.2fa.directory](https://beta.2fa.directory/).
-
 This repository contains the HTML, JavaScript and CSS for [2fa.directory][website].  
 All data used to populate the categories is located
 in [2factorauth/twofactorauth][data_repo].
