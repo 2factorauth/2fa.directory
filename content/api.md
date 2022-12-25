@@ -20,15 +20,15 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
 
 |Coverage|Unsigned file|Signed file|
 |--------|-------------|-----------|
-|All sites|https://2fa.directory/api/v3/all.json|https://2fa.directory/api/v3/all.json.sig|
-|All 2FA-supporting sites|https://2fa.directory/api/v3/tfa.json|https://2fa.directory/api/v3/tfa.json.sig|
-|SMS|https://2fa.directory/api/v3/sms.json|https://2fa.directory/api/v3/sms.json.sig|
-|Phone calls|https://2fa.directory/api/v3/call.json|https://2fa.directory/api/v3/call.json.sig|
-|Email 2FA|https://2fa.directory/api/v3/email.json|https://2fa.directory/api/v3/email.json.sig|
-|non-U2F hardware 2FA tokens|https://2fa.directory/api/v3/custom-hardware.json|https://2fa.directory/api/v3/custom-hardware.json.sig|
-|U2F hardware tokens|https://2fa.directory/api/v3/u2f.json|https://2fa.directory/api/v3/u2f.json.sig|
-|RFC-6238 (TOTP)|https://2fa.directory/api/v3/totp.json|https://2fa.directory/api/v3/totp.json.sig|
-|non-RFC-6238 software 2FA|https://2fa.directory/api/v3/custom-software.json|https://2fa.directory/api/v3/custom-software.json.sig|
+|All sites|https://api.2fa.directory/v3/all.json|https://api.2fa.directory/v3/all.json.sig|
+|All 2FA-supporting sites|https://api.2fa.directory/v3/tfa.json|https://api.2fa.directory/v3/tfa.json.sig|
+|SMS|https://api.2fa.directory/v3/sms.json|https://api.2fa.directory/v3/sms.json.sig|
+|Phone calls|https://api.2fa.directory/v3/call.json|https://api.2fa.directory/v3/call.json.sig|
+|Email 2FA|https://api.2fa.directory/v3/email.json|https://api.2fa.directory/v3/email.json.sig|
+|non-U2F hardware 2FA tokens|https://api.2fa.directory/v3/custom-hardware.json|https://api.2fa.directory/v3/custom-hardware.json.sig|
+|U2F hardware tokens|https://api.2fa.directory/v3/u2f.json|https://api.2fa.directory/v3/u2f.json.sig|
+|RFC-6238 (TOTP)|https://api.2fa.directory/v3/totp.json|https://api.2fa.directory/v3/totp.json.sig|
+|non-RFC-6238 software 2FA|https://api.2fa.directory/v3/custom-software.json|https://api.2fa.directory/v3/custom-software.json.sig|
 
 
 ### Elements
@@ -118,15 +118,15 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
 
 |Coverage|Unsigned file|Signed file|
 |--------|-------------|-----------|
-|All sites|https://2fa.directory/api/v2/all.json|https://2fa.directory/api/v2/all.json.sig|
-|All 2FA-supporting sites|https://2fa.directory/api/v2/tfa.json|https://2fa.directory/api/v2/tfa.json.sig|
-|SMS|https://2fa.directory/api/v2/sms.json|https://2fa.directory/api/v2/sms.json.sig|
-|Phone calls|https://2fa.directory/api/v2/phone.json|https://2fa.directory/api/v2/phone.json.sig|
-|Email 2FA|https://2fa.directory/api/v2/email.json|https://2fa.directory/api/v2/email.json.sig|
-|non-U2F hardware 2FA tokens|https://2fa.directory/api/v2/hardware.json|https://2fa.directory/api/v2/hardware.json.sig|
-|U2F hardware tokens|https://2fa.directory/api/v2/u2f.json|https://2fa.directory/api/v2/u2f.json.sig|
-|RFC-6238 (TOTP)|https://2fa.directory/api/v2/totp.json|https://2fa.directory/api/v2/totp.json.sig|
-|non-RFC-6238 software 2FA|https://2fa.directory/api/v2/proprietary.json|https://2fa.directory/api/v2/proprietary.json.sig|
+|All sites|https://api.2fa.directory/v2/all.json|https://api.2fa.directory/v2/all.json.sig|
+|All 2FA-supporting sites|https://api.2fa.directory/v2/tfa.json|https://api.2fa.directory/v2/tfa.json.sig|
+|SMS|https://api.2fa.directory/v2/sms.json|https://api.2fa.directory/v2/sms.json.sig|
+|Phone calls|https://api.2fa.directory/v2/phone.json|https://api.2fa.directory/v2/phone.json.sig|
+|Email 2FA|https://api.2fa.directory/v2/email.json|https://api.2fa.directory/v2/email.json.sig|
+|non-U2F hardware 2FA tokens|https://api.2fa.directory/v2/hardware.json|https://api.2fa.directory/v2/hardware.json.sig|
+|U2F hardware tokens|https://api.2fa.directory/v2/u2f.json|https://api.2fa.directory/v2/u2f.json.sig|
+|RFC-6238 (TOTP)|https://api.2fa.directory/v2/totp.json|https://api.2fa.directory/v2/totp.json.sig|
+|non-RFC-6238 software 2FA|https://api.2fa.directory/v2/proprietary.json|https://api.2fa.directory/v2/proprietary.json.sig|
 
 
 ### Elements
@@ -187,7 +187,7 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
 
 |Coverage|Unsigned file|Signed file|
 |--------|-------------|-----------|
-|All sites|https://2fa.directory/api/v1/data.json|https://2fa.directory/api/v1/data.json.sig|
+|All sites|https://api.2fa.directory/v1/data.json|https://api.2fa.directory/v1/data.json.sig|
 
 ### Elements
 
