@@ -58,6 +58,11 @@
       overflow: clip;
     }
 
+    .name-wrapper {
+      display: inherit;
+      height: inherit;
+    }
+
     .name {
       grid-area: 1 / 1 / 2 / 2;
       line-height: 4.4rem;
@@ -236,6 +241,11 @@
   }
 }
 
+.name-wrapper {
+  display: inherit;
+  height: inherit;
+}
+
 .name {
   font-size: 18px;
   font-weight: 500;
@@ -286,6 +296,7 @@
       font-family: var(--default-font);
       font-weight: 300;
       grid-area: 1 / 1 / 2 / 2;
+      white-space: initial !important;
     }
 
     .note {

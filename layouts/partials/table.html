@@ -32,7 +32,7 @@ Explanation:
   <!-- Display entry -->
   <div class="entry {{ if index $entry "tfa" }}green{{ else }}red{{ end }}" data-domain="{{- $entry.domain -}}">
 
-    <div>
+    <div class="name-wrapper">
         <a class="name" href="{{- with $entry.url -}}{{- . -}}{{- else -}}https://{{- $entry.domain -}}{{- end -}}"><img class="logo" loading="lazy" src="{{ $.icon_path }}{{- with $entry.img -}}{{- substr . 0 1 -}}/{{ . }}{{- else -}}{{- substr $entry.domain 0 1 -}}/{{- $entry.domain -}}.svg{{- end -}}" alt="">{{- htmlUnescape $name -}}</a>
       {{ if index $entry "notes" }}<i class="note bi bi-exclamation-diamond-fill" tabindex="0" data-bs-toggle="popover" data-bs-content="{{ $entry.notes }}"></i>{{ end }}
     </div>
