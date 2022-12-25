@@ -5,10 +5,22 @@
 {{ end }}
 
 <!-- Loop through categories -->
-{{ range $category_name, $category := default site.Data.categories $categories }}
+{{ $categories := default site.Data.categories $categories }}
+{{ range $category_name, $category := $categories }}
+{{ if ne $category_name "other" }}
 <div class="">
   <button id="{{ $category_name }}" class="category-btn" href="#{{ $category_name }}" aria-controls="{{ $category_name }}"><span aria-hidden="true" class="category-icon">{{ htmlUnescape (index $category "icon") }}</span>
     <div>{{ index $category "title" }}</div>
   </button>
 </div>
+{{ end }}
+{{ end }}
+{{ range $category_name, $category := $categories }}
+{{ if eq $category_name "other" }}
+<div class="">
+  <button id="{{ $category_name }}" class="category-btn" href="#{{ $category_name }}" aria-controls="{{ $category_name }}"><span aria-hidden="true" class="category-icon">{{ htmlUnescape (index $category "icon") }}</span>
+    <div>{{ index $category "title" }}</div>
+  </button>
+</div>
+{{ end }}
 {{ end }}
