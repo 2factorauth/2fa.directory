@@ -278,7 +278,7 @@
   }
   .entry {
     padding: 1em;
-    display: inherit;
+    display: grid;
     border-bottom: var(--table-border);
 
     .title {
