@@ -61,6 +61,7 @@
     .name {
       grid-area: 1 / 1 / 2 / 2;
       line-height: 4.4rem;
+      padding: 0 .5em !important;
     }
 
     .note {
@@ -237,6 +238,8 @@
 }
 
 .name {
+  display: inline-block;
+  max-width: 100%;
   font-size: 18px;
   font-weight: 500;
   color: var(--table-text-color) !important;
@@ -276,21 +279,23 @@
   .entry {
     padding: 1em;
     display: grid;
-    grid-template-columns: 2fr;
-    grid-template-rows: auto;
-    grid-column-gap: 0;
-    grid-row-gap: .5em;
     border-bottom: var(--table-border);
+
+    .title {
+      display: grid;
+      grid-auto-flow: column;
+    }
 
     .name {
       font-family: var(--default-font);
       font-weight: 300;
       grid-area: 1 / 1 / 2 / 2;
+      padding: .5em;
     }
 
     .note {
       float: right;
-      margin-right: 1rem;
+      margin-right: .5rem;
       font-size: 2em;
       line-height: 1.2em;
       color: #d03333;
