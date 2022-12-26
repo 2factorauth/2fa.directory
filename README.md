@@ -19,9 +19,9 @@ After you've installed Hugo and Ruby, follow these steps to build the site local
 1. Install Ruby gems
    `bundle install`
 1. Fetch entries:
-   `./generate_entries.rb`
+   `./scripts/generate_entries.rb`
 1. Generate regional pages:
-   `./generate_regions.rb`
+   `./scripts/generate_regions.rb`
 1. Run Hugo locally:
    `hugo serve`  
    The site should then be reachable at [127.0.0.1:1313][localhost].
@@ -40,9 +40,9 @@ To publish your fork of this repo, follow these steps:
 1. Log in to your Cloudflare [Dashboard][cf_dash] and select Pages. Create a new project and select
    your fork as the source.
 2. When prompted for build configuration, enter the following:
-   * __Framework preset:__ `None`
-   * __Build command:__ `./scripts/build.sh`
-   * __Build output directory:__ `/public`
+   * **Framework preset:** `None`
+   * **Build command:** `./scripts/build.sh`
+   * **Build output directory:** `/public`
 
 ## Contributing
 
@@ -64,6 +64,7 @@ The general file structure is as follows:
 This project is licensed under GPLv3. For the entire license see [LICENSE](/LICENSE).
 
 Before you make changes to the code, please keep the following in mind:
+
 * The data is [licensed separately][data_license].
 * Attribution is required if you use this project as a template for your own website.
 * The initial contents of [LICENSE](/LICENSE) must still be included in distributions and forks but we allow (and
