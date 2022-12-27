@@ -8,7 +8,7 @@ wait
 
 # Build site
 echo "Building static site"
-hugo --minify
+hugo --minify -b $base
 
 # Minify HTML
 echo "Minifying HTML content"
