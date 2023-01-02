@@ -13,15 +13,8 @@
 
   {{ $entries := dict }}
   {{ range $name, $entry := (index site.Data.entries $category_name) }}
-    {{ $entries = merge $entries (dict (lower $name) (merge (dict "name" $name) $entry)) $entries }}
+    {{ $entries = merge $entries (dict ($name | lower) (merge (dict "name" $name) $entry)) $entries }}
   {{ end }}
-  
-<div style="display:none">
-    map[i]: {{ reflect.IsMap (index site.Data.entries $category_name) }} |
-    slice[i]: {{ reflect.IsSlice (index site.Data.entries $category_name) }} |
-    map[e]: {{ reflect.IsMap $entries }} |
-    slice[e]: {{ reflect.IsSlice $entries }}
-</div>
 
   {{- partial "table.html" (dict "entries" $entries "region" $a "icon_path" site.Params.default.icon_path ) -}}
 </div>
