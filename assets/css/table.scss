@@ -29,7 +29,7 @@
   }
 
   .entry {
-    padding-left: 1em;
+    padding-left: .5em;
     border-bottom: var(--table-border);
     display: grid;
     line-height: 53px;
@@ -58,17 +58,26 @@
       overflow: clip;
     }
 
+    .title {
+      display: grid;
+      grid-auto-flow: column;
+      justify-content: space-between;
+      :last-child {
+        padding-right: .5em;
+      }
+    }
+
     .name {
       grid-area: 1 / 1 / 2 / 2;
       line-height: 4.4rem;
-      padding: 0 .5em !important;
+      padding: 0 ;
     }
 
     .note {
       float: right;
-      margin-right: 1em;
       font-size: 1.4em;
       color: #db2828;
+      justify-self: end;
     }
 
     .docs {
