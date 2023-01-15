@@ -36,7 +36,7 @@ regions.each do |id, region|
     unless entry_regions.nil?
       included = entry_regions.reject { |r| r.start_with?('-') }
       excluded = entry_regions.select { |r| r.start_with?('-') }.map! { |v| v.tr('-', '') }
-      next unless included&.include?(id) && !excluded.include?(id)
+      next if (!included.empty? && !included&.include?(id)) || excluded.include?(id)
     end
 
     entry['keywords'].each { |category| used_categories.merge!(categories.slice(category)) }
