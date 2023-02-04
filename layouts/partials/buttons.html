@@ -4,23 +4,23 @@
   {{ $categories = index .Site.Data (.Params.Region.id) }}
 {{ end }}
 
-<!-- Loop through categories -->
-{{ $categories := default site.Data.categories $categories }}
-{{ range $category_name, $category := $categories }}
-{{ if ne $category_name "other" }}
+<!-- Loop through categories, move "other" to the end (if present) -->
+{{ $categories = default site.Data.categories $categories }}
+{{ $category_names := slice }}
+{{ range $n, $c := $categories }}
+  {{ if (ne $n "other") }}
+    {{ $category_names = $category_names | append $n }}
+  {{ end }}
+{{ end }}
+{{ if $categories.other }}
+  {{ $category_names = $category_names | append "other" }}
+{{ end }}
+
+{{ range $category_name := $category_names }}
+{{ $category := index $categories $category_name }}
 <div class="">
   <button id="{{ $category_name }}" class="category-btn" href="#{{ $category_name }}" aria-controls="{{ $category_name }}"><span aria-hidden="true" class="category-icon">{{ htmlUnescape (index $category "icon") }}</span>
     <div>{{ index $category "title" }}</div>
   </button>
 </div>
-{{ end }}
-{{ end }}
-{{ range $category_name, $category := $categories }}
-{{ if eq $category_name "other" }}
-<div class="">
-  <button id="{{ $category_name }}" class="category-btn" href="#{{ $category_name }}" aria-controls="{{ $category_name }}"><span aria-hidden="true" class="category-icon">{{ htmlUnescape (index $category "icon") }}</span>
-    <div>{{ index $category "title" }}</div>
-  </button>
-</div>
-{{ end }}
 {{ end }}
