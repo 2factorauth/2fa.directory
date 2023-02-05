@@ -10,6 +10,12 @@
     <div>Hardware</div>
     <div>Software</div>
   </div>
-  {{- partial "table.html" (dict "entries" (index site.Data.entries $category_name) "region" $a "icon_path" site.Params.default.icon_path ) -}}
+
+  {{ $entries := dict }}
+  {{ range $name, $entry := (index site.Data.entries $category_name) }}
+    {{ $entries = merge $entries (dict ($name | lower) (merge (dict "name" $name) $entry)) $entries }}
+  {{ end }}
+
+  {{- partial "table.html" (dict "entries" $entries "region" $a "icon_path" site.Params.default.icon_path ) -}}
 </div>
 {{- end -}}
