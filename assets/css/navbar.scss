@@ -99,7 +99,7 @@ nav {
       color: var(--primary);
     }
 
-    &-moved:not(:focus-within){
+    &-moved{
       bottom: -$back-to-top-size;
     }
   }
