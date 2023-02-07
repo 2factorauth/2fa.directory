@@ -1,9 +1,9 @@
 {{ define "main" }}
 {{ partial "search" }}
 
-<h3 id="categories-title">Categories</h3>
+<h3 id="categories-title" aria-hidden="true">Categories</h3>
 
-<div class="categories">
+<div class="categories" aria-labelledby="categories-title">
   {{ partial "buttons" . }}
   {{ partial "tables.html" .Params.Region.id }}
 </div>
