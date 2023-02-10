@@ -46,7 +46,7 @@ Explanation:
         {{- end -}}
       </div>
 
-      <ul aria-label="Supported 2FA methods" class="tfa-summary" aria-hidden="false">
+      <ul aria-label="Supported 2FA methods" class="tfa-summary">
         {{- if in $entry.tfa "sms" -}}<li>SMS</li>{{- end -}}
         {{- if in $entry.tfa "email" -}}<li>Email</li>{{- end -}}
         {{- if in $entry.tfa "call" -}}<li>Phone Calls</li>{{- end -}}
