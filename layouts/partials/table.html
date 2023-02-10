@@ -15,19 +15,16 @@
 
 <!--
 Explanation:
-   if $a is null
-      OR
-      $region_excluded contains ( "-" + $a )
-      OR
-      $region_included.length === 0
-      OR
-      $region_included contains $a
+   if (
+        ($a is null)
+        OR
+        ($region_included.length === 0 OR $region_included contains $a)
+      )
+      AND
+      $region_excluded !contains ( "-" + $a ))
 -->
-{{- if or
-          (eq $a nil)
-          (in $region_excluded (printf "-%s" $a) )
-          (eq (len $region_included) 0)
-          (in $region_included $a)
+{{- if (and (or (eq $a nil) (or (in $region_included $a) (eq (len $region_included) 0)))
+       (not (in $region_excluded (printf "-%s" $a))))
 -}}
   <!-- Display entry -->
   <div aria-label="{{ $name }}" class="entry {{ if index $entry "tfa" }}green{{ else }}red{{ end }}" data-domain="{{- $entry.domain -}}">
