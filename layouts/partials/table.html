@@ -27,10 +27,10 @@ Explanation:
        (not (in $region_excluded (printf "-%s" $a))))
 -}}
   <!-- Display entry -->
-  <div aria-label="{{ $name }}" class="entry {{ if index $entry "tfa" }}green{{ else }}red{{ end }}" data-domain="{{- $entry.domain -}}">
+  <div aria-label="{{ $entry.name }}" class="entry {{ if index $entry "tfa" }}green{{ else }}red{{ end }}" data-domain="{{- $entry.domain -}}">
 
     <div aria-hidden="true" class="title">
-        <a class="name" href="{{- with $entry.url -}}{{- . -}}{{- else -}}https://{{- $entry.domain -}}{{- end -}}" title="{{- htmlUnescape $name -}}"><img class="logo" loading="lazy" src="{{ $.icon_path }}{{- with $entry.img -}}{{- substr . 0 1 -}}/{{ . }}{{- else -}}{{- substr $entry.domain 0 1 -}}/{{- $entry.domain -}}.svg{{- end -}}" aria-hidden="true" alt="">{{- htmlUnescape $name -}}</a>
+        <a class="name" href="{{- with $entry.url -}}{{- . -}}{{- else -}}https://{{- $entry.domain -}}{{- end -}}" title="{{- htmlUnescape $entry.name -}}"><img class="logo" loading="lazy" src="{{ $.icon_path }}{{- with $entry.img -}}{{- substr . 0 1 -}}/{{ . }}{{- else -}}{{- substr $entry.domain 0 1 -}}/{{- $entry.domain -}}.svg{{- end -}}" aria-hidden="true" alt="">{{- htmlUnescape $entry.name -}}</a>
       {{ if index $entry "notes" }}<i class="note bi bi-exclamation-diamond-fill" tabindex="0" data-bs-toggle="popover" data-bs-content="{{ $entry.notes }}"></i>{{ end }}
     </div>
     {{- if index $entry "tfa" -}}
