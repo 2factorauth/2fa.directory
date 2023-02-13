@@ -4,8 +4,20 @@
   {{ $categories = index .Site.Data (.Params.Region.id) }}
 {{ end }}
 
-<!-- Loop through categories -->
-{{ range $category_name, $category := default site.Data.categories $categories }}
+<!-- Loop through categories, move "other" to the end (if present) -->
+{{ $categories = default site.Data.categories $categories }}
+{{ $category_names := slice }}
+{{ range $n, $c := $categories }}
+  {{ if (ne $n "other") }}
+    {{ $category_names = $category_names | append $n }}
+  {{ end }}
+{{ end }}
+{{ if $categories.other }}
+  {{ $category_names = $category_names | append "other" }}
+{{ end }}
+
+{{ range $category_name := $category_names }}
+{{ $category := index $categories $category_name }}
 <div class="">
   <button id="{{ $category_name }}" class="category-btn" href="#{{ $category_name }}" aria-controls="{{ $category_name }}"><span aria-hidden="true" class="category-icon">{{ htmlUnescape (index $category "icon") }}</span>
     <div>{{ index $category "title" }}</div>
