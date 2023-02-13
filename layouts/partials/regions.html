@@ -1,6 +1,6 @@
 <div aria-labelledby="regionDropdown" class="dropdown-menu dropdown-menu-end ">
   <a class="dropdown-item" href="/int/"><span class="fi fi-un"></span> <b>Global</b></a>
   {{- range sort . "name" -}}
-    <a class="dropdown-item" href="/{{- .id -}}/"><span class="fi fi-{{ .id }}"></span> {{ .name -}}</a>
+    <a class="dropdown-item" href="/{{- .id -}}/"><span class="fi fi-{{ .id }}{{ if .square_flag }} fis{{ end }}"></span> {{ .name -}}</a>
   {{- end -}}
 </div>

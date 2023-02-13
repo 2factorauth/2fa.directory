@@ -8,7 +8,7 @@
     {{ if eq .Layout "tables" }}
       <a class="nav-link dropdown-toggle" id="regionDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" aria-haspopup="true" aria-label="Choose region" tabindex="0">
         {{ if .Params.Region.id }}
-          <span class="fi fi-{{- .Params.Region.id -}}" aria-hidden="true"></span>
+          <span class="fi fi-{{- .Params.Region.id -}}{{ if .Params.Region.square_flag }} fis{{ end }}" aria-hidden="true"></span>
         {{- else -}}
           <span class="bi bi-globe" aria-hidden="true"></span>
         {{ end }}

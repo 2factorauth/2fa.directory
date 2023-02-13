@@ -110,3 +110,8 @@ nav {
     display: none;
   }
 }
+
+// Square flags should still be centered (like 4x3 ones)
+.fis {
+  width: 1.33333333em !important;
+}
