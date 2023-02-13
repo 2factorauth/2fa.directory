@@ -4,6 +4,24 @@ $(document).ready(() => {
   if (query && query.indexOf('#') > -1) showCategory(query.substring(1));
 });
 
+const backToTopElement = $('.back-to-top-link');
+function handleBackToTop( forceHide ) {
+  if (forceHide || $(document).scrollTop() <= 500){
+    backToTopElement.addClass('back-to-top-link-moved');
+  } else {
+    backToTopElement.removeClass('back-to-top-link-moved');
+  }
+}
+
+var scrollTimeout;
+window.addEventListener("scroll", (event) => {
+  window.clearTimeout(scrollTimeout);
+  scrollTimeout = setTimeout(function() {
+    handleBackToTop(true)
+  }, 2000);
+  handleBackToTop(false);
+});
+
 $(window).on('hashchange', async () => {
   const query = window.location.hash;
   if (query && query.indexOf('#') > -1) await showCategory(query.substring(1));
