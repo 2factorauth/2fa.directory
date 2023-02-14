@@ -24,11 +24,6 @@ regions.each do |id, region|
   next unless region['count'] >= 10 && !id.eql?('int')
 
   used_regions.push(id)
-  dir = "content/#{id}"
-  FileUtils.mkdir_p dir
-  File.open("#{dir}/_index.md", 'w') do |file|
-    file.write("---\nlayout: tables\nregion:\n  id: \"#{id}\"\n  name: \"#{region['name']}\"\n---")
-  end
 
   used_categories = {}
   entries.each do |_, entry|
@@ -58,8 +53,17 @@ all_regions.merge!({ 'us' => 'United States',
                      'kr' => 'South Korea' })
 
 # Flags for these regions should have square geometry
-square_flags = [ "ch", "np", "va" ]
+square_flags = %w[ch np va]
 
 # Change output format to array of hashmaps
 output = all_regions.map { |k, v| { 'id' => k, 'name' => v, 'square_flag' => square_flags.include?(k) } }
 File.open('data/regions.yml', 'w') { |file| file.write output.to_yaml }
+
+output.each do |region|
+  dir = "content/#{region['id']}"
+  FileUtils.mkdir_p dir
+  File.open("#{dir}/_index.md", 'w') do |file|
+    file.write("---\nlayout: tables\nregion:\n  id: \"#{region['id']}\"\n"\
+               "  name: \"#{region['name']}\"\n  square_flag: #{region['square_flag']}\n---")
+  end
+end
