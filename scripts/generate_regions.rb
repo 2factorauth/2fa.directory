@@ -57,6 +57,9 @@ all_regions.merge!({ 'us' => 'United States',
                      'ru' => 'Russia',
                      'kr' => 'South Korea' })
 
+# Flags for these regions should have square geometry
+square_flags = [ "ch", "np", "va" ]
+
 # Change output format to array of hashmaps
-output = all_regions.map { |k, v| { 'id' => k, 'name' => v } }
+output = all_regions.map { |k, v| { 'id' => k, 'name' => v, 'square_flag' => square_flags.include?(k) } }
 File.open('data/regions.yml', 'w') { |file| file.write output.to_yaml }
