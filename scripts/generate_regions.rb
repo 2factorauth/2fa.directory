@@ -24,11 +24,6 @@ regions.each do |id, region|
   next unless region['count'] >= 10 && !id.eql?('int')
 
   used_regions.push(id)
-  dir = "content/#{id}"
-  FileUtils.mkdir_p dir
-  File.open("#{dir}/_index.md", 'w') do |file|
-    file.write("---\nlayout: tables\nregion:\n  id: \"#{id}\"\n  name: \"#{region['name']}\"\n---")
-  end
 
   used_categories = {}
   entries.each do |_, entry|
@@ -44,11 +39,10 @@ regions.each do |id, region|
   File.open("./data/#{id}.json", 'w') { |file| file.write JSON.generate used_categories.sort.to_h }
 end
 
-all_regions = {}
-API.fetch('https://raw.githubusercontent.com/stefangabos/world_countries/master/data/countries/en/world.json')
-   .select do |region|
-  all_regions[region['alpha2']] = region['name'] if used_regions.include? region['alpha2']
-end
+all_regions = API.fetch('https://raw.githubusercontent.com/stefangabos/world_countries/master/data/countries/en/world.json')
+                 .select { |region| used_regions.include?(region['alpha2']) }
+                 .map { |region| [region['alpha2'], region['name']] }
+                 .to_h
 
 # Change long official names
 all_regions.merge!({ 'us' => 'United States',
@@ -58,8 +52,19 @@ all_regions.merge!({ 'us' => 'United States',
                      'kr' => 'South Korea' })
 
 # Flags for these regions should have square geometry
-square_flags = [ "ch", "np", "va" ]
+square_flags = %w[ch np va]
 
 # Change output format to array of hashmaps
-output = all_regions.map { |k, v| { 'id' => k, 'name' => v, 'square_flag' => square_flags.include?(k) } }
+output = all_regions.map do |k, v|
+  { 'id' => k, 'name' => v }
+    .tap { |h| h['square_flag'] = 1 if square_flags.include?(k) }
+end
 File.open('data/regions.yml', 'w') { |file| file.write output.to_yaml }
+
+output.each do |region|
+  dir = "content/#{region['id']}"
+  FileUtils.mkdir_p dir
+  File.open("#{dir}/_index.md", 'w') do |file|
+    file.write("#{{ 'layout' => 'tables', 'region' => region }.to_yaml}---")
+  end
+end
