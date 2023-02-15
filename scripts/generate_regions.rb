@@ -19,19 +19,25 @@ categories = JSON.parse(File.read('./data/categories.json'))
 regions = API.fetch('https://api.2fa.directory/v3/regions.json')
 entries = API.fetch('https://api.2fa.directory/v3/all.json')
 
-used_regions = regions.filter_map do |id, region|
-  if region['count'] >= 10 && id != 'int'
-    entries.filter_map do |_, e|
-      e_regions = e['regions']
-      if e_regions.nil? || (e_regions.any? { |r| !r.start_with?('-') && r == id } &&
-        e_regions.none? { |r| r.start_with?('-') && r.tr('-', '') == id })
-        r_categories = e['keywords'].map { |category| categories.slice(category) }.reduce(&:merge)
-        File.write("./data/#{id}.json", JSON.generate(r_categories.sort.to_h))
-        id
-      end
+used_regions = []
+regions.each do |id, region|
+  next unless region['count'] >= 10 && !id.eql?('int')
+
+  used_regions.push(id)
+
+  used_categories = {}
+  entries.each do |_, entry|
+    entry_regions = entry['regions']
+    unless entry_regions.nil?
+      included = entry_regions.reject { |r| r.start_with?('-') }
+      excluded = entry_regions.select { |r| r.start_with?('-') }.map! { |v| v.tr('-', '') }
+      next if (!included.empty? && !included&.include?(id)) || excluded.include?(id)
     end
+
+    entry['keywords'].each { |category| used_categories.merge!(categories.slice(category)) }
   end
-end.flatten.uniq
+  File.open("./data/#{id}.json", 'w') { |file| file.write JSON.generate used_categories.sort.to_h }
+end
 
 all_regions = API.fetch('https://raw.githubusercontent.com/stefangabos/world_countries/master/data/countries/en/world.json')
                  .select { |region| used_regions.include?(region['alpha2']) }
