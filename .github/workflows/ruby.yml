@@ -1,5 +1,5 @@
 on: [ pull_request, push ]
-name: Test Ruby scripts
+name: Test Ruby
 jobs:
   ruby:
     runs-on: ubuntu-latest
