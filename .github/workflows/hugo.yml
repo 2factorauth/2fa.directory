@@ -13,6 +13,7 @@ jobs:
         with:
           # Hugo version needs to be the same as on Cloudflare
           hugo-version: '0.105.0'
+          extended: true
       - name: Build website
         run: ./scripts/build.sh
         env:
