@@ -1,0 +1,13 @@
+on: [ pull_request, push ]
+name: Test Hugo build
+jobs:
+  hugo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: peaceiris/actions-hugo@v2
+        with:
+          # Hugo version needs to be the same as on Cloudflare
+          hugo-version: '0.105.0'
+      - name: Build website
+        run: ./scripts/build.sh
