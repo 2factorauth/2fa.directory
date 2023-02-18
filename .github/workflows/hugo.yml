@@ -1,0 +1,20 @@
+on: [ pull_request, push ]
+name: Test Hugo
+jobs:
+  hugo:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+      - run: |
+          npm i
+          echo "$GITHUB_WORKSPACE/node_modules/.bin" >> $GITHUB_PATH
+      - uses: peaceiris/actions-hugo@v2
+        with:
+          # Hugo version needs to be the same as on Cloudflare
+          hugo-version: '0.105.0'
+          extended: true
+      - name: Build website
+        run: ./scripts/build.sh
+        env:
+          base: 'https://2fa.directory/'

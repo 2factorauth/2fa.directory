@@ -1,0 +1,17 @@
+on: [ pull_request, push ]
+name: Test Ruby
+jobs:
+  ruby:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+          bundler-cache: true
+      - name: Run Rubocop
+        run: bundle exec rubocop
+      - name: Generate Entries
+        run: ./scripts/generate_entries.rb
+      - name: Generate Regions
+        run: ./scripts/generate_regions.rb
