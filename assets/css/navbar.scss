@@ -66,14 +66,16 @@ nav {
   }
 
   .dropdown-menu {
+    background: var(--secondary-background);
     column-count: 2;
     z-index: 1100;
     @media screen and (max-width: 445px) {
       left: 0 !important;
     }
-    @media (prefers-color-scheme: dark) {
-      color-scheme: light;
-    }
+  }
+
+  .dropdown-item {
+    color: var(--bs-nav-link-color);
   }
 }
 
