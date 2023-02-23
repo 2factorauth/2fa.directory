@@ -1,6 +1,6 @@
 {{ $a := . }}
 {{- range $category_name, $category := site.Data.categories -}}
-<div id="{{ $category_name }}"  autofocus role="table" aria-selected="true" aria-labelledby="{{ $category_name }}" data-table="{{ $category_name }}" class="table collapse">
+<div id="{{ $category_name }}" role="table" aria-selected="true" aria-label="{{ index $category "title" }}" data-table="{{ $category_name }}" class="table collapse">
   <div aria-hidden="true" class="table-head">
     <div>{{ index $category "title" }}</div>
     <div>Docs</div>
