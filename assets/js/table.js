@@ -51,6 +51,7 @@ function showCategory(category) {
   }).collapse("show");
   $(`.category-btn:not([href^="#${category}"])`).removeClass('active');
   $(button).addClass('active');
+  $('html, body').animate({ scrollTop: button.offset().top }, 'slow');
 }
 
 // Initialise popovers
