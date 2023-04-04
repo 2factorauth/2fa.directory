@@ -16,14 +16,14 @@ $('.search').on('input', function () {
 })
 
 function sendSearch(query) {
-  $('.entry.hit').removeClass('hit');
-  if (query === undefined || query === "") {
+  if (query === undefined || query === "" || query.length < 3 || query.match('http(s)?:\/\/.*') || query.match('^2fa(:)?$')) {
     $('.category-btn').parent().show();
     $('.table').removeClass('show');
     $('.categories').removeClass('search-results');
     $('.entry:not(.hit)').show();
     $('.entries.hit').removeClass('hit');
   } else {
+    $('.entry.hit').removeClass('hit');
     // Hide category buttons
     $('.category-btn').parent().hide();
 
