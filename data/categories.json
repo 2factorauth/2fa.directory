@@ -2,7 +2,7 @@
   "backup": {
     "name": "backup",
     "title": "Backup and Sync",
-    "icon": "&#xF6F9;"
+    "icon": "&#xF6F8;"
   },
   "banking": {
     "title": "Banking",
@@ -10,19 +10,19 @@
   },
   "betting": {
     "title": "Betting",
-    "icon": "&#xF5E7;"
+    "icon": "&#xF5E6;"
   },
   "cloud": {
     "title": "Cloud Computing",
-    "icon": "&#xF2C1;"
+    "icon": "&#xF29E;"
   },
   "communication": {
     "title": "Communication",
-    "icon": "&#xF24D;"
+    "icon": "&#xF24C;"
   },
   "creativity": {
     "title": "Creativity",
-    "icon": "&#xF4B1;"
+    "icon": "&#xF4B0;"
   },
   "crowdfunding": {
     "title": "Crowdfunding",
@@ -34,7 +34,7 @@
   },
   "developer": {
     "title": "Developer",
-    "icon": "&#xF2C6;"
+    "icon": "&#xF70E;"
   },
   "domains": {
     "title": "Domains",
@@ -46,11 +46,11 @@
   },
   "email": {
     "title": "Email",
-    "icon": "&#xF32F;"
+    "icon": "&#xF84B;"
   },
   "entertainment": {
     "title": "Entertainment",
-    "icon": "&#xF4F3;"
+    "icon": "&#xF4F2;"
   },
   "finance": {
     "title": "Finance",
@@ -74,11 +74,11 @@
   },
   "hosting": {
     "title": "Hosting/VPS",
-    "icon": "&#xF411;"
+    "icon": "&#xF410;"
   },
   "hotels": {
     "title": "Hotels and Accommodations",
-    "icon": "&#xF1DD;"
+    "icon": "&#xF87C;"
   },
   "identity": {
     "title": "Identity Management",
@@ -98,7 +98,7 @@
   },
   "marketing": {
     "title": "Marketing & Analytics",
-    "icon": "&#xF484;"
+    "icon": "&#xF483;"
   },
   "other": {
     "title": "Other",
@@ -110,7 +110,7 @@
   },
   "postal": {
     "title": "Post and Shipping",
-    "icon": "&#xF47C;"
+    "icon": "&#xF47D;"
   },
   "remote": {
     "title": "Remote Access",
@@ -118,15 +118,15 @@
   },
   "retail": {
     "title": "Retail",
-    "icon": "&#xF244;"
+    "icon": "&#xF23D;"
   },
   "security": {
     "title": "Security",
-    "icon": "&#xF538;"
+    "icon": "&#xF537;"
   },
   "social": {
     "title": "Social",
-    "icon": "&#xF4D0;"
+    "icon": "&#xF4CF;"
   },
   "task": {
     "title": "Task Management",
@@ -134,11 +134,11 @@
   },
   "tickets": {
     "title": "Tickets and Events",
-    "icon": "&#xF6CA;"
+    "icon": "&#xF6C9;"
   },
   "transport": {
     "title": "Transport",
-    "icon": "&#xF7CD;"
+    "icon": "&#xF7CC;"
   },
   "universities": {
     "title": "Universities",
@@ -146,7 +146,7 @@
   },
   "utilities": {
     "title": "Utilities",
-    "icon": "&#xF5C1;"
+    "icon": "&#xF5B4;"
   },
   "vpn": {
     "title": "VPN Providers",
