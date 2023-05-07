@@ -102,7 +102,7 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
       "contact": {
         "twitter": "example",
         "facebook": "example",
-        "email": "example@example.com",
+        "email": "example@example.com"
       },
       "categories": [
         "category1",
