@@ -184,7 +184,7 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
 
 ### URIs
 
-|Coverage|Unsigned file|Signed file|
+|Coverage|Unsigned File|Signed File|
 |--------|-------------|-----------|
 |All sites|[/v1/data.json](https://api.2fa.directory/v1/data.json)|[/v1/data.json.sig](https://api.2fa.directory/v1/data.json.sig)|
 
