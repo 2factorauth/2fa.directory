@@ -104,9 +104,9 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
         "facebook": "example",
         "email": "example@example.com"
       },
-      "categories": [
-        "category1",
-        "category2"
+      "keywords": [
+        "keyword1",
+        "keyword2"
       ]
     }
   ]
