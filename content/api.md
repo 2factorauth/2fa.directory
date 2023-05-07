@@ -116,7 +116,7 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
 
 ### URIs
 
-|Coverage|Unsigned File|Signed File|
+|Coverage|Unsigned File|PGP Signed File|
 |--------|-------------|-----------|
 |All sites|[/v2/all.json](https://api.2fa.directory/v2/all.json)|[v2/all.json.sig](https://api.2fa.directory/v2/all.json.sig)|
 |All 2FA-supporting sites|[/v2/tfa.json](https://api.2fa.directory/v2/tfa.json)|[v2/tfa.json.sig](https://api.2fa.directory/v2/tfa.json.sig)|
@@ -184,7 +184,7 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
 
 ### URIs
 
-|Coverage|Unsigned File|Signed File|
+|Coverage|Unsigned File|PGP Signed File|
 |--------|-------------|-----------|
 |All sites|[/v1/data.json](https://api.2fa.directory/v1/data.json)|[/v1/data.json.sig](https://api.2fa.directory/v1/data.json.sig)|
 
