@@ -82,9 +82,9 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
       ],
       "documentation": "<link to site TFA documentation>",
       "recovery": "<link to site TFA recovery documentation>",
-      "categories": [
-        "category1",
-        "category2"
+      "keywords": [
+        "keyword1",
+        "keyword2"
       ]
     }
   ]
