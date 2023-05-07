@@ -18,24 +18,23 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
 
 ### URIs
 
-|Coverage|Unsigned file|Signed file|
+|Coverage|Unsigned File|PGP Signed File|
 |--------|-------------|-----------|
-|All sites|https://api.2fa.directory/v3/all.json|https://api.2fa.directory/v3/all.json.sig|
-|All 2FA-supporting sites|https://api.2fa.directory/v3/tfa.json|https://api.2fa.directory/v3/tfa.json.sig|
-|SMS|https://api.2fa.directory/v3/sms.json|https://api.2fa.directory/v3/sms.json.sig|
-|Phone calls|https://api.2fa.directory/v3/call.json|https://api.2fa.directory/v3/call.json.sig|
-|Email 2FA|https://api.2fa.directory/v3/email.json|https://api.2fa.directory/v3/email.json.sig|
-|non-U2F hardware 2FA tokens|https://api.2fa.directory/v3/custom-hardware.json|https://api.2fa.directory/v3/custom-hardware.json.sig|
-|U2F hardware tokens|https://api.2fa.directory/v3/u2f.json|https://api.2fa.directory/v3/u2f.json.sig|
-|RFC-6238 (TOTP)|https://api.2fa.directory/v3/totp.json|https://api.2fa.directory/v3/totp.json.sig|
-|non-RFC-6238 software 2FA|https://api.2fa.directory/v3/custom-software.json|https://api.2fa.directory/v3/custom-software.json.sig|
-
+|All sites|[/v3/all.json](https://api.2fa.directory/v3/all.json)|[/v3/all.json.sig](https://api.2fa.directory/v3/all.json.sig)|
+|All 2FA-supporting sites|[/v3/tfa.json](https://api.2fa.directory/v3/tfa.json)|[/v3/tfa.json.sig](https://api.2fa.directory/v3/tfa.json.sig)|
+|SMS|[/v3/sms.json](https://api.2fa.directory/v3/sms.json)|[/v3/sms.json.sig](https://api.2fa.directory/v3/sms.json.sig)|
+|Phone calls|[/v3/call.json](https://api.2fa.directory/v3/call.json)|[/v3/call.json.sig](https://api.2fa.directory/v3/call.json.sig)|
+|Email 2FA|[/v3/email.json](https://api.2fa.directory/v3/email.json)|[/v3/email.json.sig](https://api.2fa.directory/v3/email.json.sig)|
+|non-U2F hardware 2FA tokens|[/v3/custom-hardware.json](https://api.2fa.directory/v3/custom-hardware.json)|[/v3/custom-hardware.json.sig](https://api.2fa.directory/v3/custom-hardware.json.sig)|
+|U2F hardware tokens|[/v3/u2f.json](https://api.2fa.directory/v3/u2f.json)|[/v3/u2f.json.sig](https://api.2fa.directory/v3/u2f.json.sig)|
+|RFC-6238 (TOTP)|[/v3/totp.json](https://api.2fa.directory/v3/totp.json)|[/v3/totp.json.sig](https://api.2fa.directory/v3/totp.json.sig)|
+|non-RFC-6238 software 2FA|[/v3/custom-software.json](https://api.2fa.directory/v3/custom-software.json)|[/v3/custom-software.json.sig](https://api.2fa.directory/v3/custom-software.json.sig)|
 
 ### Elements
 
-|Key|Value|Always defined|Description|
-|---|-----|---------------|-----------|
-|domain|hostname|:heavy_check_mark:|The domain name of the service|
+|Key|Value Type|Always Defined|Description|
+|---|-----|:------------:|-----------|
+|domain|<define>FQDN</define>|:heavy_check_mark:|The domain name of the service|
 |img|String||Image name used. If this is not defined, the image name is `domain`.svg|
 |url|URL||URL of the site. If this is not defined, the url is https://`domain`|
 |tfa|Array\<String>||Array containing all supported 2FA methods|
@@ -49,8 +48,8 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
 |keywords|Array\<String>|:heavy_check_mark:|Array of categories to which the site belongs|
 
 #### Contact Object Elements
-|Key|Value|Always defined|Description|
-|---|-----|---------------|-----------|
+|Key|Value|Always Defined|Description|
+|---|-----|:------------:|-----------|
 |twitter|String||Twitter handle|
 |facebook|String||Facebook page name|
 |email|String||Email address to support|
@@ -117,23 +116,22 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
 
 ### URIs
 
-|Coverage|Unsigned file|Signed file|
+|Coverage|Unsigned File|Signed File|
 |--------|-------------|-----------|
-|All sites|https://api.2fa.directory/v2/all.json|https://api.2fa.directory/v2/all.json.sig|
-|All 2FA-supporting sites|https://api.2fa.directory/v2/tfa.json|https://api.2fa.directory/v2/tfa.json.sig|
-|SMS|https://api.2fa.directory/v2/sms.json|https://api.2fa.directory/v2/sms.json.sig|
-|Phone calls|https://api.2fa.directory/v2/phone.json|https://api.2fa.directory/v2/phone.json.sig|
-|Email 2FA|https://api.2fa.directory/v2/email.json|https://api.2fa.directory/v2/email.json.sig|
-|non-U2F hardware 2FA tokens|https://api.2fa.directory/v2/hardware.json|https://api.2fa.directory/v2/hardware.json.sig|
-|U2F hardware tokens|https://api.2fa.directory/v2/u2f.json|https://api.2fa.directory/v2/u2f.json.sig|
-|RFC-6238 (TOTP)|https://api.2fa.directory/v2/totp.json|https://api.2fa.directory/v2/totp.json.sig|
-|non-RFC-6238 software 2FA|https://api.2fa.directory/v2/proprietary.json|https://api.2fa.directory/v2/proprietary.json.sig|
-
+|All sites|[/v2/all.json](https://api.2fa.directory/v2/all.json)|[v2/all.json.sig](https://api.2fa.directory/v2/all.json.sig)|
+|All 2FA-supporting sites|[/v2/tfa.json](https://api.2fa.directory/v2/tfa.json)|[v2/tfa.json.sig](https://api.2fa.directory/v2/tfa.json.sig)|
+|SMS|[/v2/sms.json](https://api.2fa.directory/v2/sms.json)|[v2/sms.json.sig](https://api.2fa.directory/v2/sms.json.sig)|
+|Phone calls|[/v2/phone.json](https://api.2fa.directory/v2/phone.json)|[v2/phone.json.sig](https://api.2fa.directory/v2/phone.json.sig)|
+|Email 2FA|[/v2/email.json](https://api.2fa.directory/v2/email.json)|[v2/email.json.sig](https://api.2fa.directory/v2/email.json.sig)|
+|non-U2F hardware 2FA tokens|[/v2/hardware.json](https://api.2fa.directory/v2/hardware.json)|[v2/hardware.json.sig](https://api.2fa.directory/v2/hardware.json.sig)|
+|U2F hardware tokens|[/v2/u2f.json](https://api.2fa.directory/v2/u2f.json)|[v2/u2f.json.sig](https://api.2fa.directory/v2/u2f.json.sig)|
+|RFC-6238 (TOTP)|[/v2/totp.json](https://api.2fa.directory/v2/totp.json)|[v2/totp.json.sig](https://api.2fa.directory/v2/totp.json.sig)|
+|non-RFC-6238 software 2FA|[/v2/proprietary.json](https://api.2fa.directory/v2/proprietary.json)|[v2/proprietary.json.sig](https://api.2fa.directory/v2/proprietary.json.sig)|
 
 ### Elements
 
-|Key|Value|Always defined|Description|
-|---|-----|---------------|-----------|
+|Key|Value Type|Always Defined|Description|
+|---|-----|:------------:|-----------|
 |url|URL|:heavy_check_mark:|URL to the main page of the site/service|
 |img|String|:heavy_check_mark:|Image name used|
 |tfa|Array\<String>||Array containing all supported 2FA methods|
@@ -188,12 +186,12 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
 
 |Coverage|Unsigned file|Signed file|
 |--------|-------------|-----------|
-|All sites|https://api.2fa.directory/v1/data.json|https://api.2fa.directory/v1/data.json.sig|
+|All sites|[/v1/data.json](https://api.2fa.directory/v1/data.json)|[/v1/data.json.sig](https://api.2fa.directory/v1/data.json.sig)|
 
 ### Elements
 
-|Key|Value|Always defined|Description|
-|---|-----|---------------|-----------|
+|Key|Value Type|Always Defined|Description|
+|---|-----|:------------:|-----------|
 |url|URL|:heavy_check_mark:|URL to the main page of the site/service|
 |img|String|:heavy_check_mark:|Image name used|
 |tfa|Boolean|:heavy_check_mark:|2FA support|
