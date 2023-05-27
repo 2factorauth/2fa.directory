@@ -226,3 +226,27 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
 ```
 
 ### Example website with 2FA enabled
+
+```JSON
+{
+  "Category name": {
+    "Website name": {
+      "name": "Website name",
+      "url": "https://example.com/",
+      "img": "example.png",
+      "tfa": true,
+      "sms": true,
+      "phone": true,
+      "email": true,
+      "software": true,
+      "hardware": true,
+      "doc": "https://example.com/documention/enable-2fa/",
+      "exceptions": {
+        "text": "Text describing any discrepancies in the 2FA implementation."
+      }
+    }   
+  }
+}
+```
+
+If a website only supports some 2FA methods, the unsupported 2FA methods won't be listed (i.e. NULL).
