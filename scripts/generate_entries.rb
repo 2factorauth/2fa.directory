@@ -7,11 +7,7 @@ require 'json'
 require 'uri'
 
 path = ENV['LOCAL_2FA_PATH']
-if path
-  response = File.read(path+'/api/v3/all.json')
-else
-  response = Net::HTTP.get URI('https://api.2fa.directory/v3/all.json')
-end
+response = path ? File.read("#{path}/api/v3/all.json") : Net::HTTP.get(URI('https://api.2fa.directory/v3/all.json'))
 entries = {}
 
 JSON.parse(response).each do |name, website|

@@ -19,8 +19,8 @@ categories = JSON.parse(File.read('./data/categories.json'))
 
 path = ENV['LOCAL_2FA_PATH']
 if path
-  regions = JSON.parse(File.read(path+'/api/v3/regions.json'))
-  entries = JSON.parse(File.read(path+'/api/v3/all.json'))
+  regions = JSON.parse(File.read("#{path}/api/v3/regions.json"))
+  entries = JSON.parse(File.read("#{path}/api/v3/all.json"))
 else
   regions = API.fetch('https://api.2fa.directory/v3/regions.json')
   entries = API.fetch('https://api.2fa.directory/v3/all.json')
