@@ -14,7 +14,7 @@ If you intend to query our JSON files often and with a lot of traffic, you may b
 
 If you only intent on using a specific dataset, like all sites supporting RFC-6238, we recommend that you use the URI which lists just that. See [URIs](#uris) for a list of available paths. The smaller the better.
 
-## Version 3 {#version_3}
+## Version 3 {#v3}
 
 ### URIs
 
@@ -112,72 +112,10 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
 ]
 ```
 
-## Version 2 {#version_2}
+## Version 2 {#v2}
 
-{{% warning title="⚠️ Deprecated" %}} API version 2 will be sunset on 2023-08-01. Please update your code to use [version 3](#version_3) before then.{{% /warning %}}
+API version 2 is no longer available. If you use this version, please upgrade to [version 3](#v3).
 
-### URIs
+## Version 1 {#v1}
 
-| Coverage                    | Unsigned File                                                         | PGP Signed File                                                              |
-|-----------------------------|-----------------------------------------------------------------------|------------------------------------------------------------------------------|
-| All sites                   | [/v2/all.json](https://api.2fa.directory/v2/all.json)                 | [v2/all.json.sig](https://api.2fa.directory/v2/all.json.sig)                 |
-| All 2FA-supporting sites    | [/v2/tfa.json](https://api.2fa.directory/v2/tfa.json)                 | [v2/tfa.json.sig](https://api.2fa.directory/v2/tfa.json.sig)                 |
-| SMS                         | [/v2/sms.json](https://api.2fa.directory/v2/sms.json)                 | [v2/sms.json.sig](https://api.2fa.directory/v2/sms.json.sig)                 |
-| Phone calls                 | [/v2/phone.json](https://api.2fa.directory/v2/phone.json)             | [v2/phone.json.sig](https://api.2fa.directory/v2/phone.json.sig)             |
-| Email 2FA                   | [/v2/email.json](https://api.2fa.directory/v2/email.json)             | [v2/email.json.sig](https://api.2fa.directory/v2/email.json.sig)             |
-| non-U2F hardware 2FA tokens | [/v2/hardware.json](https://api.2fa.directory/v2/hardware.json)       | [v2/hardware.json.sig](https://api.2fa.directory/v2/hardware.json.sig)       |
-| U2F hardware tokens         | [/v2/u2f.json](https://api.2fa.directory/v2/u2f.json)                 | [v2/u2f.json.sig](https://api.2fa.directory/v2/u2f.json.sig)                 |
-| RFC-6238 (TOTP)             | [/v2/totp.json](https://api.2fa.directory/v2/totp.json)               | [v2/totp.json.sig](https://api.2fa.directory/v2/totp.json.sig)               |
-| non-RFC-6238 software 2FA   | [/v2/proprietary.json](https://api.2fa.directory/v2/proprietary.json) | [v2/proprietary.json.sig](https://api.2fa.directory/v2/proprietary.json.sig) |
-
-### Elements
-
-| Key           | Value Type     |   Always Defined   | Description                                                 |
-|---------------|----------------|:------------------:|-------------------------------------------------------------|
-| url           | URL            | :heavy_check_mark: | URL to the main page of the site/service                    |
-| img           | String         | :heavy_check_mark: | Image name used                                             |
-| tfa           | Array\<String> |                    | Array containing all supported 2FA methods                  |
-| doc           | URL            |                    | URL to documentation page                                   |
-| exception     | String         |                    | Text describing any discrepancies in the 2FA implementation |
-| twitter       | String         |                    | Twitter handle                                              |
-| facebook      | String         |                    | Facebook page name                                          |
-| email_address | String         |                    | Email address to support                                    |
-
-### Example website with 2FA enabled
-
-```JSON
-{
-  "Category name": {
-    "Website name": {
-      "url": "https://example.com/",
-      "img": "example.png",
-      "tfa": [
-        "sms",
-        "phone",
-        "hardware",
-        "totp",
-        "proprietary",
-        "u2f"
-      ],
-      "doc": "https://example.com/documention/enable-2fa/",
-      "exception": "Text describing any discrepancies in the 2FA implementation."
-    }
-  }
-}
-```
-
-### Example website with 2FA disabled
-
-```JSON
-{
-  "Category name": {
-    "Website name": {
-      "url": "https://example.com/",
-      "img": "example.png",
-      "twitter": "example",
-      "facebook": "example",
-      "email_address": "email@example.com"
-    }  
-  }
-}
-```
+API version 1 is no longer available. If you use this version, please upgrade to [version 3](#v3).
