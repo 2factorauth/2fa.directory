@@ -16,7 +16,7 @@ $('.search').on('input', function () {
 })
 
 function sendSearch(query) {
-  if (query === undefined || query === "" || query.length < 3 || query.match('http(s)?:\/\/.*') || query.match('^2fa(:)?$')) {
+  if (query === undefined || query === "" || (query.length < 3  && !query.match('^[x|X]$')) || query.match('http(s)?:\/\/.*') || query.match('^2fa(:)?$')) {
     $('.category-btn').parent().show();
     $('.table').removeClass('show');
     $('.categories').removeClass('search-results');
@@ -34,6 +34,8 @@ function sendSearch(query) {
     let options = {
       hitsPerPage: 500, attributesToRetrieve: ['objectID']
     }
+
+    if(query.match('^[x|X]$')) query = '"X"'
 
     // Fetch filters from search query.
     let filter = []
