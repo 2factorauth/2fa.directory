@@ -11,7 +11,7 @@ require 'uri'
 module API
   def self.fetch(uri)
     response = Net::HTTP.get_response URI(uri)
-    return JSON.parse(response.body) unless response.code.eql? 200
+    JSON.parse(response.body) unless response.code.eql? 200
   end
 end
 
