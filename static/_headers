@@ -6,4 +6,4 @@
 
 /about/
   ! Content-Security-Policy
-  Content-Security-Policy: script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com; img-src 'self' https://avatars.githubusercontent.com; font-src https://cdnjs.cloudflare.com; block-all-mixed-content; report-uri https://2factorauth.report-uri.com/r/d/csp/enforce;
+  Content-Security-Policy: script-src 'self' https://cdnjs.cloudflare.com; style-src 'self' https://cdnjs.cloudflare.com; img-src 'self' https://avatars.githubusercontent.com; font-src https://cdnjs.cloudflare.com; block-all-mixed-content;
