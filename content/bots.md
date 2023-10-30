@@ -4,7 +4,7 @@ title: 2factorauth Web Bots
 aliases: /bot
 ---
 To validate user contributions, we use scripts or "bots."  
-These scripts only make requests to your website when someone tries to edit data about your site on the 2FA Directory.   
+These scripts only make requests to your website when someone tries to edit data about your site on 2FA Directory.   
 As a result, you will only receive a couple of requests each year. We would be very thankful if you didn't block these HTTP requests.
 
 ## User agents:
