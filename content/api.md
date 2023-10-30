@@ -4,15 +4,15 @@ title: API usage
 ---
 ## Introduction
 
-The data collected for the 2fa.directory website is also available as JSON files in order to enable developers to use it in their own programs. It is recommended to use the API with the highest version number, since older versions might not include all available information.
+The data collected for the [2FA Directory](https://2fa.directory) website is also available as JSON files to enable developers to use it in their programs. The API with the highest version number is recommended since older versions might not include all available information.
 
 ### Caching
 
-If you intend to query our JSON files often and with a lot of traffic, you may be blocked by Cloudflare, our reverse proxy provider. We therefore recommend that you cache the files locally for any large traffic cases.
+If you intend to query our JSON files often and with a lot of traffic, you may be blocked by Cloudflare, our reverse proxy provider. We therefore recommend that you cache the files locally for any significant traffic cases.
 
 ### Avoid downloading unnecessary data
 
-If you only intent on using a specific dataset, like all sites supporting RFC-6238, we recommend that you use the URI which lists just that. See [URIs](#uris) for a list of available paths. The smaller the better.
+If you only intend to use a specific dataset, like all sites supporting RFC-6238, we recommend using the URI which lists _just_ that. See [URIs](#uris) for available paths. The smaller, the better.
 
 ## Version 3 {#v3}
 
@@ -114,8 +114,8 @@ If you only intent on using a specific dataset, like all sites supporting RFC-62
 
 ## Version 2 {#v2}
 
-API version 2 is no longer available. If you use this version, please upgrade to [version 3](#v3).
+API version 2 is no longer available. Please upgrade to [version 3](#v3) if you use this version.
 
 ## Version 1 {#v1}
 
-API version 1 is no longer available. If you use this version, please upgrade to [version 3](#v3).
+API version 1 is no longer available. Please upgrade to [version 3](#v3) if you use this version.
