@@ -14,7 +14,7 @@ If you currently do not support two-factor authentication, the listing serves as
 ### Edit a listing
 If the data about a service is inaccurate, you can create an [issue][issue] or [pull request][pr] on GitHub to update it.
 
-## Takedown requests / DMCA[api.md](api.md)
+## Takedown requests / DMCA
 As __2factorauth__ is registered in Sweden, The Digital Millennium Copyright Act does not apply to the [2FA Directory][directory], and thus, DMCA requests will be ignored.
 All the information on the [2FA Directory][directory] is public information compliant with _fair use_. We believe consumers should be able to compare services to find the alternative that best fits them; We therefore do not remove listings.
 
