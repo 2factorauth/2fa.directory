@@ -33,7 +33,7 @@ regions.each do |id, region|
   used_regions.push(id)
 
   used_categories = {}
-  entries.each_value do |entry|
+  entries.to_h.each_value do |entry|
     entry_regions = entry['regions']
     unless entry_regions.nil?
       included = entry_regions.reject { |r| r.start_with?('-') }
