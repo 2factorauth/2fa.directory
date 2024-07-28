@@ -84,6 +84,10 @@
     "title": "Identity Management",
     "icon": "&#xF4D3;"
   },
+  "insurance": {
+    "title": "Insurance",
+    "icon": "&#xF467;"
+  },
   "investing": {
     "title": "Investing",
     "icon": "&#xF3F2;"
