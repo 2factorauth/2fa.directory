@@ -10,12 +10,12 @@ The data collected for the [2FA Directory][site_url] website is also available a
 
 The table below provides the End of Life (EOL) dates for different 2FA Directory API versions. Please refer to this table to ensure you are using a supported version.
 
-|     Version      | Active Support | End of Life Date |
-|:----------------:|:--------------:|:----------------:|
-| [Version 4](#v4) |       ✅        |       N/A        |
-| [Version 3](#v3) |       ✅        |       N/A        |
-| [Version 2](#v2) |       ❌        |    2023-08-01    |
-| [Version 1](#v1) |       ❌        |    2023-07-01    |
+|     Version      |          Supported           |
+|:----------------:|:----------------------------:|
+| [Version 4](#v4) |             Yes              |
+| [Version 3](#v3) |             Yes              |
+| [Version 2](#v2) | Unsupported since 2023-08-01 |
+| [Version 1](#v1) | Unsupported since 2023-07-01 |
 
 ## Things to note
 
@@ -35,7 +35,7 @@ It is advisable to cache the files locally to avoid potential service interrupti
 
 #### Avoid downloading unnecessary data
 
-It is recommended that you download only the specific datasets you need to maximize efficiency and minimize data transfer. For example, if you only require information about sites supporting RFC-6238, use the URI that lists only those sites. This approach conserves bandwidth and accelerates data processing.
+It is recommended that you download only the specific datasets you need to maximize efficiency and minimize data transfer. For example, if you only require information about sites supporting TOTP (RFC-6238), use the URI that lists only those sites. This approach conserves bandwidth and accelerates data processing.
 
 #### Signed Files
 
@@ -77,14 +77,15 @@ The following JSON files are available for Version 4, each serving different 2FA
 | All sites                   | [v4/all.json](https://api.2fa.directory/v4/all.json)                         | [v4/all.json.sig](https://api.2fa.directory/v4/all.json.sig)                         |
 | SMS 2FA                     | [v4/sms.json](https://api.2fa.directory/v4/sms.json)                         | [v4/sms.json.sig](https://api.2fa.directory/v4/sms.json.sig)                         |
 | Email 2FA                   | [v4/email.json](https://api.2fa.directory/v4/email.json)                     | [v4/email.json.sig](https://api.2fa.directory/v4/email.json.sig)                     |
-| non-U2F hardware 2FA tokens | [v4/custom-hardware.json](https://api.2fa.directory/v4/custom-hardware.json) | [v4/custom-hardware.json.sig](https://api.2fa.directory/v4/custom-hardware.json.sig) |
+| Non-U2F hardware 2FA tokens | [v4/custom-hardware.json](https://api.2fa.directory/v4/custom-hardware.json) | [v4/custom-hardware.json.sig](https://api.2fa.directory/v4/custom-hardware.json.sig) |
 | U2F hardware tokens         | [v4/u2f.json](https://api.2fa.directory/v4/u2f.json)                         | [v4/u2f.json.sig](https://api.2fa.directory/v4/u2f.json.sig)                         |
 | TOTP (RFC-6238)             | [v4/totp.json](https://api.2fa.directory/v4/totp.json)                       | [v4/totp.json.sig](https://api.2fa.directory/v4/totp.json.sig)                       |
-| non-RFC-6238 software 2FA   | [v4/custom-software.json](https://api.2fa.directory/v4/custom-software.json) | [v4/custom-software.json.sig](https://api.2fa.directory/v4/custom-software.json.sig) |
+| Non-RFC-6238 software 2FA   | [v4/custom-software.json](https://api.2fa.directory/v4/custom-software.json) | [v4/custom-software.json.sig](https://api.2fa.directory/v4/custom-software.json.sig) |
 
 ### Elements
 
 The JSON files contain various elements that provide detailed information about the 2FA implementations of different sites.
+The elements
 
 | Key                         | Type           |   Occurrence    | Description                                                                                                                             |
 |-----------------------------|----------------|:---------------:|-----------------------------------------------------------------------------------------------------------------------------------------|
@@ -249,11 +250,11 @@ One entry for a site that supports 2FA and one that doesn't.
 
 ## Version 2 {#v2}
 
-API version 2 is no longer available. Please upgrade to [version 3](#v3) if you use this version.
+API version 2 is no longer available. Please upgrade to a [supported version](#supported-versions).
 
 ## Version 1 {#v1}
 
-API version 1 is no longer available. Please upgrade to [version 3](#v3) if you use this version.
+API version 1 is no longer available. Please upgrade to a [supported version](#supported-versions).
 
 [license]: https://github.com/2factorauth/twofactorauth/blob/master/LICENSE.md
 [site_url]: https://2fa.directory/
