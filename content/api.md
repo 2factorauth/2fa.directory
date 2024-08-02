@@ -72,15 +72,15 @@ We have removed elements such as service names, icon paths, and service categori
 
 The following JSON files are available for Version 4, each serving different 2FA methods and data requirements.
 
-| Coverage                    | Unsigned File                                                                | PGP Signed File                                                                      |
-|-----------------------------|------------------------------------------------------------------------------|--------------------------------------------------------------------------------------|
-| All sites                   | [v4/all.json](https://api.2fa.directory/v4/all.json)                         | [v4/all.json.sig](https://api.2fa.directory/v4/all.json.sig)                         |
-| SMS 2FA                     | [v4/sms.json](https://api.2fa.directory/v4/sms.json)                         | [v4/sms.json.sig](https://api.2fa.directory/v4/sms.json.sig)                         |
-| Email 2FA                   | [v4/email.json](https://api.2fa.directory/v4/email.json)                     | [v4/email.json.sig](https://api.2fa.directory/v4/email.json.sig)                     |
-| Non-U2F hardware 2FA tokens | [v4/custom-hardware.json](https://api.2fa.directory/v4/custom-hardware.json) | [v4/custom-hardware.json.sig](https://api.2fa.directory/v4/custom-hardware.json.sig) |
-| U2F hardware tokens         | [v4/u2f.json](https://api.2fa.directory/v4/u2f.json)                         | [v4/u2f.json.sig](https://api.2fa.directory/v4/u2f.json.sig)                         |
-| TOTP (RFC-6238)             | [v4/totp.json](https://api.2fa.directory/v4/totp.json)                       | [v4/totp.json.sig](https://api.2fa.directory/v4/totp.json.sig)                       |
-| Non-RFC-6238 software 2FA   | [v4/custom-software.json](https://api.2fa.directory/v4/custom-software.json) | [v4/custom-software.json.sig](https://api.2fa.directory/v4/custom-software.json.sig) |
+| Coverage                    | Unsigned File                                      | PGP Signed File                                            |
+|-----------------------------|----------------------------------------------------|------------------------------------------------------------|
+| All sites                   | [v4/all.json][v4/all.json]                         | [v4/all.json.sig][v4/all.json.sig]                         |
+| SMS 2FA                     | [v4/sms.json][v4/sms.json]                         | [v4/sms.json.sig][v4/sms.json.sig]                         |
+| Email 2FA                   | [v4/email.json][v4/email.json]                     | [v4/email.json.sig][v4/email.json.sig]                     |
+| Non-U2F hardware 2FA tokens | [v4/custom-hardware.json][v4/custom-hardware.json] | [v4/custom-hardware.json.sig][v4/custom-hardware.json.sig] |
+| U2F hardware tokens         | [v4/u2f.json][v4/u2f.json]                         | [v4/u2f.json.sig][v4/u2f.json.sig]                         |
+| TOTP (RFC-6238)             | [v4/totp.json][v4/totp.json]                       | [v4/totp.json.sig][v4/totp.json.sig]                       |
+| Non-RFC-6238 software 2FA   | [v4/custom-software.json][v4/custom-software.json] | [v4/custom-software.json.sig][v4/custom-software.json.sig] |
 
 ### Elements
 
@@ -142,17 +142,17 @@ One entry for a site that supports 2FA and one that doesn't.
 
 ### URIs
 
-| Coverage                    | Unsigned File                                                                 | PGP Signed File                                                                       |
-|-----------------------------|-------------------------------------------------------------------------------|---------------------------------------------------------------------------------------|
-| All sites                   | [/v3/all.json](https://api.2fa.directory/v3/all.json)                         | [/v3/all.json.sig](https://api.2fa.directory/v3/all.json.sig)                         |
-| All 2FA-supporting sites    | [/v3/tfa.json](https://api.2fa.directory/v3/tfa.json)                         | [/v3/tfa.json.sig](https://api.2fa.directory/v3/tfa.json.sig)                         |
-| SMS                         | [/v3/sms.json](https://api.2fa.directory/v3/sms.json)                         | [/v3/sms.json.sig](https://api.2fa.directory/v3/sms.json.sig)                         |
-| Phone calls                 | [/v3/call.json](https://api.2fa.directory/v3/call.json)                       | [/v3/call.json.sig](https://api.2fa.directory/v3/call.json.sig)                       |
-| Email 2FA                   | [/v3/email.json](https://api.2fa.directory/v3/email.json)                     | [/v3/email.json.sig](https://api.2fa.directory/v3/email.json.sig)                     |
-| non-U2F hardware 2FA tokens | [/v3/custom-hardware.json](https://api.2fa.directory/v3/custom-hardware.json) | [/v3/custom-hardware.json.sig](https://api.2fa.directory/v3/custom-hardware.json.sig) |
-| U2F hardware tokens         | [/v3/u2f.json](https://api.2fa.directory/v3/u2f.json)                         | [/v3/u2f.json.sig](https://api.2fa.directory/v3/u2f.json.sig)                         |
-| RFC-6238 (TOTP)             | [/v3/totp.json](https://api.2fa.directory/v3/totp.json)                       | [/v3/totp.json.sig](https://api.2fa.directory/v3/totp.json.sig)                       |
-| non-RFC-6238 software 2FA   | [/v3/custom-software.json](https://api.2fa.directory/v3/custom-software.json) | [/v3/custom-software.json.sig](https://api.2fa.directory/v3/custom-software.json.sig) |
+| Coverage                    | Unsigned File                                        | PGP Signed File                                              |
+|-----------------------------|------------------------------------------------------|--------------------------------------------------------------|
+| All sites                   | [/v3/all.json][/v3/all.json]                         | [/v3/all.json.sig][/v3/all.json.sig]                         |
+| All 2FA-supporting sites    | [/v3/tfa.json][/v3/tfa.json]                         | [/v3/tfa.json.sig][/v3/tfa.json.sig]                         |
+| SMS                         | [/v3/sms.json][/v3/sms.json]                         | [/v3/sms.json.sig][/v3/sms.json.sig]                         |
+| Phone calls                 | [/v3/call.json][/v3/call.json]                       | [/v3/call.json.sig][/v3/call.json.sig]                       |
+| Email 2FA                   | [/v3/email.json][/v3/email.json]                     | [/v3/email.json.sig][/v3/email.json.sig]                     |
+| non-U2F hardware 2FA tokens | [/v3/custom-hardware.json][/v3/custom-hardware.json] | [/v3/custom-hardware.json.sig][/v3/custom-hardware.json.sig] |
+| U2F hardware tokens         | [/v3/u2f.json][/v3/u2f.json]                         | [/v3/u2f.json.sig][/v3/u2f.json.sig]                         |
+| RFC-6238 (TOTP)             | [/v3/totp.json][/v3/totp.json]                       | [/v3/totp.json.sig][/v3/totp.json.sig]                       |
+| non-RFC-6238 software 2FA   | [/v3/custom-software.json][/v3/custom-software.json] | [/v3/custom-software.json.sig][/v3/custom-software.json.sig] |
 
 ### Elements
 
@@ -247,3 +247,35 @@ API version 1 is no longer available. Please upgrade to a [supported version](#s
 [license]: https://github.com/2factorauth/twofactorauth/blob/master/LICENSE.md
 [site_url]: https://2fa.directory/
 [repo_url]: https://github.com/2factorauth/
+[/v3/all.json]: https://api.2fa.directory/v3/all.json
+[/v3/all.json.sig]: https://api.2fa.directory/v3/all.json.sig
+[/v3/tfa.json]: https://api.2fa.directory/v3/tfa.json
+[/v3/tfa.json.sig]: https://api.2fa.directory/v3/tfa.json.sig
+[/v3/sms.json]: https://api.2fa.directory/v3/sms.json
+[/v3/sms.json.sig]: https://api.2fa.directory/v3/sms.json.sig
+[/v3/call.json]: https://api.2fa.directory/v3/call.json
+[/v3/call.json.sig]: https://api.2fa.directory/v3/call.json.sig
+[/v3/email.json]: https://api.2fa.directory/v3/email.json
+[/v3/email.json.sig]: https://api.2fa.directory/v3/email.json.sig
+[/v3/custom-hardware.json]: https://api.2fa.directory/v3/custom-hardware.json
+[/v3/custom-hardware.json.sig]: https://api.2fa.directory/v3/custom-hardware.json.sig
+[/v3/u2f.json]: https://api.2fa.directory/v3/u2f.json
+[/v3/u2f.json.sig]: https://api.2fa.directory/v3/u2f.json.sig
+[/v3/totp.json]: https://api.2fa.directory/v3/totp.json
+[/v3/totp.json.sig]: https://api.2fa.directory/v3/totp.json.sig
+[/v3/custom-software.json]: https://api.2fa.directory/v3/custom-software.json
+[/v3/custom-software.json.sig]: https://api.2fa.directory/v3/custom-software.json.sig
+[v4/all.json]: https://api.2fa.directory/v4/all.json
+[v4/all.json.sig]: https://api.2fa.directory/v4/all.json.sig
+[v4/sms.json]: https://api.2fa.directory/v4/sms.json
+[v4/sms.json.sig]: https://api.2fa.directory/v4/sms.json.sig
+[v4/email.json]: https://api.2fa.directory/v4/email.json
+[v4/email.json.sig]: https://api.2fa.directory/v4/email.json.sig
+[v4/custom-hardware.json]: https://api.2fa.directory/v4/custom-hardware.json
+[v4/custom-hardware.json.sig]: https://api.2fa.directory/v4/custom-hardware.json.sig
+[v4/u2f.json]: https://api.2fa.directory/v4/u2f.json
+[v4/u2f.json.sig]: https://api.2fa.directory/v4/u2f.json.sig
+[v4/totp.json]: https://api.2fa.directory/v4/totp.json
+[v4/totp.json.sig]: https://api.2fa.directory/v4/totp.json.sig
+[v4/custom-software.json]: https://api.2fa.directory/v4/custom-software.json
+[v4/custom-software.json.sig]: https://api.2fa.directory/v4/custom-software.json.sig
