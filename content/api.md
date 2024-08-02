@@ -85,27 +85,16 @@ The following JSON files are available for Version 4, each serving different 2FA
 ### Elements
 
 The JSON files contain various elements that provide detailed information about the 2FA implementations of different sites.
+The availability of the elements depends on their presence in the source data.
 
-| Key                         | Type           |   Occurrence    | Description                                                                                                                             |
-|-----------------------------|----------------|:---------------:|-----------------------------------------------------------------------------------------------------------------------------------------|
-| methods                     | Array\<String> |   2FA entries   | Array containing all supported 2FA methods                                                                                              |
-| documentation               | URL            |   2FA entries   | URL to documentation page                                                                                                               |
-| recovery                    | URL            |   2FA entries   | URL to recovery documentation page                                                                                                      |
-| notes                       | String         |   2FA entries   | Text describing any discrepancies in the 2FA implementation                                                                             |
-| contact                     | Object         | non-2FA entries | Object containing contact details. See table below for elements                                                                         |
-| custom-(software\|hardware) | Array\<String> |   2FA entries   | Array of custom software/hardware methods that the site supports. Only present if the `methods` element contains one of these 2FA types |
-
-#### Contact Object Elements
-
-The contact object provides information on how to reach support for the site in question. It includes various fields as shown below.
-
-| Key      | Type   | Description                                                  |
-|----------|--------|--------------------------------------------------------------|
-| x        | String | X (Twitter) handle                                           |
-| facebook | String | Facebook page name                                           |
-| email    | String | Email address to support                                     |
-| form     | String | Support contact form URL                                     |
-| language | String | ISO 639-1 language code for the site if it is not in English |
+| Key             | Type           | Description                                                                                                               |
+|-----------------|----------------|---------------------------------------------------------------------------------------------------------------------------|
+| methods         | Array\<String> | Array containing all supported 2FA methods                                                                                |
+| documentation   | URL            | URL to documentation page                                                                                                 |
+| recovery        | URL            | URL to recovery documentation page                                                                                        |
+| notes           | String         | Text describing any discrepancies in the 2FA implementation                                                               |
+| custom-hardware | Array\<String> | Array of custom hardware methods that the site supports. Only present if the `methods` element contains "custom-hardware" |
+| custom-software | Array\<String> | Array of custom software methods that the site supports. Only present if the `methods` element contains "custom-software" |
 
 ### Examples
 
