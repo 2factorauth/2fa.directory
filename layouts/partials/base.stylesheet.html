@@ -24,6 +24,10 @@
   {{ $styles = $styles | append "page" "note" }}
 {{ end }}
 
+{{ with eq .Layout "error" }}
+  {{ $styles = $styles | append "error" }}
+{{ end }}
+
 
 {{ $scss := slice }}
 {{ range $style := $styles }}
