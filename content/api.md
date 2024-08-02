@@ -85,7 +85,6 @@ The following JSON files are available for Version 4, each serving different 2FA
 ### Elements
 
 The JSON files contain various elements that provide detailed information about the 2FA implementations of different sites.
-The elements
 
 | Key                         | Type           |   Occurrence    | Description                                                                                                                             |
 |-----------------------------|----------------|:---------------:|-----------------------------------------------------------------------------------------------------------------------------------------|
