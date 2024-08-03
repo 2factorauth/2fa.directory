@@ -99,7 +99,6 @@ The availability of the elements depends on their presence in the source data.
 ### Examples
 
 Below are examples of what an entry can look like in API version 4.
-One entry for a site that supports 2FA and one that doesn't.
 
 #### Example website with 2FA enabled
 
