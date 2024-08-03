@@ -127,13 +127,7 @@ Below are examples of what an entry can look like in API version 4.
 
 ```JSON
 {
-  "example.com": {
-    "contact": {
-      "twitter": "example",
-      "facebook": "example",
-      "email": "example@example.com"
-    }
-  }
+  "example.com": {}
 }
 ```
 
