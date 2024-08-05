@@ -28,7 +28,6 @@
   {{ $styles = $styles | append "error" }}
 {{ end }}
 
-
 {{ $scss := slice }}
 {{ range $style := $styles }}
   {{ $scss = $scss | append (resources.Get ($style | printf "css/%s.scss")) }}

@@ -174,7 +174,7 @@
         }
 
         &.twitter:after {
-          content: 'On Twitter';
+          content: 'On X (Twitter)';
         }
 
         &.facebook:after {
@@ -215,10 +215,10 @@
     }
 
     &.twitter {
-      background: #1da1f2;
+      background: #000;
 
       &:before {
-        content: '\F5EF';
+        content: '\F8DB';
       }
     }
 
