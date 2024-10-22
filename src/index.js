@@ -36,7 +36,7 @@ const App = () => {
   // Render the app with different states based on the signals
   return html`
     <div>
-      <h1>2FA Directory Services (JS)</h1>
+      <h1>2FA Directory Services</h1>
 
       <!-- Handle loading state -->
       ${isLoading.value && html`<div>Loading...</div>`}
