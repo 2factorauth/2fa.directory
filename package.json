@@ -1,20 +1,22 @@
 {
-  "private": true,
-  "version": "1.0.0",
+"version": "1.0.0",
   "name": "2fa-dev",
-  "repository": "2factorauth/frontend",
   "description": "2fa-dev",
+  "private": true,
+  "type": "module",
   "scripts": {
-    "dev": "hugo serve",
-    "build": "sh scripts/build.sh"
-  },
-  "devDependencies": {
-    "@types/node": "16.11.12",
-    "node-html-parser": "5.2.0",
-    "sass": "^1.55.0"
+    "dev": "vite",
+    "build": "vite build",
+    "preview": "vite preview"
   },
   "dependencies": {
-    "algoliasearch": "^4.14.2",
-    "html-minifier": "^4.0.0"
+    "@preact/signals": "^1.3.0",
+    "htm": "^3.1.1",
+    "npm": "^10.9.0",
+    "preact": "^10.22.1"
+  },
+  "devDependencies": {
+    "@preact/preset-vite": "^2.9.0",
+    "vite": "^5.3.3"
   }
 }
