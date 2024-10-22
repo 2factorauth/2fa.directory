@@ -1,0 +1,99 @@
+#nav {
+  background: var(--secondary-background);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
+  color: var(--text-color);
+  border-bottom: 2px solid var(--brand-color);
+}
+@media screen and (max-width: 992px) {
+  #nav #branding {
+    padding-left: 33.5833px;
+    margin: auto;
+  }
+}
+#nav #branding .icon {
+  padding-left: 0;
+  margin: 0;
+}
+#nav #branding .icon li {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  list-style: none;
+  font-family: "SF Pro Display", var(--default-font);
+  font-weight: 300;
+  font-size: 1.5em;
+}
+#nav #branding .icon li:before {
+  content: "";
+  height: 1.5em;
+  margin-right: 0.4em;
+  aspect-ratio: 1;
+  background-image: url("/icons/icon.svg");
+}
+#nav .navbar-toggler {
+  border: none;
+}
+#nav .navbar-toggler:focus {
+  box-shadow: none;
+}
+#nav .navbar-toggler span {
+  color: var(--text-color);
+  font-size: 1.2em;
+}
+#nav .navbar-nav {
+  margin-left: auto;
+  margin-right: 0 !important;
+}
+#nav .nav-item {
+  margin: 0 0.1em;
+}
+#nav #regionDropdown {
+  color: var(--text-color);
+}
+#nav .dropdown-menu {
+  background: var(--secondary-background);
+  column-count: 2;
+  z-index: 1100;
+}
+@media screen and (max-width: 445px) {
+  #nav .dropdown-menu {
+    left: 0 !important;
+  }
+}
+#nav .dropdown-item {
+  color: var(--bs-nav-link-color);
+}
+
+@media screen and (max-width: 992px) {
+  .back-to-top-link {
+    z-index: 1100;
+    position: fixed;
+    bottom: 3vh;
+    right: 0.5rem;
+    text-align: center;
+    color: var(--text-color);
+    background: var(--background);
+    font-size: 3rem;
+    line-height: 3rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    transition: ease-in-out 0.2s;
+  }
+  .back-to-top-link:hover {
+    color: var(--primary);
+  }
+  .back-to-top-link-moved {
+    bottom: -3rem;
+  }
+}
+@media screen and (min-width: 993px) {
+  .back-to-top-link {
+    display: none;
+  }
+}
+.fis {
+  width: 1.33333333em !important;
+}
+
+/*# sourceMappingURL=navbar.css.map */

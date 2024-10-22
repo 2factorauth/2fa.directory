@@ -1,0 +1,374 @@
+/** Desktop View **/
+@media screen and (min-width: 993px) {
+  .table {
+    box-shadow: 0 3px 8px 0 rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  }
+  .table .table-head {
+    display: grid;
+    grid-template-columns: 20em repeat(6, 1fr);
+    grid-template-rows: 1fr;
+    position: sticky;
+    top: 0;
+    padding-left: 0.5em;
+    background: var(--table-head-bg) !important;
+    font-family: var(--default-font);
+    font-weight: 500;
+    color: var(--text-color);
+    line-height: 53px;
+  }
+  .table .table-head div {
+    text-align: center;
+    height: 53px;
+    font-size: 1.1em;
+  }
+  .table .table-head > *:not(:last-child) {
+    border-right: var(--table-border);
+  }
+  .entry {
+    padding-left: 0.5em;
+    border-bottom: var(--table-border);
+    display: grid;
+    line-height: 53px;
+    grid-template-rows: 1fr;
+    height: 4.4rem;
+    /* replace with :has(.tfa) when supported */
+    /* replace with :has(.contact) when supported */
+  }
+}
+@media screen and (min-width: 993px) and (prefers-color-scheme: dark) {
+  .entry {
+    color-scheme: light;
+  }
+}
+@media screen and (min-width: 993px) {
+  .entry.green {
+    grid-template-columns: 20em repeat(6, 1fr);
+  }
+}
+@media screen and (min-width: 993px) {
+  .entry.red {
+    grid-template-columns: 20em 1fr;
+    line-height: 4.4rem;
+  }
+}
+@media screen and (min-width: 993px) {
+  .entry > *:not(:last-child) {
+    border-right: var(--table-border);
+  }
+}
+@media screen and (min-width: 993px) {
+  .entry div {
+    overflow: clip;
+  }
+}
+@media screen and (min-width: 993px) {
+  .entry .title {
+    display: grid;
+    grid-auto-flow: column;
+    justify-content: space-between;
+  }
+  .entry .title :last-child {
+    padding-right: 0.5em;
+  }
+}
+@media screen and (min-width: 993px) {
+  .entry .name {
+    grid-area: 1/1/2/2;
+    line-height: 4.4rem;
+    padding: 0;
+  }
+}
+@media screen and (min-width: 993px) {
+  .entry .note {
+    float: right;
+    font-size: 1.4em;
+    color: #db2828;
+    justify-self: end;
+  }
+}
+@media screen and (min-width: 993px) {
+  .entry .docs {
+    grid-area: 1/2/2/3;
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .entry .docs .website-doc {
+    display: block;
+    text-decoration: none;
+    margin: auto;
+  }
+  .entry .docs .website-doc:after {
+    content: "\f3b8";
+    font-family: "bootstrap-icons";
+    font-size: 1.6em;
+    vertical-align: middle;
+  }
+  .entry .docs .recovery-doc {
+    display: block;
+    text-decoration: none;
+    margin: auto;
+  }
+  .entry .docs .recovery-doc:after {
+    content: "\f116";
+    font-family: "bootstrap-icons";
+    font-size: 1.6em;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+}
+@media screen and (min-width: 993px) {
+  .entry .method {
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 27px;
+    line-height: 53px;
+  }
+  .entry .method * {
+    margin: auto;
+    display: block;
+  }
+  .entry .method.used:before {
+    content: "\f633";
+    font-family: "bootstrap-icons";
+    margin: auto;
+    display: block;
+    font-weight: 600;
+  }
+  .entry .method.sms {
+    grid-area: 1/3/2/4;
+  }
+  .entry .method.voice {
+    grid-area: 1/4/2/5;
+  }
+  .entry .method.email {
+    grid-area: 1/5/2/6;
+  }
+  .entry .method.hardware {
+    grid-area: 1/6/2/7;
+  }
+  .entry .method.software {
+    grid-area: 1/7/2/8;
+  }
+}
+@media screen and (min-width: 993px) {
+  .entry .contact {
+    margin-left: 1em;
+  }
+  .entry .contact:before {
+    content: "Tell them to support 2FA";
+    margin-right: 0.25em;
+  }
+  .entry .contact button {
+    margin-left: 0.5em;
+  }
+  .entry .contact button:before {
+    margin-right: 0.5em;
+  }
+  .entry .contact button:after {
+    font-size: 15px;
+  }
+  .entry .contact button.twitter:after {
+    content: "On X (Twitter)";
+  }
+  .entry .contact button.facebook:after {
+    content: "On Facebook";
+  }
+  .entry .contact button.email:after {
+    content: "Via Email";
+  }
+  .entry .contact button.form:after {
+    content: "Via Form";
+  }
+}
+@media screen and (min-width: 993px) {
+  .entry .tfa-summary {
+    position: absolute;
+    top: -1000px;
+    left: -1000px;
+  }
+}
+.contact button {
+  width: 140px;
+  margin: 0.2em;
+  line-height: 2em;
+  border: none;
+  color: white;
+  border-radius: 2px;
+}
+.contact button:before {
+  font-family: "bootstrap-icons";
+  vertical-align: middle;
+}
+.contact button.twitter {
+  background: #000;
+}
+.contact button.twitter:before {
+  content: "\f8db";
+}
+.contact button.facebook {
+  background: #3b5998;
+}
+.contact button.facebook:before {
+  content: "\f344";
+}
+.contact button.email, .contact button.form {
+  background: #ea4235;
+}
+.contact button.email:before, .contact button.form:before {
+  content: "\f32c";
+}
+
+.popover {
+  color: #000;
+}
+.popover li {
+  margin-left: 0.5em;
+}
+
+.name {
+  display: inline-block;
+  max-width: 100%;
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--table-text-color) !important;
+  text-decoration: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  align-self: center;
+}
+.name .logo {
+  margin-right: 0.7em;
+  max-height: 2.5em;
+  width: 2.5em;
+  vertical-align: middle;
+}
+
+/** Universal styles **/
+.entry.green {
+  background: var(--table-bg-green);
+}
+.entry.red {
+  background: var(--table-bg-red);
+}
+
+/** Mobile View **/
+@media screen and (max-width: 992px) {
+  .table {
+    overflow: hidden;
+  }
+  .table-head {
+    display: none;
+  }
+  .entry {
+    padding: 1em;
+    display: grid;
+    border-bottom: var(--table-border);
+  }
+  .entry .title {
+    display: grid;
+    grid-auto-flow: column;
+  }
+  .entry .name {
+    font-family: var(--default-font);
+    font-weight: 300;
+    grid-area: 1/1/2/2;
+    padding: 0.5em;
+  }
+  .entry .note {
+    float: right;
+    margin-right: 0.5rem;
+    font-size: 2em;
+    line-height: 1.2em;
+    color: #d03333;
+  }
+  .entry > .sms, .entry > .voice, .entry > .email, .entry > .hardware, .entry > .software {
+    display: none;
+  }
+  .entry.green .tfa-summary {
+    grid-area: 2/1/3/2;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .entry.green .tfa-summary li:before {
+    content: "\f633";
+    font-family: "bootstrap-icons";
+    margin-right: 5px;
+    font-size: 20px;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .entry.green .docs {
+    grid-area: 3/1/4/2;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(5em, 1fr));
+    grid-template-rows: 1fr;
+  }
+  .entry.green .docs > * {
+    display: block;
+    text-decoration: none;
+    margin: auto;
+    width: calc(100% - 0.5em);
+    max-width: 60vw;
+    text-align: center;
+    font-size: 1.3em;
+    line-height: 2em;
+    border-radius: 2px;
+    padding: 0 0.5em;
+    background: var(--bs-link-color);
+    color: #fff;
+    overflow: hidden;
+  }
+  .entry.green .docs .website-doc:before {
+    content: "\f3b8";
+    font-family: "bootstrap-icons";
+    margin-right: 0.3em;
+    font-size: 0.8em;
+    vertical-align: middle;
+  }
+  .entry.green .docs .website-doc:after {
+    content: "Documentation";
+    font-family: var(--default-font);
+    font-weight: 300;
+    vertical-align: middle;
+  }
+  .entry.green .docs .recovery-doc:before {
+    content: "\f116";
+    font-family: "bootstrap-icons";
+    margin-right: 0.3em;
+    font-size: 0.8em;
+    font-weight: 600;
+    vertical-align: middle;
+  }
+  .entry.green .docs .recovery-doc:after {
+    content: "Recovery";
+    font-family: var(--default-font);
+    font-weight: 300;
+    vertical-align: middle;
+  }
+  .entry.red .tfa-summary:before {
+    display: block;
+    content: "2FA Not Supported";
+    font-family: var(--default-font);
+    font-weight: 300;
+    text-align: center;
+    width: 100%;
+    font-size: 1.4rem;
+  }
+  .entry.red .contact {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(5em, 1fr));
+    grid-template-rows: 1fr;
+    grid-gap: 1em;
+  }
+  .entry.red .contact button {
+    border-radius: 2px;
+    line-height: calc(2em + 5px);
+    margin: auto;
+    width: calc(100% - 0.5em);
+    max-width: 60vw;
+  }
+}
+
+/*# sourceMappingURL=table.css.map */

@@ -1,0 +1,53 @@
+.search-bg {
+  height: 15rem;
+  display: grid;
+  align-content: center;
+}
+.search-bg #outerSearchBox {
+  align-self: center;
+  justify-content: center;
+  max-width: 650px;
+  width: max(360px, 45vw);
+  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.16), 0 0 0 1px rgba(0, 0, 0, 0.08);
+  background: white;
+  border: 1px #e3e3e3 solid;
+  display: flex;
+  margin: auto;
+}
+@media screen and (max-width: 500px) {
+  .search-bg #outerSearchBox {
+    width: calc(100% - var(--bs-gutter-x));
+  }
+}
+.search-bg #outerSearchBox:before {
+  content: "\f52a";
+  display: block;
+  font-family: "bootstrap-icons";
+  color: rgba(0, 0, 0, 0.9019607843);
+  font-size: 1.3em;
+  font-weight: 900;
+  margin: 0.3em;
+  align-self: center;
+}
+.search-bg #outerSearchBox:focus-within a {
+  display: block;
+  background: url("/algolia.svg") no-repeat;
+  background-position-x: 100%;
+  margin: 0.5em;
+  width: 2em;
+}
+.search-bg .search {
+  width: 100%;
+  padding: 0.6rem;
+  border: none;
+}
+@media (prefers-color-scheme: dark) {
+  .search-bg .search {
+    color-scheme: light;
+  }
+}
+.search-bg .search:focus {
+  outline: none;
+}
+
+/*# sourceMappingURL=search.css.map */
