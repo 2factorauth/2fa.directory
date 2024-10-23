@@ -99,21 +99,21 @@ function Methods({ methods, customSoftware, customHardware }) {
         {methods?.includes("custom-hardware") && <li>Custom Hardware: {customHardware.join(", ")}</li>}
         {methods?.includes("custom-software") && <li>Custom Software: {customSoftware.join(", ")}</li>}
       </ul>
-      <div className={`sms method ${methods?.includes('sms') ?
+      <div aria-hidden="true" className={`sms method ${methods?.includes('sms') ?
         'used' :
         ''}`}></div>
-      <div className={`voice method ${methods?.includes('call') ?
+      <div aria-hidden="true" className={`voice method ${methods?.includes('call') ?
         'used' :
         ''}`}></div>
-      <div className={`email method ${methods?.includes('email') ?
+      <div aria-hidden="true" className={`email method ${methods?.includes('email') ?
         'used' :
         ''}`}></div>
-      <div className={`hardware method ${methods?.includes('u2f') ?
+      <div aria-hidden="true" className={`hardware method ${methods?.includes('u2f') ?
         'used' :
         ''}`}>
         {methods?.includes("custom-hardware") && <CustomMethods type="hardware" methods={customHardware} />}
       </div>
-      <div className={`software method ${methods?.includes('totp') ?
+      <div aria-hidden="true" className={`software method ${methods?.includes('totp') ?
         'used' :
         ''}`}>
         {methods?.includes("custom-software") && <CustomMethods type="software" methods={customSoftware} />}
@@ -186,7 +186,7 @@ document.getElementById("social-media-warn").addEventListener("hide.bs.modal", (
 function Contact({ contact }) {
   const lang = contact.language || "en";
   return (
-    <div className="contact">
+    <div aria-label="2FA not supported" className="contact">
       {contact.twitter && (<button className="contact-btn twitter" onClick={() => socialMediaNotice("tweet", lang, contact.twitter)}></button>)}
       {contact.facebook && (<button className="contact-btn facebook" onClick={() => socialMediaNotice("facebook", lang, contact.twitter)}></button>)}
       {contact.email && (<button className="contact-btn email" onClick={() => socialMediaNotice("email", lang, contact.twitter)}></button>)}
