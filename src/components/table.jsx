@@ -2,14 +2,14 @@ import { useEffect, useState } from 'preact/hooks';
 
 import "/assets/css/table.scss";
 
-const API_URL = 'http://127.0.0.1:8081/website/categories/';
+const API_URL = 'https://api.2fa.directory/frontend/v1';
 
 function Table({ Category, Title, Order }) {
   const [entries, setEntries] = useState([]);
   const [columns, setColumns] = useState(6);
 
   useEffect(() => {
-    fetch(`${API_URL}${Category}.json`, { cache: 'force-cache' }).
+    fetch(`${API_URL}${window.location.pathname || '/int/'}${Category}.json`, { cache: 'force-cache' }).
       then(res => res.json()).
       then(data => setEntries(Object.entries(data).sort() || [])).
       catch(err => console.error('Error fetching categories:', err));  // Add error handling

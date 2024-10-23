@@ -5,7 +5,7 @@ import Table from './table.jsx';
 import "/assets/css/category-buttons.scss";
 
 // API URL for fetching categories
-const API_URL = 'https://raw.githubusercontent.com/2factorauth/2fa.directory/refs/heads/master/data/categories.json';
+const API_URL = 'https://api.2fa.directory/frontend/v1';
 
 function Categories() {
   const [categories, setCategories] = useState([]);
@@ -13,7 +13,7 @@ function Categories() {
 
   // Fetch categories from the API
   useEffect(() => {
-    fetch(API_URL).
+    fetch(`${API_URL}${window.location.pathname || '/int/'}categories.json`).
       then(res => res.json()).
       then(data => setCategories(Object.entries(data) || [])).
       catch(err => console.error('Error fetching categories:', err));  // Add error handling
