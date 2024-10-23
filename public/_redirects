@@ -1,2 +1,1 @@
 / /redirect 302
-/.well-known/security.txt https://github.com/2factorauth/twofactorauth/security/policy 301
