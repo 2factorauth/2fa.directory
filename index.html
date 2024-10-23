@@ -3,6 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <!-- TODO: Figure out why importing from the package fails -->
+    <!-- <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" /> -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.10.5/font/bootstrap-icons.min.css"/>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/6.6.6/css/flag-icons.min.css"/>
@@ -19,6 +21,23 @@
 
   <h3 id="categories-title">Categories</h3>
   <div class="categories" id="categories"></div>
+
+      <div class="modal fade" id="social-media-warn">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content social-media-modal">
+      <div class="modal-header">
+        <h5 class="modal-title">Attention!</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p>Posting to social media could potentially give other people clues to what accounts you have.</p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-primary" id="social-media-accept" data-bs-dismiss="modal">I accept the risk</button>
+      </div>
+    </div>
+  </div>
+</div>
 </main>
 <div id="footer"></div>
 
