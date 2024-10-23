@@ -76,7 +76,8 @@ function Entry({ name, data }) {
       {color === 'green' ?
         <>
           <div className="docs">
-            <a className="website-doc" href={data.documentation} />
+            {data.documentation && <a aria-label="documentation" className="website-doc" href={data.documentation} />}
+            {data.recovery && <a aria-label="recovery documentation" className="recovery-doc" href={data.recovery} />}
           </div>
 
           {/* TODO: Check for Custom software/hardware */}
