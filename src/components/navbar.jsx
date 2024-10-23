@@ -26,7 +26,7 @@ function Navbar() {
           <span aria-hidden={true} className={window.location.pathname == "/int/" ? "bi bi-globe" : `fi fi-${window.location.pathname.replace(/\//g, "")}`}></span>
         </a>
 
-        <div aria-labelledby="regionDropdown" className="dropdown-menu dropdwon-menu-end">
+        <div aria-labelledby="regionDropdown" className="dropdown-menu">
           <a class="dropdown-item" href="/int/">
             <span class="fi fi-un"></span>
             <b>Global</b>

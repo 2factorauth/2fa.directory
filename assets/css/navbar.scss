@@ -65,6 +65,8 @@
   }
 
   .dropdown-menu {
+    right: 0;
+    left: auto;
     background: var(--secondary-background);
     column-count: 2;
     z-index: 1100;
