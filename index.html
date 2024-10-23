@@ -1,51 +1,51 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
-  <meta name="og:image" content="/icons/social-card.png">
-    <!-- TODO: Figure out why importing from the package fails -->
-    <!-- <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" /> -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"/>
-  <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" sizes="any">
-  <link rel="icon apple-touch-icon" href="/icons/icon.png" type="image/png" sizes="512x512">
-  <title>2FA Directory</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="og:image" content="/icons/social-card.png">
+      <!-- TODO: Figure out why importing from the package fails -->
+      <!-- <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" /> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"/>
+    <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" sizes="any">
+    <link rel="icon apple-touch-icon" href="/icons/icon.png" type="image/png" sizes="512x512">
+    <title>2FA Directory</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg" role="navigation" id="nav"></nav>
 
-<nav class="navbar navbar-expand-lg" role="navigation" id="nav"></nav>
+    <main class="container" role="main">
+      <div class="search-bg">
+        <div id="search"></div>
+      </div>
 
-<main class="container" role="main">
-  <div class="search-bg">
-    <div id="search"></div>
-  </div>
-
-  <h3 id="categories-title">Categories</h3>
-  <div class="categories" id="categories"></div>
+      <h3 id="categories-title">Categories</h3>
+      <div class="categories" id="categories"></div>
 
       <div class="modal fade" id="social-media-warn">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content social-media-modal">
-      <div class="modal-header">
-        <h5 class="modal-title">Attention!</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content social-media-modal">
+            <div class="modal-header">
+              <h5 class="modal-title">Attention!</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p>Posting to social media could potentially give other people clues to what accounts you have.</p>
+            </div>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-primary" id="social-media-accept" data-bs-dismiss="modal">I accept the risk</button>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-        <p>Posting to social media could potentially give other people clues to what accounts you have.</p>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" id="social-media-accept" data-bs-dismiss="modal">I accept the risk</button>
-      </div>
-    </div>
-  </div>
-</div>
-</main>
-<div id="footer"></div>
+    </main>
 
-<script type="module" src="/src/components/head.jsx"></script>
-<script type="module" src="/src/components/footer.jsx"></script>
-<script type="module" src="/src/components/navbar.jsx"></script>
-<script type="module" src="/src/components/category.jsx"></script>
-</body>
+    <div id="footer"></div>
+
+    <script type="module" src="/src/components/head.jsx"></script>
+    <script type="module" src="/src/components/footer.jsx"></script>
+    <script type="module" src="/src/components/navbar.jsx"></script>
+    <script type="module" src="/src/components/category.jsx"></script>
+  </body>
 </html>
