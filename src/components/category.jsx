@@ -1,6 +1,8 @@
-import {Component, render} from 'preact';
-import {useEffect, useState} from 'preact/hooks';
+import { Component, render } from 'preact';
+import { useEffect, useState } from 'preact/hooks';
 import Table from './table.jsx';
+
+import "/assets/css/category-buttons.scss";
 
 // API URL for fetching categories
 const API_URL = 'https://raw.githubusercontent.com/2factorauth/2fa.directory/refs/heads/master/data/categories.json';
@@ -35,7 +37,7 @@ function Categories() {
   );
 }
 
-function Button({name, category, setSelectedCategory, activeCategory}) {
+function Button({ name, category, setSelectedCategory, activeCategory }) {
 
   const handleCategoryClick = () => {
     setSelectedCategory(prevSelected => (prevSelected === name ? null : name));
@@ -43,14 +45,14 @@ function Button({name, category, setSelectedCategory, activeCategory}) {
 
   return (
     <div>
-      <button class={`category-btn${ activeCategory === name ? ' active' : '' }`}
-              onClick={handleCategoryClick}
-              href={`#${name}`}
-              aria-controls={name}>
+      <button class={`category-btn${activeCategory === name ? ' active' : ''}`}
+        onClick={handleCategoryClick}
+        href={`#${name}`}
+        aria-controls={name}>
         <span
           aria-hidden="true"
           className="category-icon"
-          dangerouslySetInnerHTML={{__html: category.icon}}
+          dangerouslySetInnerHTML={{ __html: category.icon }}
         />
         {category.title}
       </button>
@@ -58,4 +60,4 @@ function Button({name, category, setSelectedCategory, activeCategory}) {
   );
 }
 
-render(<Categories/>, document.getElementById('categories'));
+render(<Categories />, document.getElementById('categories'));

@@ -1,5 +1,5 @@
 {
-"version": "1.0.0",
+  "version": "1.0.0",
   "name": "2fa-dev",
   "description": "2fa-dev",
   "private": true,
@@ -17,6 +17,7 @@
   },
   "devDependencies": {
     "@preact/preset-vite": "^2.9.0",
+    "sass": "^1.80.3",
     "vite": "^5.3.3"
   }
 }

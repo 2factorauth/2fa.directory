@@ -1,4 +1,6 @@
-import {Component, render} from 'preact';
+import { Component, render } from 'preact';
+
+import "/assets/css/navbar.scss";
 
 export class Navbar extends Component {
 
@@ -9,7 +11,7 @@ export class Navbar extends Component {
         <div className="container">
           <a className="nav-link" id="branding" href="">
             <ul className="icon">
-              <li>{ Title }</li>
+              <li>{Title}</li>
             </ul>
           </a>
           {/*{{if eq.Layout "tables"}}
