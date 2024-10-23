@@ -19,9 +19,7 @@ function Categories() {
   return (
     categories.map(([key, category], index) => (
       <>
-        <div>
-          <Button key={key} name={key} category={category} setSelectedCategory={setSelectedCategory} activeCategory={selectedCategory} />
-        </div>
+        <Button key={key} name={key} category={category} setSelectedCategory={setSelectedCategory} activeCategory={selectedCategory} />
 
         {/* Render the table after the button div but outside of it */}
         {selectedCategory === key && <Table Category={key} Title={category.title} Order={index} />}
@@ -46,7 +44,7 @@ function Button({ name, category, setSelectedCategory, activeCategory }) {
           className="category-icon"
           dangerouslySetInnerHTML={{ __html: category.icon }}
         />
-        {category.title}
+        <div>{category.title}</div>
       </button>
     </div>
   );
