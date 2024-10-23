@@ -1,9 +1,8 @@
 import { useEffect, useState } from 'preact/hooks';
 import { Modal, Popover } from "bootstrap";
+import { API_URL } from '../constants.js';
 
 import "/assets/css/table.scss";
-
-const API_URL = 'https://api.2fa.directory/frontend/v1';
 
 function Table({ Category, Title, Order }) {
   const [entries, setEntries] = useState([]);
@@ -92,6 +91,25 @@ function Entry({ name, data }) {
 }
 
 function Methods({ methods, customSoftware, customHardware }) {
+  useEffect(() => {
+    [...document.querySelectorAll('.note')].map((el) => new Popover(el, {
+      trigger: 'hover focus',
+      title: 'Exceptions & Restrictions'
+    }));
+
+
+    [...document.querySelectorAll('.custom-hardware-popover')].map((el) => new Popover(el, {
+      ...mfaPopoverConfig,
+      title: 'Custom Hardware 2FA'
+    }));
+
+    [...document.querySelectorAll('.custom-software-popover')].map((el) => new Popover(el, {
+      ...mfaPopoverConfig,
+      title: 'Custom Software 2FA'
+    }));
+  }, []);
+
+
   return (
     <>
       <ul className="tfa-summary" aria-label="Supported 2FA Methods">
@@ -141,21 +159,6 @@ const mfaPopoverConfig = {
   sanitize: false,
   trigger: "hover focus"
 };
-
-[...document.querySelectorAll('.note')].map((el) => new Popover(el, {
-  trigger: 'hover focus',
-  title: 'Exceptions & Restrictions'
-}));
-
-
-[...document.querySelectorAll('.custom-hardware-popover')].map((el) => new Popover(el, {
-  ...mfaPopoverConfig,
-  title: 'Custom Hardware 2FA'
-}));
-[...document.querySelectorAll('.custom-software-popover')].map((el) => new Popover(el, {
-  ...mfaPopoverConfig,
-  title: 'Custom Software 2FA'
-}));
 
 // Social Media Notices
 /**
