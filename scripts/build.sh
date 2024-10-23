@@ -19,4 +19,7 @@ for file in public/*/*.html; do
     -o "$file" "$file" &
 done
 wait
+
+mv public dist
+
 echo "Build complete"
