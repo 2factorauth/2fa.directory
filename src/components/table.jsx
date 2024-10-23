@@ -67,7 +67,7 @@ function Entry({ name, data }) {
   return (
     <div className={'entry ' + color} role="article">
       <div className="title">
-        <a className="name" href={`https://${data.domain}`} title={name}>
+        <a className="name" href={data.url ? data.url : `https://${data.domain}`} title={name}>
           <Icon entry={data} />
           {name}
         </a>
