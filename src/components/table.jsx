@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
+import { Modal } from "bootstrap";
 
 import "/assets/css/table.scss";
 
@@ -64,10 +65,9 @@ function Table({ Category, Title, Order }) {
 function Entry({ name, data }) {
   const color = data.methods !== undefined ? 'green' : 'red';
   return (
-    <div className={'entry ' + color} role="article" data-domain={data.domain}>
-
+    <div className={'entry ' + color} role="article">
       <div className="title">
-        <a className="name" href={data.domain} title={name}>
+        <a className="name" href={`https://${data.domain}`} title={name}>
           <Icon entry={data} />
           {name}
         </a>
@@ -114,13 +114,41 @@ function Methods({ methods }) {
   );
 }
 
+// Social Media Notices
+
+/**
+ * Alert the user to the privacy implications of posting on social media.
+ *
+ * @param {("tweet"|"facebook"|"email")} type - The type of social media
+ * @param {string} lang - An ISO 639-1 language code
+ * @param {string} handle - The social media handle
+ */
+function socialMediaNotice(type, lang, handle) {
+  const uri = `/contact/?type=${type}&lang=${lang}&handle=${handle}`;
+  if (window.localStorage.getItem('social-media-notice') !== 'hidden') {
+    const modal = new Modal('#social-media-warn');
+    document.getElementById('social-media-accept').setAttribute('data-url', uri);
+    modal.toggle();
+  } else {
+    window.open(uri, '_blank');
+  }
+}
+
+document.getElementById("social-media-warn").addEventListener("hide.bs.modal", () => {
+  window.localStorage.setItem('social-media-notice', 'hidden');
+  window.open(
+    document.getElementById('social-media-accept').getAttribute('data-url'), "_blank"
+  );
+})
+
 function Contact({ contact }) {
+  const lang = contact.language || "en";
   return (
     <div className="contact">
-      {contact.twitter && (<button className="contact-btn twitter"></button>)}
-      {contact.facebook && (<button className="contact-btn facebook"></button>)}
-      {contact.email && (<button className="contact-btn email"></button>)}
-      {contact.form && (<button className="contact-btn form"></button>)}
+      {contact.twitter && (<button className="contact-btn twitter" onClick={() => socialMediaNotice("tweet", lang, contact.twitter)}></button>)}
+      {contact.facebook && (<button className="contact-btn facebook" onClick={() => socialMediaNotice("facebook", lang, contact.twitter)}></button>)}
+      {contact.email && (<button className="contact-btn email" onClick={() => socialMediaNotice("email", lang, contact.twitter)}></button>)}
+      {contact.form && (<button className="contact-btn form" onClick={() => window.open(contact.form, "_blank")}></button>)}
     </div>
   );
 }
