@@ -7,10 +7,17 @@ function Table({ Category, Title, Order }) {
   const [columns, setColumns] = useState(6);
 
   useEffect(() => {
-    fetch(`${API_URL}${window.location.pathname || '/int/'}${Category}.json`, { cache: 'force-cache' }).
+    const region = window.location.pathname.slice(1);
+    fetch(`${API_URL}/${region || 'int/'}${Category}.json`,
+      {cache: 'force-cache'}).
       then(res => res.json()).
       then(data => setEntries(Object.entries(data).sort() || [])).
       catch(err => console.error('Error fetching categories:', err));  // Add error handling
+
+    // Scroll to category button
+    window.location.hash = `#${Category}`;
+    document.getElementById(Category)?.
+      scrollIntoView({behavior: 'smooth', block: 'start'});
   }, []);
 
   useEffect(() => {
@@ -36,7 +43,6 @@ function Table({ Category, Title, Order }) {
   const y_pos = Math.floor(Order / 6);
   return (
     <div
-      id={Category}
       className="table collapse show"
       role="region"
       aria-selected="true"

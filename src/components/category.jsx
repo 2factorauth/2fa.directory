@@ -9,10 +9,16 @@ function Categories() {
 
   // Fetch categories from the API
   useEffect(() => {
-    fetch(`${API_URL}${window.location.pathname || '/int/'}categories.json`).
+    const region = window.location.pathname.slice(1);
+    fetch(`${API_URL}/${region || 'int/'}categories.json`).
       then(res => res.json()).
       then(data => setCategories(Object.entries(data) || [])).
       catch(err => console.error('Error fetching categories:', err));  // Add error handling
+  }, []);
+
+  useEffect(() => {
+    const hash = window.location.hash.slice(1);
+    if (hash) setSelectedCategory(hash);
   }, []);
 
   // Render a list of category buttons
@@ -31,6 +37,7 @@ function Categories() {
 function Button({ name, category, setSelectedCategory, activeCategory }) {
   const handleCategoryClick = () => {
     setSelectedCategory(prevSelected => (prevSelected === name ? null : name));
+    history.pushState("", document.title, window.location.pathname + window.location.search);
   };
 
   return (
@@ -38,7 +45,8 @@ function Button({ name, category, setSelectedCategory, activeCategory }) {
       <button class={`category-btn${activeCategory === name ? ' active' : ''}`}
         onClick={handleCategoryClick}
         href={`#${name}`}
-        aria-controls={name}>
+        aria-controls={name}
+        id={name}>
         <span
           aria-hidden="true"
           className="category-icon"
