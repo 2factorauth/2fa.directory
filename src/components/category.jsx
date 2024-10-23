@@ -1,4 +1,4 @@
-import { Component, render } from 'preact';
+import { render } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import Table from './table.jsx';
 
