@@ -6,14 +6,14 @@ import Table from './table.jsx';
 const API_URL = 'https://raw.githubusercontent.com/2factorauth/2fa.directory/refs/heads/master/data/categories.json';
 
 function Categories() {
-  const [categories, setCategories] = useState({});
+  const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null); // Track the selected category
 
   // Fetch categories from the API
   useEffect(() => {
     fetch(API_URL).
       then(res => res.json()).
-      then(data => setCategories(data || {})).
+      then(data => setCategories(Object.entries(data) || [])).
       catch(err => console.error('Error fetching categories:', err));  // Add error handling
   }, []);
 
@@ -22,28 +22,28 @@ function Categories() {
   // Render a list of category buttons
   return (
     <>
-      {Object.entries(categories).map(([key, category]) => (
+      {categories.map(([key, category], index) => (
         <>
           <div>
-            <Button key={key} name={key} category={category} setSelectedCategory={setSelectedCategory} />
+            <Button key={key} name={key} category={category} setSelectedCategory={setSelectedCategory} activeCategory={selectedCategory} />
           </div>
           {/* Render the table after the button div but outside of it */}
-          {selectedCategory === key && <Table Category={key} Title={category.title} />}
+          {selectedCategory === key && <Table Category={key} Title={category.title} Order={index} />}
         </>
       ))}
     </>
   );
 }
 
-function Button({name, category, setSelectedCategory}) {
+function Button({name, category, setSelectedCategory, activeCategory}) {
 
   const handleCategoryClick = () => {
-    setSelectedCategory(name); // Update the selected category
+    setSelectedCategory(prevSelected => (prevSelected === name ? null : name));
   };
 
   return (
     <div>
-      <button class="category-btn"
+      <button class={`category-btn${ activeCategory === name ? ' active' : '' }`}
               onClick={handleCategoryClick}
               href={`#${name}`}
               aria-controls={name}>
