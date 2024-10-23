@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 import { Modal, Popover } from "bootstrap";
-import { API_URL } from '../constants.js';
+import { API_URL, IMG_PATH } from '../constants.js';
 
 import "/assets/css/table.scss";
 
@@ -197,8 +197,6 @@ function Contact({ contact }) {
     </div>
   );
 }
-
-const IMG_PATH = 'http://localhost:8081/icons/';
 
 function Icon({ entry }) {
   let src = IMG_PATH;
