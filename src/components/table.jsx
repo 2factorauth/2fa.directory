@@ -93,7 +93,9 @@ function Methods({ methods, customSoftware, customHardware }) {
   return (
     <>
       <ul className="tfa-summary" aria-label="Supported 2FA Methods">
-        {methods && methods.map((method) => <li>{method}</li>)}
+        {methods && methods.filter((method) => !method.includes("custom")).map((method) => <li>{method}</li>)}
+        {methods?.includes("custom-hardware") && <li>Custom Hardware: {customHardware.join(", ")}</li>}
+        {methods?.includes("custom-software") && <li>Custom Software: {customSoftware.join(", ")}</li>}
       </ul>
       <div className={`sms method ${methods?.includes('sms') ?
         'used' :
