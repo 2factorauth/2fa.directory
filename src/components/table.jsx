@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import { Modal } from "bootstrap";
+import { Modal, Popover } from "bootstrap";
 
 import "/assets/css/table.scss";
 
@@ -80,7 +80,7 @@ function Entry({ name, data }) {
           </div>
 
           {/* TODO: Check for Custom software/hardware */}
-          <Methods methods={data.methods} />
+          <Methods methods={data.methods} customSoftware={data["custom-software"]} customHardware={data["custom-hardware"]} />
         </> :
         <Contact contact={data.contact} />
       }
@@ -89,7 +89,7 @@ function Entry({ name, data }) {
   );
 }
 
-function Methods({ methods }) {
+function Methods({ methods, customSoftware, customHardware }) {
   return (
     <>
       <ul className="tfa-summary" aria-label="Supported 2FA Methods">
@@ -106,16 +106,48 @@ function Methods({ methods }) {
         ''}`}></div>
       <div className={`hardware method ${methods?.includes('u2f') ?
         'used' :
-        ''}`}></div>
+        ''}`}>
+        {methods?.includes("custom-hardware") && <CustomMethods type="hardware" methods={customHardware} />}
+      </div>
       <div className={`software method ${methods?.includes('totp') ?
         'used' :
-        ''}`}></div>
+        ''}`}>
+        {methods?.includes("custom-software") && <CustomMethods type="software" methods={customSoftware} />}
+      </div>
     </>
   );
 }
 
-// Social Media Notices
+/**
+ * Show custom methods
+ *
+ * @param {Object} props - The props for this compoennt
+ * @param {("software"|"hardware")} props.type - The type of custom methods
+ * @param {string[]} props.methods - The custom methods
+ */
+function CustomMethods({ type, methods }) {
+  return methods.length !== 0 ?
+    <i class={`bi bi-info-circle custom-${type}-popover`} data-bs-content={methods.map((method) => `<li>${method}</li>`).join("")} data-bs-toggle="popover"></i>
+    : <i class="bi bi-info-circle" title={`Requires proprietary ${type === "hardware" ? "hardware token" : "app/software"}`}></i>;
+}
 
+// Register MFA popovers
+const mfaPopoverConfig = {
+  html: true,
+  sanitize: false,
+  trigger: "hover focus"
+};
+
+[...document.querySelectorAll('.custom-hardware-popover')].map((el) => new Popover(el, {
+  ...mfaPopoverConfig,
+  title: 'Custom Hardware 2FA'
+}));
+[...document.querySelectorAll('.custom-software-popover')].map((el) => new Popover(el, {
+  ...mfaPopoverConfig,
+  title: 'Custom Software 2FA'
+}));
+
+// Social Media Notices
 /**
  * Alert the user to the privacy implications of posting on social media.
  *
