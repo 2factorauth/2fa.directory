@@ -71,6 +71,8 @@ function Entry({ name, data }) {
           <Icon entry={data} />
           {name}
         </a>
+
+        {data.notes && <i class="note bi bi-exclamation-diamond-fill" tabindex={0} data-bs-toggle="popover" data-bs-content={data.notes}></i>}
       </div>
 
       {color === 'green' ?
@@ -80,7 +82,6 @@ function Entry({ name, data }) {
             {data.recovery && <a aria-label="recovery documentation" className="recovery-doc" href={data.recovery} />}
           </div>
 
-          {/* TODO: Check for Custom software/hardware */}
           <Methods methods={data.methods} customSoftware={data["custom-software"]} customHardware={data["custom-hardware"]} />
         </> :
         <Contact contact={data.contact} />
@@ -134,12 +135,18 @@ function CustomMethods({ type, methods }) {
     : <i class="bi bi-info-circle" title={`Requires proprietary ${type === "hardware" ? "hardware token" : "app/software"}`}></i>;
 }
 
-// Register MFA popovers
+// Intialize popovers
 const mfaPopoverConfig = {
   html: true,
   sanitize: false,
   trigger: "hover focus"
 };
+
+[...document.querySelectorAll('.note')].map((el) => new Popover(el, {
+  trigger: 'hover focus',
+  title: 'Exceptions & Restrictions'
+}));
+
 
 [...document.querySelectorAll('.custom-hardware-popover')].map((el) => new Popover(el, {
   ...mfaPopoverConfig,
