@@ -2,8 +2,6 @@ import { useEffect, useState } from 'preact/hooks';
 import { Modal, Popover } from "bootstrap";
 import { API_URL, IMG_PATH } from '../constants.js';
 
-import "/assets/css/table.scss";
-
 function Table({ Category, Title, Order }) {
   const [entries, setEntries] = useState([]);
   const [columns, setColumns] = useState(6);

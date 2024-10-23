@@ -1,9 +1,8 @@
-import { render } from 'preact';
-import { useEffect, useState } from 'preact/hooks';
-import { API_URL } from '../constants.js';
+import {render} from 'preact';
+import {useEffect, useState} from 'preact/hooks';
+import {API_URL} from '../constants.js';
 
-import "/assets/css/navbar.scss";
-import "/node_modules/flag-icons/css/flag-icons.min.css";
+import '/node_modules/flag-icons/css/flag-icons.min.css';
 
 function Navbar() {
   const [regions, setRegions] = useState({});
@@ -16,10 +15,8 @@ function Navbar() {
   }, []);
 
   return (
-    <nav className="navbar navbar-expand-lg" role="navigation">
       <div className="container">
-        {/* TODO: Conditionally handle href */}
-        <a className="nav-link" id="branding" href="/about">
+        <a className="nav-link" id="branding" href="https://2factorauth-org.pages.dev/">
           <ul className="icon">
             <li>2FA Directory</li>
           </ul>
@@ -43,7 +40,6 @@ function Navbar() {
           )}
         </div>
       </div>
-    </nav>
   )
 }
 

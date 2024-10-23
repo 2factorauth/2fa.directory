@@ -1,7 +1,5 @@
 import {render} from 'preact';
 
-import "/assets/css/footer.scss";
-
 export function Footer() {
   const year = new Date().getFullYear();
   return (

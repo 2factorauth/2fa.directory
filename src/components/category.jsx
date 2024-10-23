@@ -3,8 +3,6 @@ import { useEffect, useState } from 'preact/hooks';
 import { API_URL } from '../constants.js';
 import Table from './table.jsx';
 
-import "/assets/css/category-buttons.scss";
-
 function Categories() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null); // Track the selected category
