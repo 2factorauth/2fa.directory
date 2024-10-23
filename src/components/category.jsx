@@ -1,11 +1,9 @@
 import { render } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
+import { API_URL } from '../constants.js';
 import Table from './table.jsx';
 
 import "/assets/css/category-buttons.scss";
-
-// API URL for fetching categories
-const API_URL = 'https://api.2fa.directory/frontend/v1';
 
 function Categories() {
   const [categories, setCategories] = useState([]);
@@ -19,26 +17,22 @@ function Categories() {
       catch(err => console.error('Error fetching categories:', err));  // Add error handling
   }, []);
 
-
-
   // Render a list of category buttons
   return (
-    <>
-      {categories.map(([key, category], index) => (
-        <>
-          <div>
-            <Button key={key} name={key} category={category} setSelectedCategory={setSelectedCategory} activeCategory={selectedCategory} />
-          </div>
-          {/* Render the table after the button div but outside of it */}
-          {selectedCategory === key && <Table Category={key} Title={category.title} Order={index} />}
-        </>
-      ))}
-    </>
+    categories.map(([key, category], index) => (
+      <>
+        <div>
+          <Button key={key} name={key} category={category} setSelectedCategory={setSelectedCategory} activeCategory={selectedCategory} />
+        </div>
+
+        {/* Render the table after the button div but outside of it */}
+        {selectedCategory === key && <Table Category={key} Title={category.title} Order={index} />}
+      </>
+    ))
   );
 }
 
 function Button({ name, category, setSelectedCategory, activeCategory }) {
-
   const handleCategoryClick = () => {
     setSelectedCategory(prevSelected => (prevSelected === name ? null : name));
   };

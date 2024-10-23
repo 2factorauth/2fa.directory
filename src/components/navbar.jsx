@@ -1,10 +1,9 @@
 import { render } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
+import { API_URL } from '../constants.js';
 
 import "/assets/css/navbar.scss";
 import "/node_modules/flag-icons/css/flag-icons.min.css";
-
-const API_URL = 'https://api.2fa.directory/frontend/v1';
 
 function Navbar() {
   const [regions, setRegions] = useState({});
