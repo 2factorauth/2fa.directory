@@ -17,5 +17,12 @@ export default defineConfig({
       },
     },
   },
-  plugins: [preact(), compileMarkdown()],
+  plugins: [
+    preact({
+      prerender: {
+        enabled: true,
+      },
+    }),
+    compileMarkdown(),
+  ],
 });
