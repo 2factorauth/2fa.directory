@@ -1,0 +1,5 @@
+/*
+  X-Robots-Tag: all
+  X-Frame-Options: DENY
+  Access-Control-Allow-Origin: none
+  Permissions-Policy: geolocation=(),microphone=(),camera=(),autoplay=(),payment=(),speaker=()fullscreen=(self)
