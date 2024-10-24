@@ -1,4 +1,4 @@
-import { hydrate, prerender as ssr } from 'preact-iso';
+import { render } from "preact";
 
 function Footer() {
   const year = new Date().getFullYear();
