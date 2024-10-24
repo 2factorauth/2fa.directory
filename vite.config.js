@@ -20,7 +20,7 @@ export default defineConfig({
   plugins: [
     preact({
       prerender: {
-        enabled: true,
+        enabled: false,
       },
     }),
     compileMarkdown(),
