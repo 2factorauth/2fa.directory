@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
+    <meta name="og:image" content="/icons/social-card.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css">
+    <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" sizes="any">
+    <link rel="icon apple-touch-icon" href="/icons/icon.png" type="image/png" sizes="512x512">
+    <title>{title} | 2FA Directory</title>
+  </head>
+  <body>
+    <nav class="navbar navbar-expand-lg" role="navigation" id="nav"></nav>
+
+    <main class="container" role="main">
+      <h1 class="display-3">{title}</h1>
+      {content}
+    </main>
+
+    <div id="footer"></div>
+
+    <script type="module" src="/src/components/head.jsx"></script>
+    <script type="module" src="/src/components/footer.jsx"></script>
+    <script type="module" src="/src/components/navbar.jsx"></script>
+  </body>
+</html>
