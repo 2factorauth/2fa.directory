@@ -23,3 +23,10 @@ dist-ssr
 *.sln
 *.sw?
 package-lock.json
+
+# Automatically-generated files
+api.html
+bots.html
+companies.html
+privacy.html
+notes/

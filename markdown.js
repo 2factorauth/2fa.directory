@@ -1,16 +1,12 @@
 import MarkdownIt from "markdown-it";
 import frontmatter from "front-matter";
 import { markdownItTable } from "markdown-it-table";
-import { readdir, readFile, mkdir, writeFile } from "fs/promises";
-import { existsSync } from "fs";
-import { dirname, resolve } from "path";
-import { fileURLToPath } from "url";
-
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
+import { readdir, readFile, access, mkdir, writeFile } from "fs/promises";
+import { resolve } from "path";
 
 const markdownDirectory = "content";
 const template = (await readFile("markdown.html")).toString();
+const templateNotes = (await readFile("markdown-notes.html")).toString();
 
 const md = MarkdownIt().use(markdownItTable);
 
@@ -41,15 +37,31 @@ const compileMarkdownFile = async (path) => {
   const { attributes } = frontmatter(contents);
   const rendered = md.render(contents.slice(contents.indexOf("---", 5) + 3));
 
-  const filename = attributes.url || path.split("/").pop().split(".")[0];
+  const filename = `${attributes.url || path.split("/").pop().split(".")[0]}.html`;
 
-  await writeFile(
-    `./${filename}.html`,
-    template
-      .replaceAll("{title}", attributes.title)
-      .replace("{content}", rendered),
-  );
-  outputFiles.push(`${filename}.html`);
+  if (filename.includes("/")) {
+    const directory = filename.split("/").slice(0, -1).join("/");
+    try {
+      await access(directory);
+    } catch {
+      await mkdir(directory, { recursive: true });
+    }
+  }
+
+  const filled = !filename.includes("notes")
+    ? template
+        .replaceAll("{title}", attributes.title)
+        .replace("{content}", rendered)
+    : templateNotes
+        .replaceAll("{title}", attributes.title)
+        .replace(
+          "{subtitle}",
+          `Information regarding ${attributes.title}'s 2FA.`,
+        )
+        .replace("{content}", rendered);
+
+  await writeFile(filename, filled);
+  outputFiles.push(filename);
 };
 
 /**
@@ -65,7 +77,7 @@ const compileAllMarkdownFiles = async (directory) => {
   await Promise.allSettled(files.map(compileMarkdownFile));
 };
 
-// await compileMarkdownFile("content/companies.md");
+// await compileMarkdownFile("content/notes-chase.md");
 // await compileAllMarkdownFiles(markdownDirectory);
 
 // Vite Plugins
@@ -76,7 +88,7 @@ const compileAllMarkdownFiles = async (directory) => {
  * @param {Object} [options] - The plugin options
  * @param {string} [options.directory] - A relative path to the Markdown folder
  */
-const compileMarkdownPlugin = (options = { directory: "content" }) => ({
+const compileMarkdownPlugin = (options = { directory: markdownDirectory }) => ({
   name: "compileMarkdown",
   async config(config, { command }) {
     if (command === "build") {
