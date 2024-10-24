@@ -11,6 +11,6 @@ table {
   }
 }
 
-h2, h3, h4 {
+h2, h3:not(.popover-header), h4 {
   margin-top: 2rem;
 }
