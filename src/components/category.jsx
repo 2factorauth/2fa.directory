@@ -9,11 +9,13 @@ function Categories() {
 
   // Fetch categories from the API
   useEffect(() => {
-    const region = window.location.pathname.slice(1);
-    fetch(`${API_URL}/${region || 'int/'}categories.json`).
-      then(res => res.json()).
-      then(data => setCategories(Object.entries(data) || [])).
-      catch(err => console.error('Error fetching categories:', err));  // Add error handling
+    if(!categories.length) {
+      const region = window.location.pathname.slice(1);
+      fetch(`${API_URL}/${region || 'int/'}categories.json`).
+        then(res => res.json()).
+        then(data => setCategories(Object.entries(data) || [])).
+        catch(err => console.error('Error fetching categories:', err));  // Add error handling
+    }
   }, []);
 
   useEffect(() => {

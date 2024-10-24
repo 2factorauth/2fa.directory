@@ -16,6 +16,16 @@ export default defineConfig({
         // companies: resolve(__dirname, "companies.html"),
       },
     },
+    cssCodeSplit: true, // This is the default behavior
+
+  },
+  css: {
+    // Options for preprocessing SCSS
+    preprocessorOptions: {
+      scss: {
+        additionalData: `@import "assets/css/root.scss";`,
+      },
+    },
   },
   plugins: [
     preact({

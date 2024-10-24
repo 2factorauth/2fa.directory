@@ -4,20 +4,24 @@
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, shrink-to-fit=no" name="viewport">
     <meta name="og:image" content="/icons/social-card.png">
+    <meta name="og:title" content="2FA Directory">
+    <meta name="og:type" content="website">
+    <meta name="twitter:site" content="@2faorg">
+    <link rel="me" href="https://infosec.exchange/@2factorauth">
       <!-- TODO: Figure out why importing from the package fails -->
       <!-- <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" /> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css"/>
-    <!-- <link rel="stylesheet" href="/assets/css/index.scss" /> -->
+    <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
     <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" sizes="any">
-    <link rel="icon apple-touch-icon" href="/icons/icon.png" type="image/png" sizes="512x512">
     <title>2FA Directory</title>
   </head>
   <body>
     <nav class="navbar navbar-expand-lg" role="navigation" id="nav"></nav>
 
     <main class="container" role="main">
-      <div id="search" class="search-bg"></div>
+      <div class="search-bg">
+        <div id="search"></div>
+      </div>
 
       <h3 id="categories-title">Categories</h3>
       <div class="categories" id="categories"></div>

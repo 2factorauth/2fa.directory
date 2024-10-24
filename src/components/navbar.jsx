@@ -2,7 +2,6 @@ import { render } from 'preact';
 import { useEffect, useState } from 'preact/hooks';
 import { API_URL } from '../constants.js';
 
-import '/node_modules/flag-icons/css/flag-icons.min.css';
 
 function Navbar() {
   const [regions, setRegions] = useState({});
