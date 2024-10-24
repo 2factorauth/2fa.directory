@@ -2,22 +2,24 @@ import { useEffect, useState } from 'preact/hooks';
 import { Modal, Popover } from "bootstrap";
 import { API_URL, IMG_PATH } from '../constants.js';
 
-function Table({ Category, Title, Order }) {
+function Table({ Category, Title, Order, search }) {
   const [entries, setEntries] = useState([]);
   const [columns, setColumns] = useState(6);
 
   useEffect(() => {
-    const region = window.location.pathname.slice(1);
-    fetch(`${API_URL}/${region || 'int/'}${Category}.json`,
-      {cache: 'force-cache'}).
-      then(res => res.json()).
-      then(data => setEntries(Object.entries(data).sort() || [])).
-      catch(err => console.error('Error fetching categories:', err));  // Add error handling
+    if (!search) {
+      const region = window.location.pathname.slice(1);
+      fetch(`${API_URL}/${region || 'int/'}${Category}.json`,
+        { cache: 'force-cache' }).
+        then(res => res.json()).
+        then(data => setEntries(Object.entries(data).sort() || [])).
+        catch(err => console.error('Error fetching categories:', err));  // Add error handling
+    } else setEntries(search);
 
     // Scroll to category button
     window.location.hash = `#${Category}`;
     document.getElementById(Category)?.
-      scrollIntoView({behavior: 'smooth', block: 'start'});
+      scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, []);
 
   useEffect(() => {
@@ -68,7 +70,7 @@ function Table({ Category, Title, Order }) {
 function Entry({ name, data }) {
   const color = data.methods !== undefined ? 'green' : 'red';
   return (
-    <div className={'entry ' + color} role="article">
+    <div className={'entry ' + color} role="article" data-domain={data.domain}>
       <div className="title">
         <a className="name" href={data.url ? data.url : `https://${data.domain}`} title={name}>
           <Icon entry={data} />
