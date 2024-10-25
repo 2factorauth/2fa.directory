@@ -118,3 +118,10 @@
 .fis {
   width: 1.33333333em !important;
 }
+
+.dropdown-item {
+  // Add space between flag and name
+  .fi {
+    margin-right: .3em;
+  }
+}
