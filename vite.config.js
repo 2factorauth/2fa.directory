@@ -3,8 +3,8 @@ import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
 import { createHtmlPlugin } from "vite-plugin-html";
 import preact from "@preact/preset-vite";
-import compileMarkdown from "./markdown";
-import renderStatic from "./render";
+import compileMarkdown from "./plugins/markdown";
+import prerender from "./plugins/prerender";
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -31,7 +31,7 @@ export default defineConfig({
   plugins: [
     preact(),
     compileMarkdown(),
-    renderStatic(),
+    prerender(),
     createHtmlPlugin({ minify: true }),
   ],
 });

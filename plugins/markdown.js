@@ -3,6 +3,7 @@ import frontmatter from "front-matter";
 import { markdownItTable } from "markdown-it-table";
 import { readdir, readFile, access, mkdir, writeFile } from "fs/promises";
 import { resolve } from "path";
+import { cwd } from "process";
 
 const markdownDirectory = "content";
 const template = (await readFile("markdown.html")).toString();
@@ -91,6 +92,8 @@ const compileAllMarkdownFiles = async (directory) => {
 const compileMarkdownPlugin = (options = { directory: markdownDirectory }) => ({
   name: "compileMarkdown",
   async config(config) {
+    console.log(cwd());
+
     config.build = config.build || {};
     config.build.rollupOptions = config.build.rollupOptions || {};
     config.build.rollupOptions.input = config.build.rollupOptions.input || {};
