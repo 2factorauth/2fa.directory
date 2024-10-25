@@ -10,7 +10,15 @@
     <title>{title} | 2FA Directory</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg" role="navigation" id="nav"></nav>
+    <nav id="nav" class="navbar navbar-expand-lg" role="navigation">
+      <div class="container">
+        <a class="nav-link" id="branding" href="/">
+          <ul class="icon">
+            <li>2FA Directory</li>
+          </ul>
+        </a>
+      </div>
+    </nav>
 
     <main class="container" role="main">
       <h1 class="display-3">{title}</h1>
@@ -20,6 +28,5 @@
     <!--footer-->
 
     <script type="module" src="/src/components/head.jsx"></script>
-    <script type="module" src="/src/components/navbar.jsx"></script>
   </body>
 </html>

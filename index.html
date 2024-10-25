@@ -8,8 +8,6 @@
     <meta name="og:type" content="website">
     <meta name="twitter:site" content="@2faorg">
     <link rel="me" href="https://infosec.exchange/@2factorauth">
-      <!-- TODO: Figure out why importing from the package fails -->
-      <!-- <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css" /> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css">
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
     <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-icons/1.11.3/font/bootstrap-icons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
@@ -17,7 +15,17 @@
     <title>2FA Directory</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-lg" role="navigation" id="nav"></nav>
+    <nav id="nav" class="navbar navbar-expand-lg" role="navigation">
+      <div class="container">
+        <a class="nav-link" id="branding" href="/">
+          <ul class="icon">
+            <li>2FA Directory</li>
+          </ul>
+        </a>
+
+        <div id="regions"></div>
+      </div>
+    </nav>
 
     <main class="container" role="main">
       <div class="search-bg">
@@ -49,7 +57,7 @@
     <!--footer-->
 
     <script type="module" src="/src/components/head.jsx"></script>
-    <script type="module" src="/src/components/navbar.jsx"></script>
+    <script type="module" src="/src/components/regions.jsx"></script>
     <script type="module" src="/src/components/category.jsx"></script>
     <script type="module" src="/src/components/search.jsx"></script>
   </body>
