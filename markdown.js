@@ -90,21 +90,19 @@ const compileAllMarkdownFiles = async (directory) => {
  */
 const compileMarkdownPlugin = (options = { directory: markdownDirectory }) => ({
   name: "compileMarkdown",
-  async config(config, { command }) {
-    if (command === "build") {
-      config.build = config.build || {};
-      config.build.rollupOptions = config.build.rollupOptions || {};
-      config.build.rollupOptions.input = config.build.rollupOptions.input || {};
+  async config(config) {
+    config.build = config.build || {};
+    config.build.rollupOptions = config.build.rollupOptions || {};
+    config.build.rollupOptions.input = config.build.rollupOptions.input || {};
 
-      const input = config.build.rollupOptions.input;
+    const input = config.build.rollupOptions.input;
 
-      await compileAllMarkdownFiles(options.directory);
+    await compileAllMarkdownFiles(options.directory);
 
-      outputFiles.forEach((file) => {
-        const resolvedPath = resolve(process.cwd(), file);
-        input[file.replace(".html", "")] = resolvedPath;
-      });
-    }
+    outputFiles.forEach((file) => {
+      const resolvedPath = resolve(process.cwd(), file);
+      input[file.replace(".html", "")] = resolvedPath;
+    });
   },
 });
 
