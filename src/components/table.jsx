@@ -1,10 +1,17 @@
-import { useEffect, useState } from 'preact/hooks';
-import { Modal, Popover } from "bootstrap";
-import { API_URL, IMG_PATH } from '../constants.js';
+import {useEffect, useState} from 'preact/hooks';
+import {Modal, Popover} from 'bootstrap';
+import {API_URL, IMG_PATH} from '../constants.js';
 
-function Table({ Category, Title, Order, search }) {
+const method_names = {
+  'sms': 'SMS',
+  'email': 'Email',
+  'call': 'Phone Calls',
+  'totp': 'TOTP',
+  'u2f': 'Passkeys',
+};
+
+function Table({Category, Title, search, grid}) {
   const [entries, setEntries] = useState([]);
-  const [columns, setColumns] = useState(6);
 
   useEffect(() => {
     if (!search) {
@@ -19,37 +26,15 @@ function Table({ Category, Title, Order, search }) {
     // Scroll to category button
     window.location.hash = `#${Category}`;
     document.getElementById(Category)?.
-      scrollIntoView({ behavior: 'smooth', block: 'start' });
+      scrollIntoView({behavior: 'smooth', block: 'start'});
   }, []);
 
-  useEffect(() => {
-    const handleResize = () => {
-      const width = window.innerWidth;
-      if (width < 993) {
-        setColumns(1); // For smaller screens, reduce columns
-      } else {
-        setColumns(6); // Default for larger screens
-      }
-    };
-
-    // Attach event listener
-    window.addEventListener('resize', handleResize);
-
-    // Call once on mount
-    handleResize();
-
-    // Cleanup on unmount
-    return () => window.removeEventListener('resize', handleResize);
-  }, []);
-
-  const y_pos = Math.floor(Order / 6);
   return (
     <div
       className="table collapse show"
       role="region"
       aria-selected="true"
-      style={`grid-area: ${y_pos + 2} / 1 / ${y_pos + 3} / ${columns +
-        1};`} // First in is table y position
+      style={`grid-area: ${grid};`} // First in is table y position
     >
       <div aria-hidden="true" className="table-head">
         <div>{Title}</div>
@@ -119,7 +104,8 @@ function Methods({ methods, customSoftware, customHardware }) {
   return (
     <>
       <ul className="tfa-summary" aria-label="Supported 2FA Methods">
-        {methods && methods.filter((method) => !method.includes("custom")).map((method) => <li>{method}</li>)}
+        {methods && methods.filter((method) => !method.includes('custom')).
+          map((method) => <li>{method_names[method]}</li>)}
         {methods?.includes("custom-hardware") && <li>Custom Hardware: {customHardware.join(", ")}</li>}
         {methods?.includes("custom-software") && <li>Custom Software: {customSoftware.join(", ")}</li>}
       </ul>

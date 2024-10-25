@@ -6,6 +6,7 @@ import Table from './table.jsx';
 function Categories() {
   const [categories, setCategories] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState(null); // Track the selected category
+  const [columns, setColumns] = useState(6); // Track the selected category
 
   // Fetch categories from the API
   useEffect(() => {
@@ -21,6 +22,7 @@ function Categories() {
   useEffect(() => {
     const hash = window.location.hash.slice(1);
     if (hash) setSelectedCategory(hash);
+    setColumns(window.innerWidth < 993 ? 1 : 6);
   }, []);
 
   // Render a list of category buttons
@@ -30,7 +32,7 @@ function Categories() {
         <Button key={key} name={key} category={category} setSelectedCategory={setSelectedCategory} activeCategory={selectedCategory} />
 
         {/* Render the table after the button div but outside of it */}
-        {selectedCategory === key && <Table Category={key} Title={category.title} Order={index} />}
+        {selectedCategory === key && <Table Category={key} Title={category.title} grid={`${Math.floor(index / columns) + 2} / 1 / ${Math.floor(index / columns) + 3} / ${columns + 1}`}/>}
       </>
     ))
   );
