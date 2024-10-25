@@ -1,6 +1,7 @@
 import { dirname, resolve } from "path";
 import { fileURLToPath } from "url";
 import { defineConfig } from "vite";
+import { createHtmlPlugin } from 'vite-plugin-html'
 import preact from "@preact/preset-vite";
 import compileMarkdown from "./markdown";
 import renderStatic from "./render";
@@ -20,13 +21,5 @@ export default defineConfig({
     cssCodeSplit: true, // This is the default behavior
 
   },
-  css: {
-    // Options for preprocessing SCSS
-    preprocessorOptions: {
-      scss: {
-        additionalData: `@import "assets/css/root.scss";`,
-      },
-    },
-  },
-  plugins: [preact(), compileMarkdown(), renderStatic()],
+  plugins: [preact(), compileMarkdown(), renderStatic(),  createHtmlPlugin({minify: true})],
 });
