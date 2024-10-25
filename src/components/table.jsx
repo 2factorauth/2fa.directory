@@ -1,6 +1,6 @@
-import {useEffect, useState} from 'preact/hooks';
-import {Modal, Popover} from 'bootstrap';
-import {API_URL, IMG_PATH} from '../constants.js';
+import { useEffect, useState } from 'preact/hooks';
+import { Modal, Popover } from 'bootstrap';
+import { API_URL, IMG_PATH } from '../constants.js';
 
 const method_names = {
   'sms': 'SMS',
@@ -10,7 +10,7 @@ const method_names = {
   'u2f': 'Passkeys',
 };
 
-function Table({Category, Title, search, grid}) {
+function Table({ Category, Title, search, grid }) {
   const [entries, setEntries] = useState([]);
 
   useEffect(() => {
@@ -26,7 +26,7 @@ function Table({Category, Title, search, grid}) {
     // Scroll to category button
     window.location.hash = `#${Category}`;
     document.getElementById(Category)?.
-      scrollIntoView({behavior: 'smooth', block: 'start'});
+      scrollIntoView({ behavior: 'smooth', block: 'start' });
   }, []);
 
   return (
@@ -107,7 +107,7 @@ function Methods({ methods, customSoftware, customHardware }) {
         {methods && methods.filter((method) => !method.includes('custom')).
           map((method) => <li>{method_names[method]}</li>)}
         {methods?.includes("custom-hardware") && <li>Custom Hardware: {customHardware?.join(", ")}</li>}
-        {methods?.includes("custom-software") && <li>Custom Software: {customSoftware.join(", ")}</li>}
+        {methods?.includes("custom-software") && <li>Custom Software: {customSoftware?.join(", ")}</li>}
       </ul>
       <div aria-hidden="true" className={`sms method ${methods?.includes('sms') ?
         'used' :
