@@ -1,5 +1,4 @@
 ---
-layout: page
 title: Privacy Policy
 ---
 Security and privacy go hand-in-hand, and so to protect our users, we don't keep any records of who visits our website or in any other way uses our services.
@@ -23,4 +22,3 @@ Requests sent through us to our sub-processor(s) may also be limited to the data
 If you have filed a GDPR request with us and find the response unsatisfactory, you may file a complaint with your country's governing [data protection authority][dpa].
 
 [dpa]: https://ec.europa.eu/justice/article-29/structure/data-protection-authorities/index_en.htm
-[directory]: https://2fa.directory

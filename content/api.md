@@ -1,5 +1,4 @@
 ---
-layout: page
 title: API usage
 ---
 ## Introduction

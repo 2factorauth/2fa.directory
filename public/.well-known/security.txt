@@ -1,0 +1,11 @@
+# Our security address
+Contact: https://github.com/2factorauth/twofactorauth/security
+
+# Our security policy
+Policy: https://github.com/2factorauth/twofactorauth/security/policy
+
+# Our preferred language
+Preferred-Languages: en
+
+Canonical: https://2fa.directory/.well-known/security.txt
+Expires: 2025-06-30T00:00:00z

@@ -8,27 +8,16 @@ in [2factorauth/twofactorauth][data_repo].
 
 ## Local installation
 
-The website is based on the static site generator [Hugo][hugo].
-To build locally you will need to follow the [installation instructions][hugo_install] for Hugo.  
-[Ruby][ruby_install] is also required for some scripts.
-
-After you've installed Hugo and Ruby, follow these steps to build the site locally:
+To run the site locally, follow these steps:
 
 1. Install NPM packages
    `npm install`
-1. Install Ruby gems
-   `bundle install`
-1. Fetch entries:
-   `./scripts/generate_entries.rb`
-1. Generate regional pages:
-   `./scripts/generate_regions.rb`
-1. Run Hugo locally:
-   `hugo serve`  
-   The site should then be reachable at [127.0.0.1:1313][localhost].
+1. Run the site locally:
+   `npm run dev`
 
 > **Note**
 > The [region-redirection](/functions/redirect.js) script does not run locally. You will therefore always be directed to
-> the international page when using `hugo serve`.
+> the international page when using `npm run dev`.
 
 ## Publishing forks
 
@@ -40,9 +29,9 @@ To publish your fork of this repo, follow these steps:
 1. Log in to your Cloudflare [Dashboard][cf_dash] and select Pages. Create a new project and select
    your fork as the source.
 2. When prompted for build configuration, enter the following:
-   * **Framework preset:** `None`
-   * **Build command:** `./scripts/build.sh`
-   * **Build output directory:** `/public`
+  * **Framework preset:** `None`
+  * **Build command:** `npm run build`
+  * **Build output directory:** `/dist`
 
 ## Contributing
 
@@ -51,13 +40,12 @@ our [editorconfig][editorconfig].
 
 The general file structure is as follows:
 
-|     Type     | Path                  |
-|:------------:|-----------------------|
-|  JavaScript  | `assets/js`           |
-|     CSS      | `assets/css`          |
-|   Layouts    | `layouts/_default`    |
-|    Pages     | `content`             |
-| Translations | `data/languages.json` |
+|       Type        | Path                  |
+|:-----------------:|-----------------------|
+|    JavaScript     | `src`                 |
+|        CSS        | `assets/css`          |
+| Layout components | `src/components`      |
+|   Translations    | `data/languages.json` |
 
 ## License
 
@@ -73,15 +61,12 @@ Before you make changes to the code, please keep the following in mind:
 For a more information on what is and isn't allowed under a GPLv3 license, see
 this [guide][gplv3_guide].
 
-[cf_dash]: https://dash.cloudflare.com/
+[cf_dash]: https://dash.cloudflare.com/?to=/:account/workers-and-pages/create/pages
 [cf_pages]: https://pages.cloudflare.com/
 [data_repo]: https://github.com/2factorauth/twofactorauth.git
 [data_license]: https://github.com/2factorauth/twofactorauth/blob/master/LICENSE.md
 [editorconfig]: https://editorconfig.org/
 [gplv3_guide]: https://www.gnu.org/licenses/quick-guide-gplv3.html
-[hugo]: https://gohugo.io/
 [localhost]: http://127.0.0.1:1313/
-[hugo_install]: https://gohugo.io/installation/
-[ruby_install]: https://www.ruby-lang.org/en/documentation/installation/
 [website]: https://2fa.directory/
 [screenshot]: https://i.imgur.com/4WvIsg0.png
