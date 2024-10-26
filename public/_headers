@@ -3,4 +3,4 @@
   X-Frame-Options: DENY
   Access-Control-Allow-Origin: none
   Permissions-Policy: geolocation=(),microphone=(),camera=(),autoplay=(),payment=(),speaker=()fullscreen=(self)
-  Content-Security-Policy: script-src 'self' https://cdnjs.cloudflare.com; script-src-attr 'unsafe-hashes' 'sha256-N2RjZTQ4OGEyY2Q1NTNmMGE1MGIwNmNlYjcwZmU0MGMxNWY5YjJjMTEzNDBjOGZjY2Q1OWMzODA4OTJhNzMxYg=='; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' https://api.2fa.directory https://cdnjs.cloudflare.com/ajax/libs/flag-icons/; font-src https://cdnjs.cloudflare.com; block-all-mixed-content; report-uri https://2factorauth.report-uri.com/r/d/csp/enforce;
+  Content-Security-Policy: script-src 'self' https://cdnjs.cloudflare.com; script-src-attr 'unsafe-hashes' 'sha256-1jAmyYXcRq6zFldLe/GCgIDJBiOONdXjTLgEFMDnDSM='; style-src 'self' 'unsafe-inline' https://cdnjs.cloudflare.com; img-src 'self' https://api.2fa.directory https://cdnjs.cloudflare.com/ajax/libs/flag-icons/; font-src https://cdnjs.cloudflare.com; block-all-mixed-content; report-uri https://2factorauth.report-uri.com/r/d/csp/enforce;
