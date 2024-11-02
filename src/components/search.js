@@ -113,10 +113,8 @@ function Search() {
   let timeout = null;
 
   return html`
-    <div id="outerSearchBox">
       <input
         type="search"
-        class="search"
         aria-label="Search the directory"
         placeholder="Search websites by name, URL or method (e.g. 2fa:sms)"
         autocomplete="off"
@@ -129,7 +127,6 @@ function Search() {
       />
 
       <a href="https://algolia.com/" title="Search by Algolia"></a>
-    </div>
   `;
 }
 
