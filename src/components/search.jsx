@@ -62,7 +62,8 @@ function sendSearch(query) {
     index.search(query, options)
       .then(({ hits }) => {
         const entries = hits.map((hit) => hitToAPI(hit))
-          .filter(([, entry]) => !entry.regions || entry.regions.includes(region));
+          .filter(([, entry]) => !entry.regions || entry.regions.includes(region))
+          .sort(([a,], [b,]) => a.localeCompare(b));
 
         if (entries.length !== 0) {
           const table = <Table Category="search" Title="Search Results" search={entries} grid="" />
