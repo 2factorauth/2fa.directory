@@ -60,6 +60,7 @@ function sendSearch(query) {
     query.match("^2fa(:)?$")
   ) {
     document.getElementById("categories").style.display = "grid";
+    document.getElementById("categories-title").style.display = "block";
     render(null, document.getElementById("search-categories"));
   } else {
     if (query.match("^[x|X]$")) query = '"X"';
@@ -86,8 +87,9 @@ function sendSearch(query) {
     index.search(query, options).then(({ hits }) => {
       const entries = hits
         .map((hit) => hitToAPI(hit))
-        .filter(([, entry]) => !entry.regions || entry.regions.includes(region))
-        .sort(([a], [b]) => a.localeCompare(b));
+        .filter(
+          ([, entry]) => !entry.regions || entry.regions.includes(region),
+        );
 
       if (entries.length !== 0) {
         const table = html`<${Table}
@@ -97,6 +99,7 @@ function sendSearch(query) {
         />`;
 
         document.getElementById("categories").style.display = "none";
+        document.getElementById("categories-title").style.display = "none";
         render(null, document.getElementById("search-categories"));
         render(table, document.getElementById("search-categories"));
       } else {
@@ -113,20 +116,20 @@ function Search() {
   let timeout = null;
 
   return html`
-      <input
-        type="search"
-        aria-label="Search the directory"
-        placeholder="Search websites by name, URL or method (e.g. 2fa:sms)"
-        autocomplete="off"
-        spellcheck="false"
-        aria-keyshortcuts="s"
-        onInput=${(event) => {
-          if (timeout) clearTimeout(timeout);
-          timeout = setTimeout(() => sendSearch(event.target.value), 1000);
-        }}
-      />
+    <input
+      type="search"
+      aria-label="Search the directory"
+      placeholder="Search websites by name, URL or method (e.g. 2fa:sms)"
+      autocomplete="off"
+      spellcheck="false"
+      aria-keyshortcuts="s"
+      onInput=${(event) => {
+        if (timeout) clearTimeout(timeout);
+        timeout = setTimeout(() => sendSearch(event.target.value), 1000);
+      }}
+    />
 
-      <a href="https://algolia.com/" title="Search by Algolia"></a>
+    <a href="https://algolia.com/" title="Search by Algolia"></a>
   `;
 }
 
