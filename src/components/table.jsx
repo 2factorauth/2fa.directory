@@ -24,9 +24,11 @@ function Table({ Category, Title, search, grid }) {
     } else setEntries(search);
 
     // Scroll to category button
-    window.location.hash = `#${Category}`;
-    document.getElementById(Category)?.
-      scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (!search) {
+      window.location.hash = `#${Category}`;
+      document.getElementById(Category)?.
+        scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
   }, []);
 
   return (
