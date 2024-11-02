@@ -1,6 +1,4 @@
 import { render } from "preact";
-import { useEffect, useState } from "preact/hooks";
-import { API_URL } from "../constants";
 import algoliasearch from "algoliasearch";
 import Table from "./table";
 
@@ -34,9 +32,8 @@ function hitToAPI(hit) {
  * Send a search query to Algolia
  *
  * @param {string} query - The query
- * @param {Object} apiCategories - The regional categories from the API
  */
-function sendSearch(query, apiCategories) {
+function sendSearch(query) {
   if (query === undefined || query === "" || (query.length < 2 && !query.match('^[x|X]$')) || query.match('http(s)?:\/\/.*') || query.match('^2fa(:)?$')) {
     document.getElementById("categories").style.display = "grid";
     render(null, document.getElementById("search-categories"));
@@ -66,25 +63,13 @@ function sendSearch(query, apiCategories) {
       .then(({ hits }) => {
         const entries = hits.map((hit) => hitToAPI(hit))
           .filter(([, entry]) => !entry.regions || entry.regions.includes(region));
-        const categories = {};
-
-        entries.forEach((entry) => {
-          for (const category of entry[1].categories) {
-            if (!(category in categories)) categories[category] = [];
-            categories[category].push(entry);
-          }
-        });
 
         if (entries.length !== 0) {
-          const tables = <>
-            {Object.keys(categories).sort().map((category, index) =>
-              <Table Category={category} Title={apiCategories[category].title} Order={index} search={categories[category]} />
-            )}
-          </>;
+          const table = <Table Category="search" Title="Search Results" search={entries} grid="" />
 
           document.getElementById("categories").style.display = "none";
           render(null, document.getElementById("search-categories"));
-          render(tables, document.getElementById("search-categories"));
+          render(table, document.getElementById("search-categories"));
         } else {
           render(<p>No results found.</p>, document.getElementById("search-categories"))
         }
@@ -94,17 +79,7 @@ function sendSearch(query, apiCategories) {
 }
 
 function Search() {
-  const [categories, setCategories] = useState({});
-
   let timeout = null;
-
-  // Fetch categories from the API
-  useEffect(() => {
-    fetch(`${API_URL}/${region || 'int'}/categories.json`).
-      then(res => res.json()).
-      then(data => setCategories(data || {})).
-      catch(err => console.error('Error fetching categories:', err));  // Add error handling
-  }, []);
 
   return <div id="outerSearchBox">
     <input
@@ -117,7 +92,7 @@ function Search() {
       aria-keyshortcuts="s"
       onInput={(event) => {
         if (timeout) clearTimeout(timeout);
-        timeout = setTimeout(() => sendSearch(event.target.value, categories), 1000);
+        timeout = setTimeout(() => sendSearch(event.target.value), 1000);
       }}
     />
 
