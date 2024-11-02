@@ -94,7 +94,6 @@ function sendSearch(query) {
           Category="search"
           Title="Search Results"
           search=${entries}
-          grid=""
         />`;
 
         document.getElementById("categories").style.display = "none";
