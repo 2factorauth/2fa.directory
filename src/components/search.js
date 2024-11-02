@@ -87,8 +87,9 @@ function sendSearch(query) {
     index.search(query, options).then(({ hits }) => {
       const entries = hits
         .map((hit) => hitToAPI(hit))
-        .filter(([, entry]) => !entry.regions || entry.regions.includes(region))
-        .sort(([a], [b]) => a.localeCompare(b));
+        .filter(
+          ([, entry]) => !entry.regions || entry.regions.includes(region),
+        );
 
       if (entries.length !== 0) {
         const table = html`<${Table}
