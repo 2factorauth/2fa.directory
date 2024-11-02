@@ -87,8 +87,10 @@ function sendSearch(query) {
     index.search(query, options).then(({ hits }) => {
       const entries = hits
         .map((hit) => hitToAPI(hit))
-        .filter(
-          ([, entry]) => !entry.regions || entry.regions.includes(region),
+        .filter(([, entry]) =>
+          region !== "int"
+            ? !entry.regions || entry.regions.includes(region)
+            : true,
         );
 
       if (entries.length !== 0) {
