@@ -37,7 +37,7 @@ function hitToAPI(hit) {
  * @param {Object} apiCategories - The regional categories from the API
  */
 function sendSearch(query, apiCategories) {
-  if (query === undefined || query === "" || (query.length < 3 && !query.match('^[x|X]$')) || query.match('http(s)?:\/\/.*') || query.match('^2fa(:)?$')) {
+  if (query === undefined || query === "" || (query.length < 2 && !query.match('^[x|X]$')) || query.match('http(s)?:\/\/.*') || query.match('^2fa(:)?$')) {
     document.getElementById("categories").style.display = "grid";
     render(null, document.getElementById("search-categories"));
   } else {
