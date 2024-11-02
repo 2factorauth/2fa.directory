@@ -101,7 +101,7 @@ function sendSearch(query) {
         render(table, document.getElementById("search-categories"));
       } else {
         render(
-          <p>No results found.</p>,
+          html`<p>No results found.</p>`,
           document.getElementById("search-categories"),
         );
       }
