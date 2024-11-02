@@ -15,6 +15,8 @@ export default defineConfig({
     rollupOptions: {
       input: {
         main: resolve(__dirname, "index.html"),
+        502: resolve(__dirname, "502.html"),
+        503: resolve(__dirname, "503.html"),
       },
     },
     cssCodeSplit: true, // This is the default behavior
