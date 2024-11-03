@@ -136,10 +136,12 @@ function Search() {
   const search = (query) => {
     sendSearch(query);
 
-    // Source: https://stackoverflow.com/a/70591485
-    const url = new URL(window.location.href);
-    url.searchParams.set("q", query);
-    window.history.pushState(null, "", url.toString());
+    if (query) {
+      // Source: https://stackoverflow.com/a/70591485
+      const url = new URL(window.location.href);
+      url.searchParams.set("q", query);
+      window.history.pushState(null, "", url.toString());
+    } else window.history.pushState(null, "", window.location.pathname);
   };
 
   return html`
