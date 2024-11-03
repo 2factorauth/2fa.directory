@@ -1,5 +1,6 @@
 import { html } from "htm/preact";
 import { render } from "preact";
+import { useEffect, useState } from "preact/hooks";
 import algoliasearch from "algoliasearch";
 import Table from "./table";
 
@@ -87,19 +88,21 @@ function sendSearch(query) {
     index.search(query, options).then(({ hits }) => {
       const entries = hits
         .map((hit) => hitToAPI(hit))
-        .filter(
-          ([, entry]) => !entry.regions || entry.regions.includes(region),
+        .filter(([, entry]) =>
+          region !== "int"
+            ? !entry.regions || entry.regions.includes(region)
+            : true,
         );
 
       if (entries.length !== 0) {
         const table = html`<${Table}
-          Category="search"
           Title="Search Results"
           search=${entries}
         />`;
 
         document.getElementById("categories").style.display = "none";
         document.getElementById("categories-title").style.display = "none";
+
         render(null, document.getElementById("search-categories"));
         render(table, document.getElementById("search-categories"));
       } else {
@@ -113,7 +116,33 @@ function sendSearch(query) {
 }
 
 function Search() {
+  const [query, setQuery] = useState("");
   let timeout = null;
+
+  useEffect(() => {
+    const searchParams = new URLSearchParams(window.location.search);
+    if (searchParams.has("q")) {
+      const query = searchParams.get("q");
+      setQuery(query);
+      sendSearch(query);
+    }
+  }, []);
+
+  /**
+   * Search and update query parameter without reloading the page
+   *
+   * @param {string} query - The query
+   */
+  const search = (query) => {
+    sendSearch(query);
+
+    if (query) {
+      // Source: https://stackoverflow.com/a/70591485
+      const url = new URL(window.location.href);
+      url.searchParams.set("q", query);
+      window.history.pushState(null, "", url.toString());
+    } else window.history.pushState(null, "", window.location.pathname);
+  };
 
   return html`
     <input
@@ -125,8 +154,9 @@ function Search() {
       aria-keyshortcuts="s"
       onInput=${(event) => {
         if (timeout) clearTimeout(timeout);
-        timeout = setTimeout(() => sendSearch(event.target.value), 1000);
+        timeout = setTimeout(() => search(event.target.value), 1000);
       }}
+      value=${query}
     />
 
     <a href="https://algolia.com/" title="Search by Algolia"></a>
