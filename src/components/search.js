@@ -141,7 +141,7 @@ function Search() {
       const url = new URL(window.location.href);
       url.searchParams.set("q", query);
       window.history.pushState(null, "", url.toString());
-    } else window.history.replaceState(null, "", window.location.pathname);
+    } else window.history.pushState(null, "", window.location.pathname);
   };
 
   return html`
