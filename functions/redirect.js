@@ -8,7 +8,6 @@ export async function onRequestGet({ request }) {
     const country = request.cf?.country?.toLowerCase();
     const res = await fetch(`${api}${country}/categories.json`, {
       method: 'HEAD',
-      cache: 'force-cache',
       cf: {
         cacheTtlByStatus: {
           "200": 60 * 60 * 24 * 14, // Cache request 2 weeks
@@ -17,7 +16,7 @@ export async function onRequestGet({ request }) {
       }
     });
 
-    let uri = res.status !== 200 ? `${base}${country}/` : `${base}/int/`
+    let uri = res.status === 200 ? `${base}${country}/` : `${base}int/`
 
     const params = url.searchParams.toString();
     if (params) uri += `?${params}`;
@@ -25,6 +24,6 @@ export async function onRequestGet({ request }) {
     return Response.redirect(uri, redirectStatus);
   } catch (e) {
     console.error(e);
-    return Response.redirect(`${base}/502/`, redirectStatus);
+    return Response.redirect(`${base}502/`, redirectStatus);
   }
 }
