@@ -22,7 +22,7 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-package-lock.json
+.wrangler
 
 # Automatically-generated files
 api.html

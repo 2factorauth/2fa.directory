@@ -1,7 +1,13 @@
 {
-  "version": "1.0.0",
-  "name": "2fa-dev",
-  "description": "2fa-dev",
+  "version": "6.0.0",
+  "name": "2fa.directory",
+  "author": "2factorauth",
+  "license": "GPL-3.0",
+  "repository": {
+    "url": "git+https://github.com/2factorauth/2fa.directory.git",
+    "type": "git"
+  },
+  "description": "List of sites with two factor auth support which includes SMS, email, phone calls, hardware, and software.",
   "private": true,
   "type": "module",
   "scripts": {
