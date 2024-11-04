@@ -16,14 +16,14 @@ All data used to populate the categories is sourced from [2factorauth/twofactora
 ## Tech Stack
 
 - **Frontend:** HTML, JavaScript, CSS
-- **Frameworks & Libraries:** Preact, HTM
+- **Frameworks & Libraries:** Preact, HTM, Vite
 - **Hosting:** Cloudflare Pages
 
 ## Local Installation
 
 To run the site locally, follow these steps:
 
-1. **Ensure you have [Node.js][nodejs] installed** (Recommended version: 20.x or higher).
+1. **Ensure you have Node.js installed** (Recommended version: 20.x or higher).
 2. **Clone the repository:**
    ```bash
    git clone https://github.com/2factorauth/2fa.directory.git
@@ -93,5 +93,4 @@ For more details on what is and isn't allowed under a GPLv3 license, see this [g
 [gplv3_guide]: https://www.gnu.org/licenses/quick-guide-gplv3.html
 [website]: https://2fa.directory/
 [screenshot]: https://i.imgur.com/4WvIsg0.png
-[nodejs]: https://nodejs.org/
 [functions]: /functions/redirect.js
