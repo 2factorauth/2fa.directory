@@ -44,6 +44,7 @@ const icons = [
   'currency_bitcoin',
   'description',
   'ecg_heart',
+  'electric_bolt',
   'emergency_home',
   'finance',
   'finance_mode',
