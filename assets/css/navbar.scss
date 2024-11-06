@@ -60,6 +60,12 @@
 
   }
 
+  .fi-globe:before {
+    font-family: 'Material Symbols Outlined';
+    content: '\e894';
+    font-size: 1.3em;
+  }
+
   #regionDropdown {
     color: var(--text-color);
   }

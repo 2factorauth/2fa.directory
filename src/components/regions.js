@@ -33,7 +33,7 @@ export default class Regions extends Component {
     const region = window.location.pathname.replace(/\//g, '');
     this.setState({
       currentRegion: region === 'int' || region === '' ?
-        'bi bi-globe':
+        'fi-globe':
         `fi fi-${region}`,
     });
   }
