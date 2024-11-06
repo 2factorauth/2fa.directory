@@ -7,7 +7,7 @@
   background: white;
   border: 1px #e3e3e3 solid;
   display: grid;
-  grid-template-columns: 2em 1fr 2em;
+  grid-template-columns: 1fr 2em;
   grid-template-rows: 1fr;
   grid-column-gap: 5px;
   margin: 6.5rem auto;
@@ -15,16 +15,6 @@
 
   @media screen and (max-width: 600px) {
     width: calc(100% - var(--bs-gutter-x));
-  }
-
-  &:before {
-    content: '\F52A';
-    font-family: 'bootstrap-icons';
-    color: #000000E6;
-    font-size: 1.3em;
-    font-weight: 900;
-    margin-left: 7px;
-    align-self: center;
   }
 
   &:focus-within {
@@ -37,7 +27,8 @@
   }
 
   input {
-    width: 100%;
+    width: calc(100% - 1em);
+    margin-left: 0.5em;
     border: none;
     background: none;
     height: 2.4em;

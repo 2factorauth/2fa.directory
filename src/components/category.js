@@ -71,7 +71,7 @@ function Button({ name, category, setSelectedCategory, activeCategory }) {
       >
         <span
           aria-hidden="true"
-          class="category-icon"
+          class="category-icon material-symbols-outlined"
           dangerouslySetInnerHTML=${{ __html: category.icon }}
         />
         <div>${category.title}</div>
