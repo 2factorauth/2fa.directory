@@ -211,15 +211,19 @@
     border-radius: 2px;
 
     &:before {
-      font-family: 'Material Symbols Outlined';
       vertical-align: middle;
+
+      content: '';
     }
 
     &.twitter {
       background: #000;
 
       &:before {
-        content: '\F8DB';
+        height: 1em;
+        width: 1em;
+        display: inherit;
+        background: url("/icons/x.svg");
       }
     }
 
@@ -227,7 +231,10 @@
       background: #3b5998;
 
       &:before {
-        content: '\F344';
+        height: 1em;
+        width: 1em;
+        display: inherit;
+        background: url("/icons/facebook.svg");
       }
     }
 
@@ -235,8 +242,10 @@
       background: #ea4235;
 
       &:before {
+        font-family: 'Material Symbols Outlined';
         content: '\E158';
         font-size: 1.3em;
+        margin-right: 0.3em;
       }
     }
   }
