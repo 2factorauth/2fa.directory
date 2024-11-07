@@ -21,7 +21,7 @@ export default function Head() {
       <link rel="me" href="https://infosec.exchange/@2factorauth"/>
 
       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.2.2/css/bootstrap.min.css" integrity="sha512-CpIKUSyh9QX2+zSdfGP+eWLx23C8Dj9/XmHjZY2uDtfkdLGo0uY12jgcnkX9vXOgYajEKb/jiw67EYm+kBf+6g==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
-      <link rel="preload" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400..500,1,0&display=block&icon_names=${sorted_icons}" as="style" onload="this.onload=null;this.rel='stylesheet'"/>
+      <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400..500,1,0&display=block&icon_names=${sorted_icons}"/>
       <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha512-bZBu2H0+FGFz/stDN/L0k8J0G8qVsAL0ht1qg5kTwtAheiXwiRKyCq1frwfbSFSJN3jooR5kauE0YjtPzhZtJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
       <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" sizes="any"/>
       <link rel="manifest" href="/manifest.json"/>
