@@ -223,7 +223,7 @@
         height: 1em;
         width: 1em;
         display: inherit;
-        background: url("/icons/x.svg");
+        background: url("/icons/x.svg") no-repeat center;
       }
     }
 
@@ -234,7 +234,7 @@
         height: 1em;
         width: 1em;
         display: inherit;
-        background: url("/icons/facebook.svg");
+        background: url("/icons/facebook.svg") no-repeat center;
       }
     }
 
@@ -245,7 +245,6 @@
         font-family: 'Material Symbols Outlined';
         content: '\E158';
         font-size: 1.3em;
-        margin-right: 0.3em;
       }
     }
   }
@@ -423,6 +422,23 @@
           margin: auto;
           width: calc(100% - .5em);
           max-width: 60vw;
+        }
+
+        .email, .form {
+          line-height: 0;
+          font-size: 2.7em;
+          height: 64px;
+          &:before {
+            display:block;
+          }
+        }
+
+        .facebook, .twitter {
+          width: calc(100% - 0.5em);
+          &:before {
+            padding: 1.5em;
+            width: calc(100% - 0.5em);
+          }
         }
       }
     }
