@@ -64,7 +64,7 @@ function Entry({ name, data }) {
           {name}
         </a>
 
-        {data.notes && <span class="note bi material-symbols-outlined" tabindex={0} data-bs-toggle="popover" data-bs-content={data.notes}>emergency_home</span>}
+        {data.notes && <span class="note material-symbols-outlined" tabindex={0} data-bs-toggle="popover" data-bs-content={data.notes}>emergency_home</span>}
       </div>
 
       {color === 'green' ?
