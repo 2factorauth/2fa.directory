@@ -426,8 +426,8 @@
 
         .email, .form {
           line-height: 0;
-          font-size: 2.7em;
-          height: 64px;
+          font-size: 2em;
+          height: 48px;
           &:before {
             display:block;
           }
@@ -436,7 +436,7 @@
         .facebook, .twitter {
           width: calc(100% - 0.5em);
           &:before {
-            padding: 1.5em;
+            padding: 1em;
             width: calc(100% - 0.5em);
           }
         }
