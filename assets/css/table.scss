@@ -74,8 +74,8 @@
     }
 
     .note {
-      float: right;
-      font-size: 1.4em;
+      font-size: 2em;
+      margin: auto;
       color: #db2828;
       justify-self: end;
     }
@@ -91,9 +91,9 @@
         margin: auto;
 
         &:after {
-          content: '\F3B8';
-          font-family: 'bootstrap-icons';
-          font-size: 1.6em;
+          content: '\E873';
+          font-family: 'Material Symbols Outlined';
+          font-size: 2em;
           vertical-align: middle;
         }
       }
@@ -104,9 +104,9 @@
         margin: auto;
 
         &:after {
-          content: '\F116';
-          font-family: 'bootstrap-icons';
-          font-size: 1.6em;
+          content: '\E929';
+          font-family: 'Material Symbols Outlined';
+          font-size: 2em;
           font-weight: 600;
           vertical-align: middle;
         }
@@ -126,8 +126,9 @@
 
       &.used {
         &:before {
-          content: '\F633';
-          font-family: 'bootstrap-icons';
+          content: '\E5CA';
+          font-family: 'Material Symbols Outlined';
+          font-size: 1.5em;
           margin: auto;
           display: block;
           font-weight: 600;
@@ -210,15 +211,19 @@
     border-radius: 2px;
 
     &:before {
-      font-family: 'bootstrap-icons';
       vertical-align: middle;
+
+      content: '';
     }
 
     &.twitter {
       background: #000;
 
       &:before {
-        content: '\F8DB';
+        height: 1em;
+        width: 1em;
+        display: inherit;
+        background: url("/icons/x.svg") no-repeat center;
       }
     }
 
@@ -226,7 +231,10 @@
       background: #3b5998;
 
       &:before {
-        content: '\F344';
+        height: 1em;
+        width: 1em;
+        display: inherit;
+        background: url("/icons/facebook.svg") no-repeat center;
       }
     }
 
@@ -234,7 +242,9 @@
       background: #ea4235;
 
       &:before {
-        content: '\F32C';
+        font-family: 'Material Symbols Outlined';
+        content: '\E158';
+        font-size: 1.3em;
       }
     }
   }
@@ -305,11 +315,9 @@
     }
 
     .note {
-      float: right;
-      margin-right: .5rem;
-      font-size: 2em;
-      line-height: 1.2em;
-      color: #d03333;
+      font-size: 3em;
+      color: #D03333;
+      justify-self: right;
     }
 
     & > .sms, & > .voice, & > .email, & > .hardware, & > .software {
@@ -324,10 +332,10 @@
         margin: 0;
 
         li:before {
-          content: '\F633';
-          font-family: 'bootstrap-icons';
+          content: '\E5CA';
+          font-family: 'Material Symbols Outlined';
           margin-right: 5px;
-          font-size: 20px;
+          font-size: 22px;
           font-weight: 600;
           vertical-align: middle;
         }
@@ -358,10 +366,9 @@
         .website-doc {
 
           &:before {
-            content: '\F3B8';
-            font-family: 'bootstrap-icons';
+            content: '\E873';
+            font-family: 'Material Symbols Outlined';
             margin-right: .3em;
-            font-size: .8em;
             vertical-align: middle;
           }
 
@@ -375,10 +382,9 @@
 
         .recovery-doc {
           &:before {
-            content: '\F116';
-            font-family: 'bootstrap-icons';
+            content: '\E042';
+            font-family: 'Material Symbols Outlined';
             margin-right: .3em;
-            font-size: .8em;
             font-weight: 600;
             vertical-align: middle;
           }
@@ -416,6 +422,23 @@
           margin: auto;
           width: calc(100% - .5em);
           max-width: 60vw;
+        }
+
+        .email, .form {
+          line-height: 0;
+          font-size: 2em;
+          height: 48px;
+          &:before {
+            display:block;
+          }
+        }
+
+        .facebook, .twitter {
+          width: calc(100% - 0.5em);
+          &:before {
+            padding: 1em;
+            width: calc(100% - 0.5em);
+          }
         }
       }
     }
