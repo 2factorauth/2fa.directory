@@ -1,8 +1,7 @@
 #search {
   align-self: center;
   justify-content: center;
-  max-width: 650px;
-  width: calc(max(470px, 45vw));
+  width: clamp(470px, 50vw, 650px);
   box-shadow: 0 2px 2px 0 rgba(0, 0, 0, .16), 0 0 0 1px rgba(0, 0, 0, .08);
   background: white;
   border: 1px #e3e3e3 solid;
@@ -13,7 +12,7 @@
   margin: 6.5rem auto;
   padding: .2rem;
 
-  @media screen and (max-width: 600px) {
+  @media screen and (max-width: 518px) {
     width: calc(100% - var(--bs-gutter-x));
   }
 
@@ -22,7 +21,6 @@
       display: block;
       background: url('/icons/algolia.svg') no-repeat center;
       background-position-x: 100%;
-
     }
   }
 
