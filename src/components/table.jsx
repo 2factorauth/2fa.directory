@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'preact/hooks';
-import { Modal, Popover } from 'bootstrap';
+import { Popover } from 'bootstrap';
 import { API_URL, IMG_PATH } from '../constants.js';
 
 const method_names = {
@@ -55,7 +55,7 @@ function Table({ Category, Title, search, grid }) {
 }
 
 function Entry({ name, data }) {
-  const color = data.methods !== undefined ? 'green' : 'red';
+  const color = data?.methods !== undefined ? 'green' : 'red';
   return (
     <div className={'entry ' + color} role="article" data-domain={data.domain}>
       <div className="title">
@@ -74,7 +74,7 @@ function Entry({ name, data }) {
             {data.recovery && <a aria-label="recovery documentation" className="recovery-doc" href={data.recovery} />}
           </div>
 
-          <Methods methods={data.methods} customSoftware={data["custom-software"]} customHardware={data["custom-hardware"]} />
+          <Methods methods={data?.methods} customSoftware={data["custom-software"]} customHardware={data["custom-hardware"]} />
         </> :
         <Contact contact={data.contact} />
       }
@@ -164,16 +164,16 @@ const mfaPopoverConfig = {
  */
 function socialMediaNotice(type, lang, handle) {
   const uri = `/contact/?type=${type}&lang=${lang}&handle=${handle}`;
-  if (window.localStorage.getItem('social-media-notice') !== 'hidden') {
-    const modal = new Modal('#social-media-warn');
-    document.getElementById('social-media-accept').setAttribute('data-url', uri);
-    modal.toggle();
-  } else {
+  if (window.localStorage.getItem('social-media-notice') === 'hidden') {
     window.open(uri, '_blank');
+  } else {
+    document.getElementById('social-media-warn').showModal();
+    document.getElementById('social-media-accept').
+      setAttribute('data-url', uri);
   }
 }
 
-document.getElementById("social-media-warn").addEventListener("hide.bs.modal", () => {
+document.getElementById("social-media-accept").addEventListener("click", () => {
   window.localStorage.setItem('social-media-notice', 'hidden');
   window.open(
     document.getElementById('social-media-accept').getAttribute('data-url'), "_blank"
