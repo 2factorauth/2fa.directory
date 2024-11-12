@@ -53,6 +53,7 @@ const icons = [
   'group',
   'hard_drive',
   'id_card',
+  'info',
   'language',
   'mail',
   'markunread_mailbox',
