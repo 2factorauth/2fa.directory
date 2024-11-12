@@ -49,7 +49,7 @@ function Table({ Category, Title, search, grid }) {
         <div>Hardware</div>
         <div>Software</div>
       </div>
-      {entries.map(([name, data]) => (
+      {entries.sort(([aName,], [bName,]) => aName.localeCompare(bName)).map(([name, data]) => (
         <Entry name={name.replace(` [${region.toUpperCase()}]`, '')} data={data} />
       ))}
     </div>
