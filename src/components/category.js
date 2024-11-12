@@ -100,20 +100,20 @@ class Button extends Component {
     const {name, category, activeCategory} = props;
     const isActive = activeCategory === name;
 
-    return (
+    return html`
       <button
-        className={`category-btn ${isActive ? 'active':''}`}
-        onClick={this.handleClick}
-        aria-controls={name}
-        id={name}>
+        class=${`category-btn ${isActive ? 'active':''}`}
+        onClick=${this.handleClick}
+        aria-controls=${name}
+        id=${name}>
           <span
             aria-hidden="true"
-            className="category-icon material-symbols-outlined"
-            dangerouslySetInnerHTML={{__html: category.icon}}
-          />
-        <div>{category.title}</div>
+            class="category-icon material-symbols-outlined"
+            dangerouslySetInnerHTML=${{__html: category.icon}}
+          ></span>
+        <div>${category?.title}</div>
       </button>
-    );
+    `;
   }
 }
 
