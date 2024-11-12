@@ -85,6 +85,12 @@ function Entry({ name, data }) {
   );
 }
 
+const mfaPopoverConfig = {
+  html: true,
+  sanitize: false,
+  trigger: "hover focus"
+};
+
 function Methods({ methods, customSoftware, customHardware }) {
   useEffect(() => {
     [...document.querySelectorAll('.note')].map((el) => new Popover(el, {
@@ -148,13 +154,6 @@ function CustomMethods({ type, methods }) {
     <span class={`icon-info custom-${type}-popover`} data-bs-content={methods.map((method) => `<li>${method}</li>`).join("")} data-bs-toggle="popover"></span>
     : <span class="icon-info" title={`Requires proprietary ${type === "hardware" ? "hardware token" : "app/software"}`}></span>;
 }
-
-// Intialize popovers
-const mfaPopoverConfig = {
-  html: true,
-  sanitize: false,
-  trigger: "hover focus"
-};
 
 // Social Media Notices
 /**
