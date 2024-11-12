@@ -14,3 +14,37 @@ table {
 h2, h3:not(.popover-header), h4 {
   margin-top: 2rem;
 }
+
+dialog {
+  border: none;
+  box-shadow: 0 0 #0000, 0 0 #0000, 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  width: min(90%, 34rem);
+
+  &[open] {
+    animation: fadein .15s ease-in forwards;
+  }
+
+  &::backdrop {
+    background-color: rgba(0, 0, 0, 0.6);
+    backdrop-filter: blur(5px);
+  }
+
+  form {
+    display: flex;
+    justify-content: space-around;
+  }
+
+  h3 {
+    margin-top: 0 !important;
+  }
+}
+
+@keyframes fadein {
+  0% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}

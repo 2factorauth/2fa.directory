@@ -31,12 +31,12 @@
 
     --bs-nav-link-color: var(--text-color) !important;
     --bs-navbar-color: var(--text-color);
+  }
 
-    .modal {
-      --bs-modal-bg: var(--secondary-background);
-      --bs-border-color: var(--secondary-background);
-      --modal-color: var(--text-color);
-    }
+  dialog {
+    --bs-modal-bg: var(--secondary-background);
+    --bs-border-color: var(--secondary-background);
+    --modal-color: var(--text-color);
   }
 
   .popover {

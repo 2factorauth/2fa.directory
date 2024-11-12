@@ -1,83 +1,120 @@
-import { html } from "htm/preact";
-import { render } from "preact";
-import { useEffect, useState } from "preact/hooks";
-import { API_URL } from "../constants.js";
-import Table from "./table.jsx";
+import {html} from 'htm/preact';
+import {Component, render} from 'preact';
+import {API_URL} from '../constants.js';
+import Table from './table.jsx';
 
-function Categories() {
-  const [categories, setCategories] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState(null); // Track the selected category
-  const [columns, setColumns] = useState(6); // Track the selected category
+class Categories extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      categories: [],
+      selectedCategory: null,
+      columns: 6,
+      error: false,
+    };
 
-  // Fetch categories from the API
-  useEffect(() => {
-    if (!categories.length) {
-      const region = window.location.pathname.slice(1);
-      fetch(`${API_URL}/${region || "int/"}categories.json`)
-        .then((res) => res.json())
-        .then((data) => setCategories(Object.entries(data) || []))
-        .catch((err) => console.error("Error fetching categories:", err)); // Add error handling
-    }
-  }, []);
+    // Bind methods
+    this.handleHashChange = this.handleHashChange.bind(this);
+    this.handleResize = this.handleResize.bind(this);
+    this.setSelectedCategory = this.setSelectedCategory.bind(this);
 
-  useEffect(() => {
-    const hash = window.location.hash.slice(1);
-    if (hash) setSelectedCategory(hash);
-    setColumns(window.innerWidth < 993 ? 1 : 6);
-  }, []);
+    const region = window.location.pathname.slice(1);
+    fetch(`${API_URL}/${region || 'int/'}categories.json`).
+      then((res) => res.json()).
+      then((data) => {
+        this.setState({categories: Object.entries(data) || []});
+      }).catch((err) => this.setState({error: err}));
+  }
 
-  // Render a list of category buttons
-  return categories.map(
-    ([key, category], index) => html`
-      <${Button}
-        key=${key}
-        name=${key}
-        category=${category}
-        setSelectedCategory=${setSelectedCategory}
-        activeCategory=${selectedCategory}
-      />
+  componentWillMount() {
+    // Set initial hash and columns
+    this.handleHashChange();
+    this.handleResize();
 
-      <!-- Render the table after the button div but outside of it -->
-      ${selectedCategory === key &&
-      html`<${Table}
-        Category=${key}
-        Title=${category.title}
-        grid=${`${Math.floor(index / columns) + 2} / 1 / ${Math.floor(index / columns) + 3} / ${columns + 1}`}
-      />`}
-    `,
-  );
-}
+    // Add event listeners
+    window.addEventListener('hashchange', this.handleHashChange);
+    window.addEventListener('resize', this.handleResize);
+  }
 
-function Button({ name, category, setSelectedCategory, activeCategory }) {
-  const handleCategoryClick = () => {
-    setSelectedCategory((prevSelected) =>
-      prevSelected === name ? null : name,
-    );
+  componentWillUnmount() {
+    window.removeEventListener('hashchange', this.handleHashChange);
+    window.removeEventListener('resize', this.handleResize);
+  }
+
+  handleHashChange() {
+    this.setState({selectedCategory: window.location.hash.slice(1) || null});
+  }
+
+  handleResize() {
+    this.setState({columns: window.innerWidth < 993 ? 1:6});
+  }
+
+  setSelectedCategory = (category) => {
+    if (this.state.selectedCategory === category)
+      this.setState({selectedCategory: ''});
+    else
+      this.setState({selectedCategory: category});
     history.pushState(
-      "",
+      '',
       document.title,
       window.location.pathname + window.location.search,
     );
   };
 
-  return html`
-    <div>
-      <button
-        class=${`category-btn ${activeCategory === name ? " active" : ""}`}
-        onClick=${handleCategoryClick}
-        href="#${name}"
-        aria-controls=${name}
-        id=${name}
-      >
-        <span
-          aria-hidden="true"
-          class="category-icon material-symbols-outlined"
-          dangerouslySetInnerHTML=${{ __html: category.icon }}
-        />
-        <div>${category.title}</div>
-      </button>
-    </div>
-  `;
+  render(props, state) {
+    const {categories, selectedCategory, columns} = state;
+    if (this.state.error)
+      return html`<p>Failed to load categories</p>`;
+    else
+      return html`${categories.map(([key, category], index) => (html`
+          <${Button}
+            name=${key}
+            category=${category}
+            setSelectedCategory=${this.setSelectedCategory}
+            activeCategory=${selectedCategory}
+          />
+
+          <!-- Render the table after the button div but outside of it -->
+          ${selectedCategory === key && (html`
+              <${Table}
+                Category=${key}
+                Title=${category.title}
+                grid=${`${Math.floor(index / columns) + 2} / 1 / ${Math.floor(
+                  index / columns) + 3} / ${
+                  columns + 1
+                }`}
+              />`
+          )}
+        `
+      ))}`;
+  }
 }
 
-render(html`<${Categories} />`, document.getElementById("categories"));
+class Button extends Component {
+  handleClick = () => {
+    const {name, setSelectedCategory} = this.props;
+    setSelectedCategory(name);
+  };
+
+  render(props) {
+    const {name, category, activeCategory} = props;
+    const isActive = activeCategory === name;
+
+    return (
+      <button
+        className={`category-btn ${isActive ? 'active':''}`}
+        onClick={this.handleClick}
+        aria-controls={name}
+        id={name}>
+          <span
+            aria-hidden="true"
+            className="category-icon material-symbols-outlined"
+            dangerouslySetInnerHTML={{__html: category.icon}}
+          />
+        <div>{category.title}</div>
+      </button>
+    );
+  }
+}
+
+render(html`<${Categories}/>`, document.getElementById('categories'));
