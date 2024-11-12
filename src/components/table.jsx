@@ -145,8 +145,8 @@ function Methods({ methods, customSoftware, customHardware }) {
  */
 function CustomMethods({ type, methods }) {
   return methods.length !== 0 ?
-    <i class={`bi bi-info-circle custom-${type}-popover`} data-bs-content={methods.map((method) => `<li>${method}</li>`).join("")} data-bs-toggle="popover"></i>
-    : <i class="bi bi-info-circle" title={`Requires proprietary ${type === "hardware" ? "hardware token" : "app/software"}`}></i>;
+    <span class={`icon-info custom-${type}-popover`} data-bs-content={methods.map((method) => `<li>${method}</li>`).join("")} data-bs-toggle="popover"></span>
+    : <span class="icon-info" title={`Requires proprietary ${type === "hardware" ? "hardware token" : "app/software"}`}></span>;
 }
 
 // Intialize popovers

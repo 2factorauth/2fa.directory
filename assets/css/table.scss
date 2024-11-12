@@ -154,6 +154,13 @@
       &.software {
         grid-area: 1 / 7 / 2 / 8;
       }
+
+      .icon-info {
+        &:before{
+          content: '\E88E';
+          font-family: 'Material Symbols Outlined';
+        }
+      }
     }
 
     .contact {
