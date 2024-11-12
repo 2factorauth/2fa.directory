@@ -12,9 +12,11 @@ const method_names = {
 
 function Table({ Category, Title, search, grid }) {
   const [entries, setEntries] = useState([]);
+  const [region, setRegion] = useState('');
 
   useEffect(() => {
     if (!search) {
+      setRegion(window.location.pathname.slice(1,-1));
       const region = window.location.pathname.slice(1);
       fetch(`${API_URL}/${region || 'int/'}${Category}.json`,
         { cache: 'force-cache' }).
@@ -48,7 +50,7 @@ function Table({ Category, Title, search, grid }) {
         <div>Software</div>
       </div>
       {entries.map(([name, data]) => (
-        <Entry name={name} data={data} />
+        <Entry name={name.replace(` [${region.toUpperCase()}]`, '')} data={data}/>
       ))}
     </div>
   );
@@ -172,13 +174,6 @@ function socialMediaNotice(type, lang, handle) {
       setAttribute('data-url', uri);
   }
 }
-
-document.getElementById("social-media-accept").addEventListener("click", () => {
-  window.localStorage.setItem('social-media-notice', 'hidden');
-  window.open(
-    document.getElementById('social-media-accept').getAttribute('data-url'), "_blank"
-  );
-})
 
 function Contact({ contact }) {
   const lang = contact.language || "en";
