@@ -85,6 +85,12 @@ function Entry({ name, data }) {
   );
 }
 
+const mfaPopoverConfig = {
+  html: true,
+  sanitize: false,
+  trigger: "hover focus"
+};
+
 function Methods({ methods, customSoftware, customHardware }) {
   useEffect(() => {
     [...document.querySelectorAll('.note')].map((el) => new Popover(el, {
@@ -149,13 +155,6 @@ function CustomMethods({ type, methods }) {
     : <span class="icon-info" title={`Requires proprietary ${type === "hardware" ? "hardware token" : "app/software"}`}></span>;
 }
 
-// Intialize popovers
-const mfaPopoverConfig = {
-  html: true,
-  sanitize: false,
-  trigger: "hover focus"
-};
-
 // Social Media Notices
 /**
  * Alert the user to the privacy implications of posting on social media.
@@ -180,8 +179,8 @@ function Contact({ contact }) {
   return (
     <div aria-label="2FA not supported" className="contact">
       {contact.twitter && (<button className="contact-btn twitter" onClick={() => socialMediaNotice("tweet", lang, contact.twitter)}></button>)}
-      {contact.facebook && (<button className="contact-btn facebook" onClick={() => socialMediaNotice("facebook", lang, contact.twitter)}></button>)}
-      {contact.email && (<button className="contact-btn email" onClick={() => socialMediaNotice("email", lang, contact.twitter)}></button>)}
+      {contact.facebook && (<button className="contact-btn facebook" onClick={() => socialMediaNotice("facebook", lang, contact.facebook)}></button>)}
+      {contact.email && (<button className="contact-btn email" onClick={() => socialMediaNotice("email", lang, contact.email)}></button>)}
       {contact.form && (<button className="contact-btn form" onClick={() => window.open(contact.form, "_blank")}></button>)}
     </div>
   );
