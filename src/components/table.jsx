@@ -16,7 +16,7 @@ function Table({ Category, Title, search, grid }) {
 
   useEffect(() => {
     if (!search) {
-      setRegion(window.location.pathname.slice(1,-1));
+      setRegion(window.location.pathname.slice(1, -1));
       const region = window.location.pathname.slice(1);
       fetch(`${API_URL}/${region || 'int/'}${Category}.json`,
         { cache: 'force-cache' }).
@@ -50,7 +50,7 @@ function Table({ Category, Title, search, grid }) {
         <div>Software</div>
       </div>
       {entries.map(([name, data]) => (
-        <Entry name={name.replace(` [${region.toUpperCase()}]`, '')} data={data}/>
+        <Entry name={name.replace(` [${region.toUpperCase()}]`, '')} data={data} />
       ))}
     </div>
   );
@@ -84,6 +84,12 @@ function Entry({ name, data }) {
     </div>
   );
 }
+
+const mfaPopoverConfig = {
+  html: true,
+  sanitize: false,
+  trigger: "hover focus"
+};
 
 function Methods({ methods, customSoftware, customHardware }) {
   useEffect(() => {
@@ -144,17 +150,10 @@ function Methods({ methods, customSoftware, customHardware }) {
  * @param {string[]} props.methods - The custom methods
  */
 function CustomMethods({ type, methods }) {
-  return methods.length !== 0 ?
+  return methods ?
     <span class={`icon-info custom-${type}-popover`} data-bs-content={methods.map((method) => `<li>${method}</li>`).join("")} data-bs-toggle="popover"></span>
     : <span class="icon-info" title={`Requires proprietary ${type === "hardware" ? "hardware token" : "app/software"}`}></span>;
 }
-
-// Intialize popovers
-const mfaPopoverConfig = {
-  html: true,
-  sanitize: false,
-  trigger: "hover focus"
-};
 
 // Social Media Notices
 /**
@@ -180,8 +179,8 @@ function Contact({ contact }) {
   return (
     <div aria-label="2FA not supported" className="contact">
       {contact.twitter && (<button className="contact-btn twitter" onClick={() => socialMediaNotice("tweet", lang, contact.twitter)}></button>)}
-      {contact.facebook && (<button className="contact-btn facebook" onClick={() => socialMediaNotice("facebook", lang, contact.twitter)}></button>)}
-      {contact.email && (<button className="contact-btn email" onClick={() => socialMediaNotice("email", lang, contact.twitter)}></button>)}
+      {contact.facebook && (<button className="contact-btn facebook" onClick={() => socialMediaNotice("facebook", lang, contact.facebook)}></button>)}
+      {contact.email && (<button className="contact-btn email" onClick={() => socialMediaNotice("email", lang, contact.email)}></button>)}
       {contact.form && (<button className="contact-btn form" onClick={() => window.open(contact.form, "_blank")}></button>)}
     </div>
   );
