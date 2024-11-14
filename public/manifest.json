@@ -1,18 +1,32 @@
 {
   "name": "2FA Directory",
   "lang": "en",
+  "start_url": "/",
+  "scope": "/",
+  "serviceworker": {
+    "src": "/service-worker.js",
+    "scope": "/",
+    "use_cache": true
+  },
+  "theme_color": "#38CCCC",
+  "background_color": "#EEE",
+  "display": "standalone",
+  "display_override": [
+    "standalone",
+    "minimal-ui"
+  ],
   "description": "List of sites with two factor auth support which includes SMS, email, phone calls, hardware, and software.",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/icons/icon-only.svg",
+      "src": "/icons/icon.svg",
       "sizes": "any",
       "type": "image/svg+xml",
       "purpose": "any"
     },
     {
       "src": "/icons/icon.png",
-      "sizes": "515x515",
+      "sizes": "512x512",
       "type": "image/png",
       "purpose": "any"
     },
@@ -22,10 +36,5 @@
       "type": "image/png",
       "purpose": "maskable"
     }
-  ],
-  "start_url": "/",
-  "scope": "/",
-  "theme_color": "#38CCCC",
-  "background_color": "#EEE",
-  "display": "standalone"
+  ]
 }
