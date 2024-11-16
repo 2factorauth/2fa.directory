@@ -10,7 +10,7 @@ const method_names = {
   'u2f': 'Passkeys',
 };
 
-function Table({ Category, Title, search, grid }) {
+function Table({ Category, search, grid }) {
   const [entries, setEntries] = useState([]);
   const [region, setRegion] = useState('');
   useEffect(() => {
@@ -30,8 +30,6 @@ function Table({ Category, Title, search, grid }) {
       document.getElementById(Category)?.
         scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
-
-
   }, []);
 
   return (

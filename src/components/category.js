@@ -37,6 +37,10 @@ class Categories extends Component {
     window.addEventListener('resize', this.handleResize);
   }
 
+  componentDidMount() {
+    i18n.get('categories').then((res) => document.getElementById('categories-title').innerText = res)
+  }
+
   componentWillUnmount() {
     window.removeEventListener('hashchange', this.handleHashChange);
     window.removeEventListener('resize', this.handleResize);
