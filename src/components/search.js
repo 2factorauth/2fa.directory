@@ -121,8 +121,8 @@ function Search() {
   const [placeholder, setPlaceholder] = useState("");
   let timeout = null;
 
-  useEffect(() => {
-    setPlaceholder(i18n.get('search-placeholder'));
+  useEffect(async () => {
+    setPlaceholder(await i18n.get('search-placeholder'));
     const searchParams = new URLSearchParams(window.location.search);
     if (searchParams.has("q")) {
       const query = searchParams.get("q");

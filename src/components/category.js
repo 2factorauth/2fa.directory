@@ -98,12 +98,14 @@ class Button extends Component {
   };
 
   componentDidMount() {
-    this.setState({lang: navigator.language.split('-')[0]})
-
+    i18n.get(this.props.name).then((res) => {
+      this.setState({title: res})
+    })
   }
 
-  render(props,states) {
+  render(props,state) {
     const {name, category, activeCategory} = props;
+    const {title} = state;
     const isActive = activeCategory === name;
 
     return html`
@@ -117,7 +119,7 @@ class Button extends Component {
             class="category-icon material-symbols-outlined"
             dangerouslySetInnerHTML=${{__html: category.icon}}
           ></span>
-        <div>${i18n.get(name)}</div>
+        <div>${title}</div>
       </button>
     `;
   }

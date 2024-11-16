@@ -30,6 +30,8 @@ function Table({ Category, Title, search, grid }) {
       document.getElementById(Category)?.
         scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
+
+
   }, []);
 
   return (
@@ -40,13 +42,7 @@ function Table({ Category, Title, search, grid }) {
       style={`grid-area: ${grid};`} // First in is table y position
     >
       <div aria-hidden="true" className="table-head">
-        <div>{i18n.get(Category)}</div>
-        <div>{i18n.get('docs')}</div>
-        <div>{i18n.get('sms')}</div>
-        <div>{i18n.get('phone calls')}</div>
-        <div>{i18n.get('email')}</div>
-        <div>{i18n.get('hardware')}</div>
-        <div>{i18n.get('software')}</div>
+        <Head category={Category}></Head>
       </div>
       {entries.map(([name, data]) => (
         <Entry name={name.replace(` [${region.toUpperCase()}]`, '')} data={data}/>
@@ -84,13 +80,43 @@ function Entry({ name, data }) {
   );
 }
 
+function Head({category}){
+  const [title, setTitle] = useState('');
+  const [docs, setDocs] = useState('');
+  const [sms, setSms] = useState('');
+  const [phone, setPhone] = useState('');
+  const [email, setEmail] = useState('');
+  const [software, setSoftware] = useState('');
+  const [hardware, setHardware] = useState('');
+
+  useEffect(()=> {
+    i18n.get(category).then(r => setTitle(r));
+    i18n.get('docs').then(r => setDocs(r));
+    i18n.get('sms').then(r => setSms(r));
+    i18n.get('phone').then(r => setPhone(r));
+    i18n.get('email').then(r => setEmail(r));
+    i18n.get('software').then(r => setSoftware(r));
+    i18n.get('hardware').then(r => setHardware(r));
+  }, []);
+
+  return (<>
+    <div>{title}</div>
+    <div>{docs}</div>
+    <div>{sms}</div>
+    <div>{phone}</div>
+    <div>{email}</div>
+    <div>{hardware}</div>
+    <div>{software}</div>
+    </>
+  )
+}
+
 function Methods({ methods, customSoftware, customHardware }) {
   useEffect(() => {
     [...document.querySelectorAll('.note')].map((el) => new Popover(el, {
       trigger: 'hover focus',
       title: 'Exceptions & Restrictions'
     }));
-
 
     [...document.querySelectorAll('.custom-hardware-popover')].map((el) => new Popover(el, {
       ...mfaPopoverConfig,
@@ -102,7 +128,6 @@ function Methods({ methods, customSoftware, customHardware }) {
       title: 'Custom Software 2FA'
     }));
   }, []);
-
 
   return (
     <>
