@@ -2,6 +2,7 @@ import {html} from 'htm/preact';
 import {Component, render} from 'preact';
 import {API_URL} from '../constants.js';
 import Table from './table.jsx';
+import i18n from '../i18n.js';
 
 class Categories extends Component {
   constructor(props) {
@@ -96,7 +97,12 @@ class Button extends Component {
     setSelectedCategory(name);
   };
 
-  render(props) {
+  componentDidMount() {
+    this.setState({lang: navigator.language.split('-')[0]})
+
+  }
+
+  render(props,states) {
     const {name, category, activeCategory} = props;
     const isActive = activeCategory === name;
 
@@ -111,7 +117,7 @@ class Button extends Component {
             class="category-icon material-symbols-outlined"
             dangerouslySetInnerHTML=${{__html: category.icon}}
           ></span>
-        <div>${category?.title}</div>
+        <div>${i18n.get(name)}</div>
       </button>
     `;
   }

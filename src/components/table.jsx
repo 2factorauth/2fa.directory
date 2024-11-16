@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import { Popover } from 'bootstrap';
 import { API_URL, IMG_PATH } from '../constants.js';
-
+import i18n from '../i18n';
 const method_names = {
   'sms': 'SMS',
   'email': 'Email',
@@ -13,7 +13,6 @@ const method_names = {
 function Table({ Category, Title, search, grid }) {
   const [entries, setEntries] = useState([]);
   const [region, setRegion] = useState('');
-
   useEffect(() => {
     if (!search) {
       setRegion(window.location.pathname.slice(1,-1));
@@ -41,13 +40,13 @@ function Table({ Category, Title, search, grid }) {
       style={`grid-area: ${grid};`} // First in is table y position
     >
       <div aria-hidden="true" className="table-head">
-        <div>{Title}</div>
-        <div>Docs</div>
-        <div>SMS</div>
-        <div>Phone Calls</div>
-        <div>Email</div>
-        <div>Hardware</div>
-        <div>Software</div>
+        <div>{i18n.get(Category)}</div>
+        <div>{i18n.get('docs')}</div>
+        <div>{i18n.get('sms')}</div>
+        <div>{i18n.get('phone calls')}</div>
+        <div>{i18n.get('email')}</div>
+        <div>{i18n.get('hardware')}</div>
+        <div>{i18n.get('software')}</div>
       </div>
       {entries.map(([name, data]) => (
         <Entry name={name.replace(` [${region.toUpperCase()}]`, '')} data={data}/>
