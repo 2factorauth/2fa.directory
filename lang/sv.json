@@ -41,8 +41,8 @@
   "vpn": "VPN",
   "other": "Annat",
   "docs": "Artiklar",
-  "sms": "SMS",
-  "phone calls": "Telefon",
+  "sms": "SMS/Samtal",
+  "phone": "Telefonsamtal",
   "hardware": "Hårdvara",
   "software": "Mjukvara"
 }

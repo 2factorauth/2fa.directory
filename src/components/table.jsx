@@ -82,7 +82,6 @@ function Head({category}){
   const [title, setTitle] = useState('');
   const [docs, setDocs] = useState('');
   const [sms, setSms] = useState('');
-  const [phone, setPhone] = useState('');
   const [email, setEmail] = useState('');
   const [software, setSoftware] = useState('');
   const [hardware, setHardware] = useState('');
@@ -91,7 +90,6 @@ function Head({category}){
     i18n.get(category).then(r => setTitle(r));
     i18n.get('docs').then(r => setDocs(r));
     i18n.get('sms').then(r => setSms(r));
-    i18n.get('phone').then(r => setPhone(r));
     i18n.get('email').then(r => setEmail(r));
     i18n.get('software').then(r => setSoftware(r));
     i18n.get('hardware').then(r => setHardware(r));
@@ -101,7 +99,6 @@ function Head({category}){
     <div>{title}</div>
     <div>{docs}</div>
     <div>{sms}</div>
-    <div>{phone}</div>
     <div>{email}</div>
     <div>{hardware}</div>
     <div>{software}</div>
@@ -135,10 +132,7 @@ function Methods({ methods, customSoftware, customHardware }) {
         {methods?.includes("custom-hardware") && <li>Custom Hardware: {customHardware?.join(", ")}</li>}
         {methods?.includes("custom-software") && <li>Custom Software: {customSoftware?.join(", ")}</li>}
       </ul>
-      <div aria-hidden="true" className={`sms method ${methods?.includes('sms') ?
-        'used' :
-        ''}`}></div>
-      <div aria-hidden="true" className={`voice method ${methods?.includes('call') ?
+      <div aria-hidden="true" className={`sms method ${methods?.includes('sms') || methods?.includes('call') ?
         'used' :
         ''}`}></div>
       <div aria-hidden="true" className={`email method ${methods?.includes('email') ?

@@ -41,8 +41,7 @@
   "vpn": "VPN",
   "other": "Other",
   "docs": "Docs",
-  "sms": "SMS",
-  "phone": "Phone Calls",
+  "sms": "SMS/Calls",
   "hardware": "Hardware",
   "software": "Software"
 }
