@@ -24,6 +24,7 @@ export default function Head() {
       <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400..500,1,0&display=block&icon_names=${sorted_icons}"/>
       <link rel="preload" href="https://cdnjs.cloudflare.com/ajax/libs/flag-icons/7.2.3/css/flag-icons.min.css" as="style" onload="this.onload=null;this.rel='stylesheet'" integrity="sha512-bZBu2H0+FGFz/stDN/L0k8J0G8qVsAL0ht1qg5kTwtAheiXwiRKyCq1frwfbSFSJN3jooR5kauE0YjtPzhZtJQ==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
       <link rel="icon" href="/icons/icon.svg" type="image/svg+xml" sizes="any"/>
+      <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png" type="image/png"/>
       <link rel="manifest" href="/manifest.json"/>
 
       <title>2FA Directory</title>
