@@ -26,9 +26,9 @@ export default class Regions extends Component {
     });
   }
 
-  loadDropdown() {
-    this.setState({open: !this.state.open});
-  }
+  loadDropdown = () => {
+    this.setState((prevState) => ({open: !prevState.open}));
+  };
 
   render(_, {currentRegion, open}) {
     return html`
@@ -37,7 +37,7 @@ export default class Regions extends Component {
           class="nav-link dropdown-toggle"
           id="regionDropdown"
           role="button"
-          aria-expanded="false"
+          aria-expanded=${open}
           aria-haspopup="true"
           aria-label="Choose region"
           tabindex="0"
@@ -77,25 +77,26 @@ class Dropdown extends Component {
   }
 
   render(_, {regions}) {
+    const regionKeys = Object.keys(regions).sort((a, b) => regions[a].name.localeCompare(regions[b].name));
+
     return html`
       <div aria-labelledby="regionDropdown"
-           class="dropdown-menu dropdown-menu-end ${Object.keys(
-             regions).length ? 'show':''}" data-bs-config="autoClose">
+           class="dropdown-menu dropdown-menu-end ${regionKeys.length ?
+             'show':
+             ''}">
         <a class="dropdown-item" href="/int/">
           <span class="fi fi-un"></span>
           <b>Global</b>
         </a>
 
-        ${Object.keys(regions)?.
-          sort((a, b) => regions[a].name.localeCompare(regions[b].name)).
-          map((region) => html`
-            <a class="dropdown-item" href="/${region}/">
-              <span class=${`fi fi-${region} ${regions[region].squareFlag ?
-                'fis':
-                ''}`}></span>
-              ${regions[region].name}
-            </a>
-          `)}
+        ${regionKeys?.map((region) => html`
+          <a class="dropdown-item" href="/${region}/">
+            <span class=${`fi fi-${region} ${regions[region].squareFlag ?
+              'fis':
+              ''}`}></span>
+            ${regions[region].name}
+          </a>
+        `)}
       </div>`;
   }
 }
