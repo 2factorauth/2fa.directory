@@ -42,7 +42,13 @@
   "other": "Annat",
   "docs": "Artiklar",
   "sms": "SMS/Samtal",
-  "phone": "Telefonsamtal",
+  "call": "Telefonsamtal",
+  "u2f": "Passkeys",
+  "totp": "TOTP",
   "hardware": "Hårdvara",
-  "software": "Mjukvara"
+  "software": "Mjukvara",
+  "custom-hardware": "Särskild MFA-hårdvara",
+  "custom-software": "Särskild MFA-app",
+  "recovery": "Återställning",
+  "documentation": "Dokumentation"
 }

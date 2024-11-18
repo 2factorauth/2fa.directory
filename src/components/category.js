@@ -2,7 +2,7 @@ import {html} from 'htm/preact';
 import {Component, render} from 'preact';
 import {API_URL} from '../constants.js';
 import Table from './table.jsx';
-import i18n from '../i18n.js';
+import useTranslation from '../hooks/useTranslation';
 
 class Categories extends Component {
   constructor(props) {
@@ -37,9 +37,9 @@ class Categories extends Component {
     window.addEventListener('resize', this.handleResize);
   }
 
-  componentDidMount() {
+ /* componentDidMount() {
     i18n.get('categories').then((res) => document.getElementById('categories-title').innerText = res)
-  }
+  }*/
 
   componentWillUnmount() {
     window.removeEventListener('hashchange', this.handleHashChange);
@@ -101,16 +101,12 @@ class Button extends Component {
     setSelectedCategory(name);
   };
 
-  componentDidMount() {
-    i18n.get(this.props.name).then((res) => {
-      this.setState({title: res})
-    })
-  }
 
-  render(props,state) {
+
+  render(props) {
     const {name, category, activeCategory} = props;
-    const {title} = state;
     const isActive = activeCategory === name;
+    const t = useTranslation();
 
     return html`
       <button
@@ -123,7 +119,7 @@ class Button extends Component {
             class="category-icon material-symbols-outlined"
             dangerouslySetInnerHTML=${{__html: category.icon}}
           ></span>
-        <div>${title}</div>
+        <div>${t(name)}</div>
       </button>
     `;
   }

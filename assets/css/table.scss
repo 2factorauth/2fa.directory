@@ -334,7 +334,9 @@
         }
 
         .website-doc {
-
+          vertical-align: middle;
+          font-family: var(--default-font);
+          font-weight: 300;
           &:before {
             content: '\E873';
             font-family: 'Material Symbols Outlined';

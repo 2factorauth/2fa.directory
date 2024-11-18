@@ -43,5 +43,7 @@
   "docs": "Docs",
   "sms": "SMS/Calls",
   "hardware": "Hardware",
-  "software": "Software"
+  "software": "Software",
+  "custom-hardware": "Custom Hardware",
+  "custom-software": "Custom Software"
 }
