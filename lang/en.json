@@ -45,5 +45,9 @@
   "hardware": "Hardware",
   "software": "Software",
   "custom-hardware": "Custom Hardware",
-  "custom-software": "Custom Software"
+  "custom-software": "Custom Software",
+  "attention": "Attention!",
+  "social-media-warning": "Posting to social media could potentially give other people clues to what accounts you have.",
+  "accept-risk": "I accept the risk",
+  "go-back": "Go back"
 }

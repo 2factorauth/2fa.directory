@@ -46,9 +46,13 @@
   "u2f": "Passkeys",
   "totp": "TOTP",
   "hardware": "Hårdvara",
-  "software": "Mjukvara",
+  "software": "Appar",
   "custom-hardware": "Särskild MFA-hårdvara",
   "custom-software": "Särskild MFA-app",
   "recovery": "Återställning",
-  "documentation": "Dokumentation"
+  "documentation": "Dokumentation",
+  "attention": "OBS!",
+  "social-media-warning": "Att lägga upp på sociala medier kan potentiellt ge andra ledtrådar om vilka konton du har.",
+  "accept-risk": "Jag förstår",
+  "go-back": "Avbryt"
 }
