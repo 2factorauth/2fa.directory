@@ -9,19 +9,31 @@ class i18n {
   }
 
   async _loadLanguages() {
-    const languageFiles = import.meta.glob('../lang/*.json'); // Import all JSON files in the lang folder
-    const translations = {};
-
     try {
-      await Promise.all(
-        Object.entries(languageFiles).map(async ([path, load]) => {
-          const language = path.match(/\.\/lang\/(.*)\.json$/)[1]; // Extract language code
-          const content = await load(); // Dynamically import the JSON file
-          translations[language] = content.default; // Store the language data
-        })
-      );
-      console.debug('Languages loaded:', Object.keys(translations));
-      this.translations = translations;
+      // Use import.meta.glob to create a mapping of language files
+      const languageFiles = import.meta.glob('../lang/*.json');
+
+      // Load the default language
+      const defaultLangPath = `../lang/${this.defaultLanguage}.json`;
+      if (languageFiles[defaultLangPath]) {
+        const defaultLangModule = await languageFiles[defaultLangPath]();
+        this.translations[this.defaultLanguage] = defaultLangModule.default;
+      } else {
+        console.error(`Default language file not found at ${defaultLangPath}`);
+      }
+
+      // If current language is different from default, load it as well
+      if (this.currentLanguage !== this.defaultLanguage) {
+        const currentLangPath = `../lang/${this.currentLanguage}.json`;
+        if (languageFiles[currentLangPath]) {
+          const currentLangModule = await languageFiles[currentLangPath]();
+          this.translations[this.currentLanguage] = currentLangModule.default;
+        } else {
+          console.warn(`Language file for ${this.currentLanguage} not found at ${currentLangPath}, falling back to default language.`);
+        }
+      }
+
+      console.debug('Languages loaded:', Object.keys(this.translations));
       this.isLoaded = true;
       this._notifyListeners();
     } catch (error) {
@@ -35,14 +47,14 @@ class i18n {
       return translations[currentLanguage][key];
     } else if (translations[defaultLanguage] && translations[defaultLanguage][key]) {
       return translations[defaultLanguage][key];
-    } else {
-      return key; // Fallback to the key if not found
     }
   }
 
   // Subscription management
   subscribe(listener) {
-    this.listeners.push(listener);
+    if (!this.listeners.includes(listener)) {
+      this.listeners.push(listener);
+    }
   }
 
   unsubscribe(listener) {
