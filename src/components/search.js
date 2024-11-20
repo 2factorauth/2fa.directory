@@ -3,7 +3,9 @@ import { render } from "preact";
 import { useEffect, useState } from "preact/hooks";
 import algoliasearch from "algoliasearch";
 import Table from "./table";
-import i18n from '../i18n.js';
+import useTranslation from '../hooks/useTranslation.js';
+
+const t = useTranslation();
 
 const client = algoliasearch(
   import.meta.env.VITE_ALGOLIA_APP_ID,
@@ -118,11 +120,9 @@ function sendSearch(query) {
 
 function Search() {
   const [query, setQuery] = useState("");
-  const [placeholder, setPlaceholder] = useState("");
   let timeout = null;
 
   useEffect(async () => {
-    setPlaceholder(await i18n.get('search-placeholder'));
     const searchParams = new URLSearchParams(window.location.search);
     if (searchParams.has("q")) {
       const query = searchParams.get("q");
@@ -151,7 +151,7 @@ function Search() {
     <input
       type="search"
       aria-label="Search the directory"
-      placeholder=${placeholder}
+      placeholder=${t('search-placeholder')}
       autocomplete="off"
       spellcheck="false"
       aria-keyshortcuts="s"
