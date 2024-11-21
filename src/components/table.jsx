@@ -110,6 +110,12 @@ function Head({category}) {
 }
 
 function Methods({methods, customSoftware, customHardware}) {
+const mfaPopoverConfig = {
+  html: true,
+  sanitize: false,
+  trigger: "hover focus"
+};
+
   useEffect(() => {
     [...document.querySelectorAll('.note')].map((el) => new Popover(el, {
       trigger: 'hover focus',
@@ -216,18 +222,10 @@ function Contact({contact}) {
   const lang = contact.language || 'en';
   return (
     <div aria-label="2FA not supported" className="contact">
-      {contact.twitter && (<button className="contact-btn twitter"
-                                   onClick={() => socialMediaNotice('tweet',
-                                     lang, contact.twitter)}></button>)}
-      {contact.facebook && (<button className="contact-btn facebook"
-                                    onClick={() => socialMediaNotice('facebook',
-                                      lang, contact.twitter)}></button>)}
-      {contact.email && (<button className="contact-btn email"
-                                 onClick={() => socialMediaNotice('email', lang,
-                                   contact.twitter)}></button>)}
-      {contact.form && (<button className="contact-btn form"
-                                onClick={() => window.open(contact.form,
-                                  '_blank')}></button>)}
+      {contact.twitter && (<button className="contact-btn twitter" onClick={() => socialMediaNotice("tweet", lang, contact.twitter)}></button>)}
+      {contact.facebook && (<button className="contact-btn facebook" onClick={() => socialMediaNotice("facebook", lang, contact.facebook)}></button>)}
+      {contact.email && (<button className="contact-btn email" onClick={() => socialMediaNotice("email", lang, contact.email)}></button>)}
+      {contact.form && (<button className="contact-btn form" onClick={() => window.open(contact.form, "_blank")}></button>)}
     </div>
   );
 }
