@@ -63,9 +63,7 @@
       grid-auto-flow: column;
       justify-content: space-between;
 
-      :last-child {
-        padding-right: .5em;
-      }
+
     }
 
     .name {
@@ -75,11 +73,21 @@
     }
 
     .note {
+      all: unset;
+      cursor: pointer;
       font-size: 2em;
-      margin: auto;
       color: #db2828;
       justify-self: end;
+      margin: auto 0.5em auto auto;
+      span {
+        font-size: 1em;
+      }
+      &.open {
+        anchor-name: --note;
+      }
     }
+
+
 
     .docs {
       display: flex;
@@ -287,8 +295,8 @@
     .note {
       font-size: 3em;
       color: #D03333;
-      justify-self: right;
-    }
+      height: min-content;
+      }
 
     & > .sms, & > .voice, & > .email, & > .hardware, & > .software {
       display: none;
@@ -416,5 +424,34 @@
         }
       }
     }
+  }
+}
+
+.note span {
+  user-select: none;
+}
+
+.note-popover {
+  border: 1px solid rgba(0, 0, 0, 0.35);
+  box-shadow: 0 5px 15px 0 rgba(0, 0, 0, 0.35);
+  border-radius: 10px;
+  position: absolute;
+  z-index: 1000;
+  background: var(--background) !important;
+  width: 18rem;
+  padding: 0 !important;
+  line-height: 1.4em;
+  h5 {
+    text-align: center;
+    background: var(--secondary-background);
+    padding: .4em;
+    border-bottom: 1px solid #bbb;
+    font-size: 1.2em;
+    color: var(--text-color);
+  }
+  p {
+    padding: .6em;
+    font-size: .9em;
+    color: var(--text-color);
   }
 }

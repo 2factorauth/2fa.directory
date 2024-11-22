@@ -46,8 +46,9 @@ function Table({Category, search, grid}) {
 
 function Entry({name, data}) {
   const color = data?.methods !== undefined ? 'green':'red';
-  const t = useTranslation();
+
   return (
+    <>
     <div className={'entry ' + color} role="article" data-domain={data.domain}>
       <div className="title">
         <a className="name" href={data.url ? data.url:`https://${data.domain}`}
@@ -56,9 +57,7 @@ function Entry({name, data}) {
           {name}
         </a>
 
-        {data.notes && <span class="note material-symbols-outlined" tabindex={0}
-                             data-bs-toggle="popover"
-                             data-bs-content={data.notes}>emergency_home</span>}
+          {data.notes && <Note content={data.notes}/>}
       </div>
 
       {color === 'green' ?
@@ -80,6 +79,69 @@ function Entry({name, data}) {
       }
 
     </div>
+
+    </>
+  );
+}
+
+function Note({content}) {
+  const t = useTranslation();
+  const [popoverData, setPopoverData] = useState(null);
+  const handleButtonClick = (event, content) => {
+    const button = event.currentTarget;
+    const rect = button.getBoundingClientRect();
+
+    // Calculate the position relative to the viewport
+    const top = rect.top + window.scrollY - 42;
+    const left = 35 + rect.left + window.scrollX;
+
+    // Set popover data to trigger rendering
+    setPopoverData({
+      content,
+      top,
+      left,
+    });
+  };
+
+  // Function to close the popover
+  const closePopover = () => setPopoverData(null);
+
+  useEffect(() => {
+    if (popoverData) {
+      // Close popover on any mouse click outside or ESC key press
+      const handleClickOutside = (event) => {
+        if (!event.target.closest('.popover')) closePopover();
+      };
+
+      const handleKeyDown = (event) => {
+        if (event.key === 'Escape') closePopover();
+      };
+
+      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener('keydown', handleKeyDown);
+
+      return () => {
+        document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener('keydown', handleKeyDown);
+      };
+    }
+  }, [popoverData]);
+
+  return (
+    <>
+      <button className="note" onClick={(e) => handleButtonClick(e)}>
+        <span className="material-symbols-outlined">emergency_home</span>
+      </button>
+      {popoverData &&
+        <div className="note-popover" style={{
+          top: `${popoverData.top}px`,
+          left: `${popoverData.left}px`,
+        }}>
+          <h5>{t('exception')}</h5>
+          <p>{content}</p>
+        </div>
+      }
+    </>
   );
 }
 
@@ -117,11 +179,6 @@ const mfaPopoverConfig = {
 };
 
   useEffect(() => {
-    [...document.querySelectorAll('.note')].map((el) => new Popover(el, {
-      trigger: 'hover focus',
-      title: 'Exceptions & Restrictions',
-    }));
-
     [...document.querySelectorAll('.custom-hardware-popover')].map(
       (el) => new Popover(el, {
         ...mfaPopoverConfig,
