@@ -27,7 +27,7 @@ class Categories extends Component {
       }).catch((err) => this.setState({error: err}));
   }
 
-  componentWillMount() {
+  componentDidMount() {
     // Set initial hash and columns
     this.handleHashChange();
     this.handleResize();
@@ -36,10 +36,6 @@ class Categories extends Component {
     window.addEventListener('hashchange', this.handleHashChange);
     window.addEventListener('resize', this.handleResize);
   }
-
- /* componentDidMount() {
-    i18n.get('categories').then((res) => document.getElementById('categories-title').innerText = res)
-  }*/
 
   componentWillUnmount() {
     window.removeEventListener('hashchange', this.handleHashChange);

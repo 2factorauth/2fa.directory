@@ -33,10 +33,9 @@ export default class Regions extends Component {
   render(_, {currentRegion, open}) {
     return html`
       <div>
-        <a
-          class="nav-link dropdown-toggle"
+        <button
+          class="nav-link"
           id="regionDropdown"
-          role="button"
           aria-expanded=${open}
           aria-haspopup="true"
           aria-label="Choose region"
@@ -44,9 +43,10 @@ export default class Regions extends Component {
           onclick=${this.loadDropdown}
         >
           <span aria-hidden="true" class=${currentRegion}></span>
-        </a>
+        </button>
         ${open === true && (html`
-          <${Dropdown}/>`)}
+        <${Dropdown}/>
+        `)}
       </div>
     `;
   }
@@ -80,17 +80,14 @@ class Dropdown extends Component {
     const regionKeys = Object.keys(regions).sort((a, b) => regions[a].name.localeCompare(regions[b].name));
 
     return html`
-      <div aria-labelledby="regionDropdown"
-           class="dropdown-menu dropdown-menu-end ${regionKeys.length ?
-             'show':
-             ''}">
-        <a class="dropdown-item" href="/int/">
+      <div id="regionsDropdown">
+        <a href="/int/">
           <span class="fi fi-un"></span>
           <b>Global</b>
         </a>
 
         ${regionKeys?.map((region) => html`
-          <a class="dropdown-item" href="/${region}/">
+          <a href="/${region}/">
             <span class=${`fi fi-${region} ${regions[region].squareFlag ?
               'fis':
               ''}`}></span>
