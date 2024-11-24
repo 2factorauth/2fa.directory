@@ -13,7 +13,7 @@ function Dialog() {
           document.getElementById('social-media-accept').getAttribute('data-url'), "_blank"
       );
     });
-    document.getElementById('categories-title').innerText = t('categories');
+    document.getElementById('categories-title').innerText = t('categories') || 'Categories';
   }, []);
 
   return html`

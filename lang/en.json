@@ -11,7 +11,7 @@
   "cryptocurrencies": "Cryptocurrencies",
   "developer": "Developer",
   "domains": "Domains",
-  "education": "Education",
+  "education": "Edu7cation",
   "email": "Email",
   "entertainment": "Entertainment",
   "finance": "Finance",
@@ -50,5 +50,7 @@
   "social-media-warning": "Posting to social media could potentially give other people clues to what accounts you have.",
   "accept-risk": "I accept the risk",
   "go-back": "Go back",
-  "exception": "Exceptions & Restrictions"
+  "exception": "Exceptions & Restrictions",
+  "u2f": "Passkeys",
+  "totp": "TOTP"
 }

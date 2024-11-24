@@ -1,14 +1,25 @@
-import {useEffect, useMemo, useState} from 'preact/hooks';
-import {Popover} from 'bootstrap';
+import {useEffect, useRef, useState} from 'preact/hooks';
 import {API_URL, IMG_PATH} from '../constants.js';
 import useTranslation from '../hooks/useTranslation.js';
 import {html} from 'htm/preact';
+import {
+  FloatingArrow,
+  arrow,
+  useFloating,
+  useInteractions,
+  useClick,
+  useDismiss,
+  autoPlacement,
+} from '@floating-ui/react';
 
 function Table({Category, search, grid}) {
   const [entries, setEntries] = useState([]);
   const [region, setRegion] = useState('');
+
   useEffect(() => {
-    if (!search) {
+    if (search) {
+      setEntries(search);
+    } else {
       setRegion(window.location.pathname.slice(1, -1));
       const region = window.location.pathname.slice(1);
       fetch(`${API_URL}/${region || 'int/'}${Category}.json`,
@@ -16,10 +27,8 @@ function Table({Category, search, grid}) {
         then(res => res.json()).
         then(data => setEntries(Object.entries(data).sort() || [])).
         catch(err => console.error('Error fetching categories:', err));  // Add error handling
-    } else setEntries(search);
 
-    // Scroll to category button
-    if (!search) {
+      // Scroll to category button
       window.location.hash = `#${Category}`;
       document.getElementById(Category)?.
         scrollIntoView({behavior: 'smooth', block: 'start'});
@@ -27,15 +36,13 @@ function Table({Category, search, grid}) {
   }, []);
 
   return (
-    <div
-      className="table collapse show"
-      role="region"
-      aria-selected="true"
-      style={`grid-area: ${grid};`} // First in is table y position
-    >
-      <div aria-hidden="true" className="table-head">
-        <Head category={Category}></Head>
-      </div>
+    <div className="table collapse show"
+         role="region"
+         style={`grid-area: ${grid};`} // First in is table y position
+         aria-selected="true">
+
+      <Head category={Category}></Head>
+
       {entries.map(([name, data]) => (
         <Entry name={name.replace(` [${region.toUpperCase()}]`, '')}
                data={data}/>
@@ -45,11 +52,8 @@ function Table({Category, search, grid}) {
 }
 
 function Entry({name, data}) {
-  const color = data?.methods !== undefined ? 'green':'red';
-
   return (
-    <>
-    <div className={'entry ' + color} role="article" data-domain={data.domain}>
+    <section className="entry">
       <div className="title">
         <a className="name" href={data.url ? data.url:`https://${data.domain}`}
            title={name}>
@@ -57,10 +61,10 @@ function Entry({name, data}) {
           {name}
         </a>
 
-          {data.notes && <Note content={data.notes}/>}
+        {data.notes && <Note content={data.notes}/>}
       </div>
 
-      {color === 'green' ?
+      {data?.methods ?
         <>
           <div className="docs">
             {data.documentation &&
@@ -78,71 +82,45 @@ function Entry({name, data}) {
         <Contact contact={data.contact}/>
       }
 
-    </div>
-
-    </>
+    </section>
   );
 }
 
 function Note({content}) {
   const t = useTranslation();
-  const [popoverData, setPopoverData] = useState(null);
-  const handleButtonClick = (event, content) => {
-    const button = event.currentTarget;
-    const rect = button.getBoundingClientRect();
+  const [isOpen, setIsOpen] = useState(false);
+  const arrowRef = useRef(null);
 
-    // Calculate the position relative to the viewport
-    const top = rect.top + window.scrollY - 42;
-    const left = 35 + rect.left + window.scrollX;
+  // Initialize floating UI
+  const {refs, context, floatingStyles} = useFloating({
+    open: isOpen, onOpenChange: setIsOpen, middleware: [
+      autoPlacement(), arrow({element: arrowRef})],
+  });
 
-    // Set popover data to trigger rendering
-    setPopoverData({
-      content,
-      top,
-      left,
-    });
-  };
+  // Set up interactions
+  const click = useClick(context);
+  const dismiss = useDismiss(context);
 
-  // Function to close the popover
-  const closePopover = () => setPopoverData(null);
+  const {getReferenceProps, getFloatingProps} = useInteractions([click, dismiss]);
 
-  useEffect(() => {
-    if (popoverData) {
-      // Close popover on any mouse click outside or ESC key press
-      const handleClickOutside = (event) => {
-        if (!event.target.closest('.popover')) closePopover();
-      };
+  return (<>
+    <button
+      ref={refs.setReference}
+      {...getReferenceProps({className: 'note'})}
+      aria-haspopup="dialog"
+      aria-expanded={isOpen}
+    >
+      <span className="material-symbols-outlined">emergency_home</span>
+    </button>
 
-      const handleKeyDown = (event) => {
-        if (event.key === 'Escape') closePopover();
-      };
-
-      document.addEventListener('mousedown', handleClickOutside);
-      document.addEventListener('keydown', handleKeyDown);
-
-      return () => {
-        document.removeEventListener('mousedown', handleClickOutside);
-        document.removeEventListener('keydown', handleKeyDown);
-      };
-    }
-  }, [popoverData]);
-
-  return (
-    <>
-      <button className="note" onClick={(e) => handleButtonClick(e)}>
-        <span className="material-symbols-outlined">emergency_home</span>
-      </button>
-      {popoverData &&
-        <div className="note-popover" style={{
-          top: `${popoverData.top}px`,
-          left: `${popoverData.left}px`,
-        }}>
-          <h5>{t('exception')}</h5>
-          <p>{content}</p>
-        </div>
-      }
-    </>
-  );
+    {isOpen && (<div ref={refs.setFloating} style={floatingStyles}
+                     {...getFloatingProps({className: 'note-popover'})}>
+      <div ref={arrowRef} className="popover-arrow"/>
+      <FloatingArrow ref={arrowRef} context={context}/>
+      <h5>{t('exception')}</h5>
+      <p>{content}</p>
+    </div>)}
+  </>);
 }
 
 let staticTranslations = null; // Translations for table head
@@ -162,68 +140,46 @@ function Head({category}) {
   }
 
   return html`
-    <div>${t(category)}</div>
-    <div>${staticTranslations.docs}</div>
-    <div>${staticTranslations.sms}</div>
-    <div>${staticTranslations.email}</div>
-    <div>${staticTranslations.hardware}</div>
-    <div>${staticTranslations.software}</div>
+    <div aria-hidden="true" class="table-head">
+      <div>${t(category)}</div>
+      <div>${staticTranslations.docs}</div>
+      <div>${staticTranslations.sms}</div>
+      <div>${staticTranslations.email}</div>
+      <div>${staticTranslations.hardware}</div>
+      <div>${staticTranslations.software}</div>
+    </div>
   `;
 }
 
 function Methods({methods, customSoftware, customHardware}) {
-const mfaPopoverConfig = {
-  html: true,
-  sanitize: false,
-  trigger: "hover focus"
-};
-
-  useEffect(() => {
-    [...document.querySelectorAll('.custom-hardware-popover')].map(
-      (el) => new Popover(el, {
-        ...mfaPopoverConfig,
-        title: 'Custom Hardware 2FA',
-      }));
-
-    [...document.querySelectorAll('.custom-software-popover')].map(
-      (el) => new Popover(el, {
-        ...mfaPopoverConfig,
-        title: 'Custom Software 2FA',
-      }));
-  }, []);
-
   const t = useTranslation();
 
   return (
     <>
       <ul className="tfa-summary" aria-label="Supported 2FA Methods">
         {methods && methods.filter((method) => !method.includes('custom')).
-          map((method) => <li>{t(method)}</li>)}
+          map((method) => (<li>{t(method)}</li>))}
         {methods?.includes('custom-hardware') &&
           <li>{t('custom-hardware')}: {customHardware?.join(', ')}</li>}
         {methods?.includes('custom-software') &&
           <li>{t('custom-software')}: {customSoftware?.join(', ')}</li>}
       </ul>
+
       <div aria-hidden="true"
            className={`sms method ${methods?.includes('sms') ||
-           methods?.includes('call') ?
-             'used':
-             ''}`}></div>
-      <div aria-hidden="true"
-           className={`email method ${methods?.includes('email') ?
-             'used':
-             ''}`}></div>
-      <div aria-hidden="true"
-           className={`hardware method ${methods?.includes('u2f') ?
-             'used':
-             ''}`}>
+           methods?.includes('call') ? 'used':''}`}></div>
+
+      <div aria-hidden="true" className={`email method ${
+        methods?.includes('email') ? 'used':''}`}></div>
+
+      <div aria-hidden="true" className={`hardware method ${
+        methods?.includes('u2f') ? 'used':''}`}>
         {methods?.includes('custom-hardware') &&
           <CustomMethods type="hardware" methods={customHardware}/>}
       </div>
-      <div aria-hidden="true"
-           className={`software method ${methods?.includes('totp') ?
-             'used':
-             ''}`}>
+
+      <div aria-hidden="true" className={`software method ${
+        methods?.includes('totp') ? 'used':''}`}>
         {methods?.includes('custom-software') &&
           <CustomMethods type="software" methods={customSoftware}/>}
       </div>
@@ -239,24 +195,61 @@ const mfaPopoverConfig = {
  * @param {string[]} props.methods - The custom methods
  */
 function CustomMethods({type, methods}) {
-  return methods.length !== 0 ?
-    <span class={`icon-info custom-${type}-popover`}
-          data-bs-content={methods.map((method) => `<li>${method}</li>`).
-            join('')} data-bs-toggle="popover"></span>
-    :
-    <span class="icon-info" title={`Requires proprietary ${type === 'hardware' ?
-      'hardware token':
-      'app/software'}`}></span>;
+  const t = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
+  const arrowRef = useRef(null);
+
+  // Initialize floating UI
+  const {refs, context, floatingStyles} = useFloating({
+    open: isOpen,
+    onOpenChange: setIsOpen,
+    middleware: [
+      autoPlacement(),
+      arrow({element: arrowRef}),
+    ],
+  });
+
+  // Set up interactions
+  const click = useClick(context);
+  const dismiss = useDismiss(context);
+
+  const {getReferenceProps, getFloatingProps} = useInteractions(
+    [click, dismiss]);
+
+  return (
+    <>
+      <button
+        ref={refs.setReference}
+        {...getReferenceProps({
+          className: `custom-${type}`,
+          'aria-haspopup': 'dialog',
+          'aria-expanded': isOpen,
+        })}
+      >
+        <span className="material-symbols-outlined">info</span>
+      </button>
+
+      {isOpen && (
+        <div
+          ref={refs.setFloating}
+          style={floatingStyles}
+          {...getFloatingProps({
+            className: 'custom-popover',
+          })}
+        >
+          <FloatingArrow ref={arrowRef} context={context}/>
+          <h5>{t(`custom-${type}`)}</h5>
+          <ul>
+            {methods.map((method, index) => (
+              <li key={index}>{method}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </>
+  );
 }
 
-// Initialize popovers
-const mfaPopoverConfig = {
-  html: true,
-  sanitize: false,
-  trigger: 'hover focus',
-};
-
-// Social Media Notices
 /**
  * Alert the user to the privacy implications of posting on social media.
  *
@@ -279,10 +272,18 @@ function Contact({contact}) {
   const lang = contact.language || 'en';
   return (
     <div aria-label="2FA not supported" className="contact">
-      {contact.twitter && (<button className="contact-btn twitter" onClick={() => socialMediaNotice("tweet", lang, contact.twitter)}></button>)}
-      {contact.facebook && (<button className="contact-btn facebook" onClick={() => socialMediaNotice("facebook", lang, contact.facebook)}></button>)}
-      {contact.email && (<button className="contact-btn email" onClick={() => socialMediaNotice("email", lang, contact.email)}></button>)}
-      {contact.form && (<button className="contact-btn form" onClick={() => window.open(contact.form, "_blank")}></button>)}
+      {contact.twitter && (<button className="contact-btn twitter"
+                                   onClick={() => socialMediaNotice('tweet',
+                                     lang, contact.twitter)}></button>)}
+      {contact.facebook && (<button className="contact-btn facebook"
+                                    onClick={() => socialMediaNotice('facebook',
+                                      lang, contact.facebook)}></button>)}
+      {contact.email && (<button className="contact-btn email"
+                                 onClick={() => socialMediaNotice('email', lang,
+                                   contact.email)}></button>)}
+      {contact.form && (<button className="contact-btn form"
+                                onClick={() => window.open(contact.form,
+                                  '_blank')}></button>)}
     </div>
   );
 }
