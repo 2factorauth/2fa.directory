@@ -1,8 +1,9 @@
-import { html } from "htm/preact";
-import { render } from "preact";
-import { useEffect, useState } from "preact/hooks";
-import algoliasearch from "algoliasearch";
-import Table from "./table";
+import { html } from 'htm/preact';
+import { render } from 'preact';
+import { useEffect, useState, useRef } from 'preact/hooks';
+import algoliasearch from 'algoliasearch';
+import Table from './table';
+import useTranslation from '../hooks/useTranslation.js';
 
 const client = algoliasearch(
   import.meta.env.VITE_ALGOLIA_APP_ID,
@@ -116,45 +117,45 @@ function sendSearch(query) {
 }
 
 function Search() {
-  const [query, setQuery] = useState("");
-  let timeout = null;
+  const [query, setQuery] = useState('');
+  const timeout = useRef(null);
+  const t = useTranslation();
 
   useEffect(() => {
-    const searchParams = new URLSearchParams(window.location.search);
-    if (searchParams.has("q")) {
-      const query = searchParams.get("q");
-      setQuery(query);
-      sendSearch(query);
-    }
+    const fetchInitialQuery = async () => {
+      const searchParams = new URLSearchParams(window.location.search);
+      if (searchParams.has('q')) {
+        const query = searchParams.get('q');
+        setQuery(query);
+        sendSearch(query);
+      }
+    };
+    fetchInitialQuery();
   }, []);
 
-  /**
-   * Search and update query parameter without reloading the page
-   *
-   * @param {string} query - The query
-   */
   const search = (query) => {
     sendSearch(query);
 
     if (query) {
-      // Source: https://stackoverflow.com/a/70591485
       const url = new URL(window.location.href);
-      url.searchParams.set("q", query);
-      window.history.pushState(null, "", url.toString());
-    } else window.history.pushState(null, "", window.location.pathname);
+      url.searchParams.set('q', query);
+      window.history.pushState(null, '', url.toString());
+    } else {
+      window.history.pushState(null, '', window.location.pathname);
+    }
   };
 
   return html`
     <input
       type="search"
       aria-label="Search the directory"
-      placeholder="Search websites by name, URL or method (e.g. 2fa:sms)"
+      placeholder=${t('search-placeholder')}
       autocomplete="off"
       spellcheck="false"
       aria-keyshortcuts="s"
       onInput=${(event) => {
-        if (timeout) clearTimeout(timeout);
-        timeout = setTimeout(() => search(event.target.value), 1000);
+        if (timeout.current) clearTimeout(timeout.current);
+        timeout.current = setTimeout(() => search(event.target.value), 1000);
       }}
       value=${query}
     />
@@ -163,4 +164,4 @@ function Search() {
   `;
 }
 
-render(html`<${Search} />`, document.getElementById("search"));
+render(html`<${Search} />`, document.getElementById('search'));
