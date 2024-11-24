@@ -54,5 +54,7 @@
   "attention": "OBS!",
   "social-media-warning": "Att lägga upp på sociala medier kan potentiellt ge andra ledtrådar om vilka konton du har.",
   "accept-risk": "Jag förstår",
-  "go-back": "Avbryt"
+  "go-back": "Avbryt",
+  "u2f": "Passkeys",
+  "totp": "TOTP"
 }

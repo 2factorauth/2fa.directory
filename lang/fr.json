@@ -49,5 +49,7 @@
   "attention": "Attention!",
   "social-media-warning": "Publier sur les réseaux sociaux pourrait potentiellement donner à d'autres des indices sur vos comptes.",
   "accept-risk": "J'accepte le risque",
-  "go-back": "Retour"
+  "go-back": "Retour",
+  "u2f": "Passkeys",
+  "totp": "TOTP"
 }

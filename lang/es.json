@@ -49,5 +49,7 @@
   "attention": "¡Atención!",
   "social-media-warning": "Publicar en redes sociales podría dar pistas a otros sobre qué cuentas tienes.",
   "accept-risk": "Acepto el riesgo",
-  "go-back": "Volver"
+  "go-back": "Volver",
+  "u2f": "Passkeys",
+  "totp": "TOTP"
 }
