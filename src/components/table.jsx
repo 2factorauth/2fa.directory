@@ -1,142 +1,187 @@
-import { useEffect, useState } from 'preact/hooks';
-import { Popover } from 'bootstrap';
-import { API_URL, IMG_PATH } from '../constants.js';
+import {useEffect, useRef, useState} from 'preact/hooks';
+import {API_URL, IMG_PATH} from '../constants.js';
+import useTranslation from '../hooks/useTranslation.js';
+import {html} from 'htm/preact';
+import {
+  FloatingArrow,
+  arrow,
+  useFloating,
+  useInteractions,
+  useClick,
+  useDismiss,
+  autoPlacement,
+} from '@floating-ui/react';
 
-const method_names = {
-  'sms': 'SMS',
-  'email': 'Email',
-  'call': 'Phone Calls',
-  'totp': 'TOTP',
-  'u2f': 'Passkeys',
-};
-
-function Table({ Category, Title, search, grid }) {
+function Table({Category, search, grid}) {
   const [entries, setEntries] = useState([]);
   const [region, setRegion] = useState('');
 
   useEffect(() => {
-    if (!search) {
+    if (search) {
+      setEntries(search);
+    } else {
       setRegion(window.location.pathname.slice(1, -1));
       const region = window.location.pathname.slice(1);
       fetch(`${API_URL}/${region || 'int/'}${Category}.json`,
-        { cache: 'force-cache' }).
+        {cache: 'force-cache'}).
         then(res => res.json()).
         then(data => setEntries(Object.entries(data) || [])).
         catch(err => console.error('Error fetching categories:', err));  // Add error handling
-    } else setEntries(search);
 
-    // Scroll to category button
-    if (!search) {
+      // Scroll to category button
       window.location.hash = `#${Category}`;
       document.getElementById(Category)?.
-        scrollIntoView({ behavior: 'smooth', block: 'start' });
+        scrollIntoView({behavior: 'smooth', block: 'start'});
     }
   }, []);
 
   return (
-    <div
-      className="table collapse show"
-      role="region"
-      aria-selected="true"
-      style={`grid-area: ${grid};`} // First in is table y position
-    >
-      <div aria-hidden="true" className="table-head">
-        <div>{Title}</div>
-        <div>Docs</div>
-        <div>SMS</div>
-        <div>Phone Calls</div>
-        <div>Email</div>
-        <div>Hardware</div>
-        <div>Software</div>
-      </div>
+    <div className="table collapse show"
+         role="region"
+         style={`grid-area: ${grid};`} // First in is table y position
+         aria-selected="true">
+
+      <Head category={Category}></Head>
+
       {entries.map(([name, data]) => (
-        <Entry name={name.replace(` [${region.toUpperCase()}]`, '')} data={data} />
+        <Entry name={name.replace(` [${region.toUpperCase()}]`, '')}
+               data={data}/>
       ))}
     </div>
   );
 }
 
-function Entry({ name, data }) {
-  const color = data?.methods !== undefined ? 'green' : 'red';
+function Entry({name, data}) {
   return (
-    <div className={'entry ' + color} role="article" data-domain={data.domain}>
+    <section className="entry">
       <div className="title">
-        <a className="name" href={data.url ? data.url : `https://${data.domain}`} title={name}>
-          <Icon entry={data} />
+        <a className="name" href={data.url ? data.url:`https://${data.domain}`}
+           title={name}>
+          <Icon entry={data}/>
           {name}
         </a>
 
-        {data.notes && <span class="note material-symbols-outlined" tabindex={0} data-bs-toggle="popover" data-bs-content={data.notes}>emergency_home</span>}
+        {data.notes && <Note content={data.notes}/>}
       </div>
 
-      {color === 'green' ?
+      {data?.methods ?
         <>
           <div className="docs">
-            {data.documentation && <a aria-label="documentation" className="website-doc" href={data.documentation} />}
-            {data.recovery && <a aria-label="recovery documentation" className="recovery-doc" href={data.recovery} />}
+            {data.documentation &&
+              <a aria-label="documentation" className="website-doc"
+                 href={data.documentation}/>}
+            {data.recovery &&
+              <a aria-label="recovery documentation" className="recovery-doc"
+                 href={data.recovery}/>}
           </div>
 
-          <Methods methods={data?.methods} customSoftware={data["custom-software"]} customHardware={data["custom-hardware"]} />
-        </> :
-        <Contact contact={data.contact} />
+          <Methods methods={data?.methods}
+                   customSoftware={data['custom-software']}
+                   customHardware={data['custom-hardware']}/>
+        </>:
+        <Contact contact={data.contact}/>
       }
 
-    </div>
+    </section>
   );
 }
 
-const mfaPopoverConfig = {
-  html: true,
-  sanitize: false,
-  trigger: "hover focus"
-};
+function Note({content}) {
+  const t = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
+  const arrowRef = useRef(null);
 
-function Methods({ methods, customSoftware, customHardware }) {
-  useEffect(() => {
-    [...document.querySelectorAll('.note')].map((el) => new Popover(el, {
-      trigger: 'hover focus',
-      title: 'Exceptions & Restrictions'
-    }));
+  // Initialize floating UI
+  const {refs, context, floatingStyles} = useFloating({
+    open: isOpen, onOpenChange: setIsOpen, middleware: [
+      autoPlacement(), arrow({element: arrowRef})],
+  });
 
+  // Set up interactions
+  const click = useClick(context);
+  const dismiss = useDismiss(context);
 
-    [...document.querySelectorAll('.custom-hardware-popover')].map((el) => new Popover(el, {
-      ...mfaPopoverConfig,
-      title: 'Custom Hardware 2FA'
-    }));
+  const {getReferenceProps, getFloatingProps} = useInteractions([click, dismiss]);
 
-    [...document.querySelectorAll('.custom-software-popover')].map((el) => new Popover(el, {
-      ...mfaPopoverConfig,
-      title: 'Custom Software 2FA'
-    }));
-  }, []);
+  return (<>
+    <button
+      ref={refs.setReference}
+      {...getReferenceProps({className: 'note'})}
+      aria-haspopup="dialog"
+      aria-expanded={isOpen}
+    >
+      <span className="material-symbols-outlined">emergency_home</span>
+    </button>
 
+    {isOpen && (<div ref={refs.setFloating} style={floatingStyles}
+                     {...getFloatingProps({className: 'note-popover'})}>
+      <div ref={arrowRef} className="popover-arrow"/>
+      <FloatingArrow ref={arrowRef} context={context}/>
+      <h5>{t('exception')}</h5>
+      <p>{content}</p>
+    </div>)}
+  </>);
+}
+
+let staticTranslations = null; // Translations for table head
+
+function Head({category}) {
+  const t = useTranslation();
+
+  // Populate static translations once
+  if (!staticTranslations) {
+    staticTranslations = {
+      docs: t('docs'),
+      sms: t('sms'),
+      email: t('email'),
+      hardware: t('hardware'),
+      software: t('software'),
+    };
+  }
+
+  return html`
+    <div aria-hidden="true" class="table-head">
+      <div>${t(category)}</div>
+      <div>${staticTranslations.docs}</div>
+      <div>${staticTranslations.sms}</div>
+      <div>${staticTranslations.email}</div>
+      <div>${staticTranslations.hardware}</div>
+      <div>${staticTranslations.software}</div>
+    </div>
+  `;
+}
+
+function Methods({methods, customSoftware, customHardware}) {
+  const t = useTranslation();
 
   return (
     <>
       <ul className="tfa-summary" aria-label="Supported 2FA Methods">
         {methods && methods.filter((method) => !method.includes('custom')).
-          map((method) => <li>{method_names[method]}</li>)}
-        {methods?.includes("custom-hardware") && <li>Custom Hardware: {customHardware?.join(", ")}</li>}
-        {methods?.includes("custom-software") && <li>Custom Software: {customSoftware?.join(", ")}</li>}
+          map((method) => (<li>{t(method)}</li>))}
+        {methods?.includes('custom-hardware') &&
+          <li>{t('custom-hardware')}: {customHardware?.join(', ')}</li>}
+        {methods?.includes('custom-software') &&
+          <li>{t('custom-software')}: {customSoftware?.join(', ')}</li>}
       </ul>
-      <div aria-hidden="true" className={`sms method ${methods?.includes('sms') ?
-        'used' :
-        ''}`}></div>
-      <div aria-hidden="true" className={`voice method ${methods?.includes('call') ?
-        'used' :
-        ''}`}></div>
-      <div aria-hidden="true" className={`email method ${methods?.includes('email') ?
-        'used' :
-        ''}`}></div>
-      <div aria-hidden="true" className={`hardware method ${methods?.includes('u2f') ?
-        'used' :
-        ''}`}>
-        {methods?.includes("custom-hardware") && <CustomMethods type="hardware" methods={customHardware} />}
+
+      <div aria-hidden="true"
+           className={`sms method ${methods?.includes('sms') ||
+           methods?.includes('call') ? 'used':''}`}></div>
+
+      <div aria-hidden="true" className={`email method ${
+        methods?.includes('email') ? 'used':''}`}></div>
+
+      <div aria-hidden="true" className={`hardware method ${
+        methods?.includes('u2f') ? 'used':''}`}>
+        {methods?.includes('custom-hardware') &&
+          <CustomMethods type="hardware" methods={customHardware}/>}
       </div>
-      <div aria-hidden="true" className={`software method ${methods?.includes('totp') ?
-        'used' :
-        ''}`}>
-        {methods?.includes("custom-software") && <CustomMethods type="software" methods={customSoftware} />}
+
+      <div aria-hidden="true" className={`software method ${
+        methods?.includes('totp') ? 'used':''}`}>
+        {methods?.includes('custom-software') &&
+          <CustomMethods type="software" methods={customSoftware}/>}
       </div>
     </>
   );
@@ -146,20 +191,69 @@ function Methods({ methods, customSoftware, customHardware }) {
  * Show custom methods
  *
  * @param {Object} props - The props for this compoennt
- * @param {("software"|"hardware")} props.type - The type of custom methods
+ * @param {('software'|'hardware')} props.type - The type of custom methods
  * @param {string[]} props.methods - The custom methods
  */
-function CustomMethods({ type, methods }) {
-  return methods ?
-    <span class={`icon-info custom-${type}-popover`} data-bs-content={methods.map((method) => `<li>${method}</li>`).join("")} data-bs-toggle="popover"></span>
-    : <span class="icon-info" title={`Requires proprietary ${type === "hardware" ? "hardware token" : "app/software"}`}></span>;
+function CustomMethods({type, methods}) {
+  const t = useTranslation();
+  const [isOpen, setIsOpen] = useState(false);
+  const arrowRef = useRef(null);
+
+  // Initialize floating UI
+  const {refs, context, floatingStyles} = useFloating({
+    open: isOpen,
+    onOpenChange: setIsOpen,
+    middleware: [
+      autoPlacement(),
+      arrow({element: arrowRef}),
+    ],
+  });
+
+  // Set up interactions
+  const click = useClick(context);
+  const dismiss = useDismiss(context);
+
+  const {getReferenceProps, getFloatingProps} = useInteractions(
+    [click, dismiss]);
+
+  return (
+    <>
+      <button
+        ref={refs.setReference}
+        {...getReferenceProps({
+          className: `custom-${type}`,
+          'aria-haspopup': 'dialog',
+          'aria-expanded': isOpen,
+        })}
+      >
+        <span className="material-symbols-outlined">info</span>
+      </button>
+
+      {isOpen && (
+        <div
+          ref={refs.setFloating}
+          style={floatingStyles}
+          {...getFloatingProps({
+            className: 'custom-popover',
+          })}
+        >
+          <FloatingArrow ref={arrowRef} context={context}/>
+          <h5>{t(`custom-${type}`)}</h5>
+          <ul>
+            {methods.map((method, index) => (
+              <li key={index}>{method}</li>
+            ))}
+          </ul>
+        </div>
+      )}
+    </>
+  );
 }
 
-// Social Media Notices
 /**
  * Alert the user to the privacy implications of posting on social media.
  *
- * @param {("tweet"|"facebook"|"email")} type - The type of social media
+ * @param {('tweet'|'facebook'|'email')} type - The type of social media
  * @param {string} lang - An ISO 639-1 language code
  * @param {string} handle - The social media handle
  */
@@ -174,26 +268,44 @@ function socialMediaNotice(type, lang, handle) {
   }
 }
 
-function Contact({ contact }) {
-  const lang = contact.language || "en";
+function Contact({contact}) {
+  const lang = contact.language || 'en';
   return (
     <div aria-label="2FA not supported" className="contact">
-      {contact.twitter && (<button className="contact-btn twitter" onClick={() => socialMediaNotice("tweet", lang, contact.twitter)}></button>)}
-      {contact.facebook && (<button className="contact-btn facebook" onClick={() => socialMediaNotice("facebook", lang, contact.facebook)}></button>)}
-      {contact.email && (<button className="contact-btn email" onClick={() => socialMediaNotice("email", lang, contact.email)}></button>)}
-      {contact.form && (<button className="contact-btn form" onClick={() => window.open(contact.form, "_blank")}></button>)}
+      {contact.twitter && (<button className="contact-btn twitter"
+                                   onClick={() => socialMediaNotice('tweet',
+                                     lang, contact.twitter)}></button>)}
+      {contact.facebook && (<button className="contact-btn facebook"
+                                    onClick={() => socialMediaNotice('facebook',
+                                      lang, contact.facebook)}></button>)}
+      {contact.email && (<button className="contact-btn email"
+                                 onClick={() => socialMediaNotice('email', lang,
+                                   contact.email)}></button>)}
+      {contact.form && (<button className="contact-btn form"
+                                onClick={() => window.open(contact.form,
+                                  '_blank')}></button>)}
     </div>
   );
 }
 
-function Icon({ entry }) {
+function Icon({entry}) {
+  const [shouldRender, setShouldRender] = useState(false);
+
+  useEffect(() => {
+    // Defer rendering until after the initial render
+    const timeout = setTimeout(() => setShouldRender(true), 0);
+    return () => clearTimeout(timeout); // Clean up timeout
+  }, []);
+
+  if (!shouldRender) return html`<img class="logo" alt=""/>`; // Placeholder
+
   let src = IMG_PATH;
   if (entry['img']) {
     src += entry['img'][0] + '/' + entry['img'];
   } else {
     src += entry.domain[0] + '/' + entry['domain'] + '.svg';
   }
-  return (<img className="logo" loading="lazy" srcset={src} alt="" />);
+  return html`<img class="logo" loading="lazy" srcset=${src} alt=""/>`;
 }
 
 export default Table;

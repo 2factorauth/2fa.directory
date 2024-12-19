@@ -1,8 +1,11 @@
 import {render} from 'preact';
 import {html} from 'htm/preact';
 import {useEffect} from 'preact/hooks';
+import useTranslation from '../hooks/useTranslation.js';
 
 function Dialog() {
+  const t = useTranslation();
+
   useEffect(() => {
     document.getElementById("social-media-accept").addEventListener("click", () => {
       window.localStorage.setItem('social-media-notice', 'hidden');
@@ -10,16 +13,16 @@ function Dialog() {
           document.getElementById('social-media-accept').getAttribute('data-url'), "_blank"
       );
     });
+    document.getElementById('categories-title').innerText = t('categories') || 'Categories';
   }, []);
 
   return html`
-    <h3>Attention!</h3>
-    <p>Posting to social media could potentially give other people clues to what
-      accounts you have.</p>
+    <h3>${t('attention')}</h3>
+    <p>${t('social-media-warning')}</p>
     <form method="dialog">
-      <button class="btn btn-outline-success">Go back</button>
+      <button class="btn btn-outline-success">${t('go-back')}</button>
       <button class="btn btn-outline-danger" id="social-media-accept">
-        I accept the risk
+        ${t('accept-risk')}
       </button>
     </form>
   `;
