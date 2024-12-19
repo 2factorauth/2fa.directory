@@ -25,7 +25,7 @@ function Table({Category, search, grid}) {
       fetch(`${API_URL}/${region || 'int/'}${Category}.json`,
         {cache: 'force-cache'}).
         then(res => res.json()).
-        then(data => setEntries(Object.entries(data).sort() || [])).
+        then(data => setEntries(Object.entries(data) || [])).
         catch(err => console.error('Error fetching categories:', err));  // Add error handling
 
       // Scroll to category button
