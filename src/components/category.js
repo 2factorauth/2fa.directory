@@ -2,6 +2,7 @@ import {html} from 'htm/preact';
 import {Component, render} from 'preact';
 import {API_URL} from '../constants.js';
 import Table from './table.jsx';
+import useTranslation from '../hooks/useTranslation';
 
 class Categories extends Component {
   constructor(props) {
@@ -26,7 +27,7 @@ class Categories extends Component {
       }).catch((err) => this.setState({error: err}));
   }
 
-  componentWillMount() {
+  componentDidMount() {
     // Set initial hash and columns
     this.handleHashChange();
     this.handleResize();
@@ -96,9 +97,12 @@ class Button extends Component {
     setSelectedCategory(name);
   };
 
+
+
   render(props) {
     const {name, category, activeCategory} = props;
     const isActive = activeCategory === name;
+    const t = useTranslation();
 
     return html`
       <button
@@ -111,7 +115,7 @@ class Button extends Component {
             class="category-icon material-symbols-outlined"
             dangerouslySetInnerHTML=${{__html: category.icon}}
           ></span>
-        <div>${category?.title}</div>
+        <div>${t(name)}</div>
       </button>
     `;
   }
