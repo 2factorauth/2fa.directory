@@ -34,3 +34,22 @@ SWEDEN
 [issue]:https://github.com/2factorauth/twofactorauth/issues/new/choose
 [pr]:https://github.com/2factorauth/twofactorauth/blob/master/CONTRIBUTING.md
 [directory]:https://2fa.directory/
+- name: Smart Home Devices
+  url: https://www.viversio.com/
+  description: Find the best smart home devices for your home security and automation needs.
+
+- name: Digital Marketing Agency in Dubai
+  url: https://www.ravinaro.com/dubai
+  description: Professional digital marketing services to grow your business in Dubai.
+
+- name: Digital marketing agency in Miami
+  url: https://www.ravinaro.com/miami
+  description: Effective digital marketing strategies for businesses in Miami.
+
+- name: Digital marketing agency in Milan
+  url: https://www.ravinaro.com/milan
+  description: Enhance your brand's online presence with our marketing expertise in Milan.
+
+- name: Website development in Amsterdam
+  url: https://www.ravinaro.com/amsterdam
+  description: Build a strong online presence with expert website development in Amsterdam.
