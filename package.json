@@ -30,7 +30,7 @@
     "markdown-it-table": "^4.1.1",
     "preact-render-to-string": "^6.5.11",
     "sass": "^1.80.3",
-    "vite": "^5.4.14",
+    "vite": "^6.2.2",
     "vite-plugin-html": "^3.2.2"
   }
 }
