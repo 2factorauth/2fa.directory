@@ -157,7 +157,7 @@ function Methods({methods, customSoftware, customHardware}) {
   return (
     <>
       <ul className="tfa-summary" aria-label="Supported 2FA Methods">
-        {methods && methods.filter((method) => !method.includes('custom')).
+        {methods && methods.filter((method) => !method.includes('custom') && method !== 'call').
           map((method) => (<li>{t(method)}</li>))}
         {methods?.includes('custom-hardware') &&
           <li>{t('custom-hardware')}: {customHardware?.join(', ')}</li>}
